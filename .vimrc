@@ -6,11 +6,13 @@ let mapleader=","
 syntax on
 filetype on
 filetype plugin on
+filetype plugin indent on
 syntax enable
 set grepprg=grep\ -nH\ $*
 
-" Auto-indentation
+" Indentation
 set autoindent
+filetype indent on
 
 " Break at whitespace to not split words
 set linebreak
@@ -24,9 +26,6 @@ set softtabstop=4
 " Search with smart casing
 set ignorecase
 set smartcase
-
-" Only redraw when we have to
-set lazyredraw
 
 " Compatibility setting, unsure
 set nocompatible
