@@ -67,3 +67,15 @@ nnoremap <silent> K :tabnext<CR>
 " Display the cursor location with lines
 set cursorline
 
+" ===Custom functions===
+
+" Upload motion range to ptpb.pw and copy the link to your clipboard.
+" This function requires curl and xclip to be installed.
+function! UploadRange(type)
+    silent execute "'[,']w !curl -F c=@- 'https://ptpb.pw/' | grep -Pazoi 'https:\/\/ptpb\.pw\/.*' | xclip -sel clipboard"
+endfunction
+
+" Pass a motion or entire file to UploadRange.
+nnoremap <leader>p :set opfunc=UploadRange<CR>g@
+nnoremap <leader>P :set opfunc=UploadRange<CR>g@gg, G
+
