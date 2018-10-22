@@ -15,7 +15,10 @@ set autoindent
 filetype indent on
 
 " Break at whitespace to not split words
+set wrap
 set linebreak
+set textwidth=0
+set wrapmargin=0
 
 " Smart tabbing
 set expandtab
