@@ -4,6 +4,10 @@ set runtimepath^=~/.dotfiles/vim
 
 let mapleader=","
 
+" Display the file name and path as the status (%f for just file name).
+set laststatus=2
+set statusline=%F
+
 " Syntax highlighting
 syntax on
 colorscheme muon
