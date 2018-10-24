@@ -1,7 +1,5 @@
 " vim documentation: http://vimdoc.sourceforge.net/htmldoc/usr_toc.html
 
-set runtimepath^=~/.dotfiles/vim
-
 let mapleader=","
 
 " Display the file name and path as the status (%f for just file name).
