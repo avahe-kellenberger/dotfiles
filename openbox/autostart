@@ -1,0 +1,11 @@
+compton -b --no-fading-openclose -G -C
+tint2 &
+nitrogen --restore &
+
+gnome-terminal --geometry=92x55+32+32 &
+gnome-terminal --geometry=109x27+903+32 -e 'bash -c "ssh avahe@einheit.tech; zsh"' &
+
+keepass &
+
+flatpak run com.discordapp.Discord/x86_64/stable &
+
