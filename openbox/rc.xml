@@ -22,7 +22,7 @@
         mouse into it, also raise the window -->
     </focus><!--}}}-->
     <placement><!--{{{-->
-        <policy>Smart</policy>
+        <policy>UnderMouse</policy>
         <!-- 'Smart' or 'UnderMouse' -->
         <center>yes</center>
         <!-- whether to place windows in the center of the free area found or
@@ -350,9 +350,9 @@
             <action name="Execute">
                 <startupnotify>
                     <enabled>true</enabled>
-                    <name>GNOME Terminal</name>
+                    <name>Tilix</name>
                 </startupnotify>
-                <command>gnome-terminal</command>
+                <command>tilix</command>
             </action>
         </keybind>
         <keybind key="C-A-c">
@@ -754,16 +754,15 @@
         </application>
 
         <application class="discord">
-            <decor>no</decor>
             <desktop>1</desktop>
             <position force="yes">
                 <monitor>1</monitor>
-                <x>903</x>
+                <x>891</x>
                 <y>521</y>
             </position>
             <size>
-                <width>983</width>
-                <height>503</height>
+                <width>984</width>
+                <height>516</height>
             </size>
         </application>
         <application title="nuclearthrone">
