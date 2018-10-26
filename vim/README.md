@@ -1,9 +1,12 @@
 # Vim/vimrc
 
-It is recommended to run the following commands in your shell to use this `.vimrc` file by default:
+Create a symlink to the vim folder:
+
+`ln -s ~/.dotfiles/vim/ ~/.vim/`
+
+It is recommended to place the following commands in your shell's rc file (such as bashrc/zshrc) to use this `.vimrc` file by default:
 
 ```sh
-ln -s ~/.dotfiles/vim/ ~/.vim/
 export VIMINIT='source $MYVIMRC'
 export MYVIMRC='~/.vim/.vimrc'
 ```
