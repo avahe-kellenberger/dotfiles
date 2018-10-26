@@ -30,7 +30,7 @@ hi Cursor       ctermfg=234                              gui=None        guifg=#
 
 hi Visual       ctermfg=234                              gui=None        guifg=#1c1c1c       
 
-hi Folded       ctermfg=244                              gui=None        guifg=#808080       
+hi Folded       ctermfg=016  ctermbg=023                 gui=None        guifg=#808080       
 hi FoldColumn   ctermfg=244                              gui=None        guifg=#808080       
 
 hi IncSearch    ctermfg=234  cterm=underline             gui=underline   guifg=#1c1c1c       

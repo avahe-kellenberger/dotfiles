@@ -1,5 +1,7 @@
 " vim documentation: http://vimdoc.sourceforge.net/htmldoc/usr_toc.html
 
+" Configuration{{{
+
 let mapleader=","
 
 " Display the file name and path as the status (%f for just file name).
@@ -88,4 +90,4 @@ nnoremap <leader>p :set opfunc=UploadRange<CR>g@
 nnoremap <leader>P :set opfunc=UploadRange<CR>g@gg, G
 
 " Copy all lines to the system clipboard.
-nnoremap <leader>ca :%!xclip -sel clipboard<CR>u<CR><C>O<CR>
+nnoremap <leader>ca :%!xclip -sel clipboard<CR>u<CR><C>O<CR>"}}}
