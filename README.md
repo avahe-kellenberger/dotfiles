@@ -23,6 +23,12 @@ $ $ ln -s ~/.dotfiles/openbox/ ~/.config/openbox
 
 See the [Openbox configuration page](http://openbox.org/wiki/Help:Configuration) for setup details.
 
+### Switching windows by application
+
+See [this repository](https://github.com/avahe-kellenberger/wmctrl-switch-by-application) for install instructions.
+
+The default key binding in `rc.xml` is currently `A-grave` (equivalent to Alt+`).
+
 ## Vim
 
 Link your `vim` folder:
