@@ -325,7 +325,7 @@
         <keybind key="XF86AudioLowerVolume">
             <action name="Execute">
                 <command>
-                    sh -c "id=$(~/.dotfiles/scripts/active-pactlsink.sh); pactl set-sink-mute "$id" false; pactl set-sink-volume "$id" -5%"
+                    sh -c "id=$(~/.dotfiles/scripts/active-pactlsink.sh); pactl set-sink-mute "$id" false; pactl set-sink-volume "$id" -2.5%"
                 </command>
             </action>
         </keybind>
@@ -333,7 +333,7 @@
         <keybind key="XF86AudioRaiseVolume">
             <action name="Execute">
                 <command>
-                    sh -c "id=$(~/.dotfiles/scripts/active-pactlsink.sh); pactl set-sink-mute "$id" false; pactl set-sink-volume "$id" +5%"
+                    sh -c "id=$(~/.dotfiles/scripts/active-pactlsink.sh); pactl set-sink-mute "$id" false; pactl set-sink-volume "$id" +2.5%"
                 </command>
             </action>
         </keybind>
