@@ -3,6 +3,7 @@ alias ls="ls -al --color=auto"
 alias grep="grep --color"
 alias copy="xclip -sel clipboard"
 alias vi="vim"
+alias screenfetch="screenfetch | lolcat"
 
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 export ANDROID_HOME=~/android-sdk
