@@ -29,6 +29,14 @@ See [this repository](https://github.com/avahe-kellenberger/wmctrl-switch-by-app
 
 The default key binding in `rc.xml` is currently `A-grave` (equivalent to Alt+`).
 
+## Rofi
+
+Link your `rofi` folder:
+
+```sh
+$ ln -s ~/.dotfiles/rofi/ ~/.config/rofi
+```
+
 ## Vim
 
 Link your `vim` folder:
