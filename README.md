@@ -55,6 +55,18 @@ Link your `.zshrc` config file:
 $ ln -s ~/.zshrc ~/.dotfiles/.zshrc
 ```
 
+# Syntax Highlighting
+
+```sh
+$ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
+```
+
+# Auto Suggestions
+
+```sh
+$ git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+```
+
 **Example shell prompt:**
 
 ![zshrc](https://user-images.githubusercontent.com/34498340/47609503-d2bf9100-da0d-11e8-8e54-e73e3619fbd3.png)
