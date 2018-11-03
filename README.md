@@ -16,7 +16,7 @@ $ git clone https://github.com/avahe-kellenberger/dotfiles.git ~/.dotfiles/
 Link your `openbox` folder:
 
 ```sh
-$ $ ln -s ~/.dotfiles/openbox/ ~/.config/openbox
+$ ln -s ~/.dotfiles/openbox/ ~/.config/openbox
 ```
 
 **Note:** It is very likely you will only want to copy parts of the configuration from `rc.xml`, and thus should not create a symlink to this folder. This file can be found at `dotfiles/openbox/rc.xml`.
