@@ -55,13 +55,13 @@ Link your `.zshrc` config file:
 $ ln -s ~/.zshrc ~/.dotfiles/.zshrc
 ```
 
-# Syntax Highlighting
+### Syntax Highlighting
 
 ```sh
 $ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
 ```
 
-# Auto Suggestions
+### Auto Suggestions
 
 ```sh
 $ git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
