@@ -68,10 +68,6 @@ nnoremap <leader><space> :nohlsearch<CR>
 
 " Parenthesis matching
 highlight MatchParen ctermbg=4
-
-" Tabs
-nnoremap <silent> <C-t> :tabnew<CR>
-nnoremap <silent> J :tabprevious<CR>
 nnoremap <silent> K :tabnext<CR>
 
 " Display the cursor location with lines
