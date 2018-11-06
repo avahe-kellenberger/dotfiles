@@ -3,7 +3,13 @@
 # Make sure regex is case insensitive.
 shopt -s nocasematch
 
-regex="touchpad[^id]*id=([0-9]*)"
+device_id="$1"
+
+if [ -z "$device_id" ]; then
+   device_id="touchpad" 
+fi
+
+regex="${device_id}[^id]*id=([0-9]*)"
 
 if [[ $(xinput list) =~ $regex ]]; then
     touchpad_id=${BASH_REMATCH[1]}
