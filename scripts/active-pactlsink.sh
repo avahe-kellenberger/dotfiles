@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-regex="([0-9]+)\s+.*RUNNING"
-
-if [[ $(pactl list sinks short) =~ $regex ]]; then
-    echo "${BASH_REMATCH[1]}"
-else
-    echo "Match not found."
-fi
-
+pactl list sinks short | while read -r id info; do
+    ${1//%s/"$id"}
+done
