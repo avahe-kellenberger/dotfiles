@@ -1,12 +1,14 @@
 #!/bin/bash
 
-# I take this script from Anachron's i3blocks
-# I only slightly modify this script to add an option to show icon
-# I also remove the i3blocks specify script
-# To make this works with tint2 executor, polybar custom script, dzen2 feeder, conkybar, lemonbar feeder, dunst notify, etc.
+if [[ "$1" = "-h" ]] || [[ "$1" = "--help" ]]; then
+    printf "Help Menu:\n\n"
+    
+    printf "      Run:                 ./weather.sh\n"
+    printf "      Help menu:          [-h | --help]\n"
+    printf "      Display with icon:  [-i | --icon]\n"
+    exit
+fi
 # 'weather -i' = with icon, 'weather' = text only
-# Cheers!
-# Addy
 
 # Open Weather Map API code, register to http://openweathermap.org to get one ;)
 API_KEY="730d0819cbc5feae20f1a2271c73752e"
@@ -36,6 +38,11 @@ WEATHER_URL="http://api.openweathermap.org/data/2.5/weather?id=${CITY_ID}&appid=
 WEATHER_INFO=$(wget -qO- "${WEATHER_URL}")
 WEATHER_MAIN=$(echo "${WEATHER_INFO}" | grep -o -e '\"main\":\"[A-Za-z]*\"' | awk -F ':' '{print $2}' | tr -d '"')
 WEATHER_TEMP=$(echo "${WEATHER_INFO}" | grep -o -e '\"temp\":\-\?[0-9]*' | awk -F ':' '{print $2}' | tr -d '"')
+
+if [[ -z "${WEATHER_MAIN}" ]]; then
+    echo "Failed to connect."
+    exit
+fi
 
 if [[ "${WEATHER_MAIN}" = *Snow* ]]; then
 	if  [[ $1 = "-i" ]]; then
