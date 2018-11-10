@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openbox_config xmlns="http://openbox.org/3.4/rc" xmlns:xi="http://www.w3.org/2001/XInclude">
-    <resistance><!--{{{-->
+    <resistance>
+        <!--{{{-->
         <strength>5</strength>
         <screen_edge_strength>20</screen_edge_strength>
-    </resistance><!--}}}-->
-    <focus><!--{{{-->
+    </resistance>
+    <!--}}}-->
+    <focus>
+        <!--{{{-->
         <focusNew>yes</focusNew>
         <!-- always try to focus new windows when they appear. other rules apply -->
         <followMouse>no</followMouse>
@@ -20,8 +23,10 @@
         <raiseOnFocus>no</raiseOnFocus>
         <!-- when followMouse is enabled, and a window is given focus by moving the
         mouse into it, also raise the window -->
-    </focus><!--}}}-->
-    <placement><!--{{{-->
+    </focus>
+    <!--}}}-->
+    <placement>
+        <!--{{{-->
         <policy>UnderMouse</policy>
         <!-- 'Smart' or 'UnderMouse' -->
         <center>yes</center>
@@ -35,8 +40,10 @@
         from 1, specifying a particular monitor.  Or it can be one of the
         following: 'Mouse' - where the mouse is, or
         'Active' - where the active window is -->
-    </placement><!--}}}-->
-    <theme><!--{{{-->
+    </placement>
+    <!--}}}-->
+    <theme>
+        <!--{{{-->
         <name>Surreal</name>
         <titleLayout>NLIMC</titleLayout>
         <!--
@@ -105,8 +112,10 @@
             <slant>normal</slant>
             <!-- 'italic' or 'normal' -->
         </font>
-    </theme><!--}}}-->
-    <desktops><!--{{{-->
+    </theme>
+    <!--}}}-->
+    <desktops>
+        <!--{{{-->
         <!-- this stuff is only used at startup, pagers allow you to change them
         during a session
 
@@ -115,17 +124,21 @@
 
         use obconf if you want to change these without having to log out
         and back in -->
-        <number>2</number>
+        <number>4</number>
         <firstdesk>1</firstdesk>
         <names>
-            <name>Primary</name>
-            <name>Desktop 2</name>
+            <name>1</name>
+            <name>2</name>
+            <name>3</name>
+            <name>4</name>
         </names>
         <popupTime>0</popupTime>
         <!-- The number of milliseconds to show the popup for when switching
         desktops.  Set this to 0 to disable the popup. -->
-    </desktops><!--}}}-->
-    <resize><!--{{{-->
+    </desktops>
+    <!--}}}-->
+    <resize>
+        <!--{{{-->
         <drawContents>yes</drawContents>
         <popupShow>Always</popupShow>
         <!-- 'Always', 'Never', or 'Nonpixel' (xterms and such) -->
@@ -140,18 +153,22 @@
             <!-- positive number for distance from top edge, negative number for
             distance from bottom edge, or 'Center' -->
         </popupFixedPosition>
-    </resize><!--}}}-->
+    </resize>
+    <!--}}}-->
     <!-- You can reserve a portion of your screen where windows will not cover when
     they are maximized, or when they are initially placed.
     Many programs reserve space automatically, but you can use this in other
     cases. -->
-    <margins><!--{{{-->
+    <margins>
+        <!--{{{-->
         <top>0</top>
         <bottom>0</bottom>
         <left>0</left>
         <right>0</right>
-    </margins><!--}}}-->
-    <dock><!--{{{-->
+    </margins>
+    <!--}}}-->
+    <dock>
+        <!--{{{-->
         <position>TopLeft</position>
         <!-- (Top|Bottom)(Left|Right|)|Top|Bottom|Left|Right|Floating -->
         <floatingX>0</floatingX>
@@ -168,8 +185,10 @@
         <!-- in milliseconds (1000 = 1 second) -->
         <moveButton>Middle</moveButton>
         <!-- 'Left', 'Middle', 'Right' -->
-    </dock><!--}}}-->
-    <keyboard><!--{{{-->
+    </dock>
+    <!--}}}-->
+    <keyboard>
+        <!--{{{-->
         <chainQuitKey>C-g</chainQuitKey>
         <!-- Keybindings for desktop switching -->
         <keybind key="C-A-Left">
@@ -244,7 +263,6 @@
             <action name="ToggleShowDesktop"/>
         </keybind>
         <!-- Keybindings for windows -->
-
         <!-- Move windows to different monitors -->
         <keybind key="C-A-1">
             <action name="MoveResizeTo">
@@ -256,7 +274,6 @@
                 <monitor>2</monitor>
             </action>
         </keybind>
-
         <keybind key="A-F4">
             <action name="Close"/>
         </keybind>
@@ -332,9 +349,7 @@
             </action>
         </keybind>
         <!-- Keybindings for running applications -->
-
         <!-- Volume Control -->
-
         <keybind key="XF86AudioLowerVolume">
             <action name="Execute">
                 <command>
@@ -342,7 +357,6 @@
                 </command>
             </action>
         </keybind>
-
         <keybind key="XF86AudioRaiseVolume">
             <action name="Execute">
                 <command>
@@ -350,7 +364,6 @@
                 </command>
             </action>
         </keybind>
-
         <keybind key="XF86AudioMute">
             <action name="Execute">
                 <command>
@@ -358,7 +371,6 @@
                 </command>
             </action>
         </keybind>
-
         <keybind key="C-A-t">
             <action name="Execute">
                 <startupnotify>
@@ -382,6 +394,15 @@
                 <command>rofi -show run -monitor 1 -location 7 -width 20 -yoffset -24</command>
             </action>
         </keybind>
+        <keybind key="W-Tab">
+            <action name="Execute">
+                <startupnotify>
+                    <enabled>true</enabled>
+                    <name>rofi</name>
+                </startupnotify>
+                <command>rofi -show window monitor 1 -location 7 -width 20 -yoffset -24</command>
+            </action>
+        </keybind>
         <keybind key="W-e">
             <action name="Execute">
                 <startupnotify>
@@ -400,8 +421,10 @@
                 <command>firefox</command>
             </action>
         </keybind>
-    </keyboard><!--}}}-->
-    <mouse><!--{{{-->
+    </keyboard>
+    <!--}}}-->
+    <mouse>
+        <!--{{{-->
         <dragThreshold>1</dragThreshold>
         <!-- number of pixels the mouse must move before a drag begins -->
         <doubleClickTime>250</doubleClickTime>
@@ -734,8 +757,10 @@
                 </action>
             </mousebind>
         </context>
-    </mouse><!--}}}-->
-    <menu><!--{{{-->
+    </mouse>
+    <!--}}}-->
+    <menu>
+        <!--{{{-->
         <!-- You can specify more than one menu file in here and they are all loaded,
         just don't make menu ids clash or, well, it'll be kind of pointless -->
         <!-- default menu file (or custom one in $HOME/.config/openbox/) -->
@@ -761,11 +786,11 @@
         <!-- show the manage desktops section in the client-list-(combined-)menu -->
     </menu>
     <!--}}}-->
-    <applications><!--{{{-->
+    <applications>
+        <!--{{{-->
         <application class="*">
             <decor>no</decor>
         </application>
-
         <application class="discord">
             <desktop>1</desktop>
             <position force="yes">
