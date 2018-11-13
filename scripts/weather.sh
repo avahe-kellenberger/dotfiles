@@ -32,7 +32,7 @@ fi
 
 WEATHER_MAIN=$(echo "${WEATHER_INFO}" | grep -o -e '\"main\":\"[A-Za-z]*\"' | awk -F ':' '{print $2}' | tr -d '"')
 WEATHER_DESCRIPTION=$(echo "${WEATHER_INFO}" | perl -ne '/\"description\":(.*?),/ && print "$1"' | tr -d '"')
-WEATHER_TEMP=$(echo "${WEATHER_INFO}" | grep -Paizo '\"temp\":?[^,]*' | awk -F ':' '{print $2}')
+WEATHER_TEMP=$(echo "${WEATHER_INFO}" | grep -Paizo '\"temp\":?[^,]*' | tr -d '\0' | awk -F ':' '{print $2}')
 
 current_icon=""
 if [[ $1 == "-i" ]]; then
