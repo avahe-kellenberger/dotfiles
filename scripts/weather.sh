@@ -26,8 +26,8 @@ SYMBOL_FARENHEIT="˚F"
 WEATHER_URL="http://api.openweathermap.org/data/2.5/weather?id=${CITY_ID}&appid=${API_KEY}&units=imperial"
 WEATHER_INFO=$(wget -qO- "${WEATHER_URL}")
 WEATHER_MAIN=$(echo "${WEATHER_INFO}" | grep -o -e '\"main\":\"[A-Za-z]*\"' | awk -F ':' '{print $2}' | tr -d '"')
-WEATHER_DESCRIPTION=$(echo "${WEATHER_INFO}" | grep -o -e '\"description\":\"[^\"]*\"' | awk -F ':' '{print $2}' | tr -d '"')
-WEATHER_TEMP=$(echo "${WEATHER_INFO}" | grep -o -e '\"temp\":\-\?[0-9]*' | awk -F ':' '{print $2}' | tr -d '"')
+WEATHER_DESCRIPTION=$(echo "${WEATHER_INFO}" | perl -ne '/\"description\":(.*?),/ && print "$1"' | tr -d '"')
+WEATHER_TEMP=$(echo "${WEATHER_INFO}" | grep -Paizo '\"temp\":?[^,]*' | awk -F ':' '{print $2}')
 
 current_icon=""
 if [[ $1 == "-i" ]]; then
