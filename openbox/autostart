@@ -1,5 +1,6 @@
 compton -b --no-fading-openclose -G -C
 tint2 &
+tint2 -c ~/.dotfiles/tint2/tint2rc-top &
 nitrogen --restore &
 
 tilix --geometry=110x77+61+32 &
