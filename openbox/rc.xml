@@ -791,6 +791,12 @@
         <application class="*">
             <decor>no</decor>
         </application>
+        <application class="feh">
+            <position force="yes">
+                <x>center</x>
+                <y>center</y>
+            </position>
+        </application>
         <application class="discord">
             <desktop>1</desktop>
             <position force="yes">

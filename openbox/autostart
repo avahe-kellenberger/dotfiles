@@ -3,7 +3,7 @@ tint2 &
 nitrogen --restore &
 
 tilix --geometry=110x77+61+32 &
-tilix --geometry=140x36+891+32 -e 'bash -c "ssh avahe@einheit.tech; zsh"' &
+tilix --geometry=140x36+891+32 &
 
 keepass &
 
