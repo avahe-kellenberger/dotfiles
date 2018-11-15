@@ -24,15 +24,16 @@ ICON_FOG=""
 SYMBOL_FARENHEIT="˚F"
 
 WEATHER_URL="http://api.openweathermap.org/data/2.5/weather?id=${CITY_ID}&appid=${API_KEY}&units=imperial"
-WEATHER_INFO=$(wget -qO- "${WEATHER_URL}")
-if [[ -z "${WEATHER_INFO}" ]]; then
+WEATHER_RAW=$(wget -qO- "${WEATHER_URL}")
+if [[ -z "${WEATHER_RAW}" ]]; then
     echo "Failed to connect."
     exit
 fi
 
-WEATHER_MAIN=$(echo "${WEATHER_INFO}" | grep -o -e '\"main\":\"[A-Za-z]*\"' | awk -F ':' '{print $2}' | tr -d '"')
-WEATHER_DESCRIPTION=$(echo "${WEATHER_INFO}" | perl -ne '/\"description\":(.*?),/ && print "$1"' | tr -d '"')
-WEATHER_TEMP=$(echo "${WEATHER_INFO}" | grep -Paizo '\"temp\":?[^,.]*' | tr -d '\0' | awk -F ':' '{print $2}')
+WEATHER_INFO=$(echo "${WEATHER_RAW}" | jq '.weather[1]')
+WEATHER_MAIN=$(echo "${WEATHER_INFO}" | jq '.main' | tr -d '"')
+WEATHER_DESCRIPTION=$(echo "${WEATHER_INFO}" | jq '.description' | tr -d '"' | sed 's/./\U&/')
+WEATHER_TEMP=$(echo "${WEATHER_RAW}" | jq '.main.temp')
 
 current_icon=""
 if [[ $1 == "-i" ]]; then
