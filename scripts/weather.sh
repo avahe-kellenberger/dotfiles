@@ -30,7 +30,7 @@ if [[ -z "${WEATHER_RAW}" ]]; then
     exit
 fi
 
-WEATHER_INFO=$(echo "${WEATHER_RAW}" | jq '.weather[1]')
+WEATHER_INFO=$(echo "${WEATHER_RAW}" | jq '.weather[0]')
 WEATHER_MAIN=$(echo "${WEATHER_INFO}" | jq '.main' | tr -d '"')
 WEATHER_DESCRIPTION=$(echo "${WEATHER_INFO}" | jq '.description' | tr -d '"' | sed 's/./\U&/')
 WEATHER_TEMP=$(echo "${WEATHER_RAW}" | jq '.main.temp')
