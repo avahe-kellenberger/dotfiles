@@ -3,8 +3,8 @@ tint2 &
 tint2 -c ~/.dotfiles/tint2/tint2rc-top &
 nitrogen --restore &
 
-tilix --geometry=110x77+61+32 &
-tilix --geometry=140x36+891+32 &
+tilix --geometry=125x78+8+32 &
+tilix --geometry=145x39+895+32 &
 
 keepass &
 
