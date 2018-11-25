@@ -1,4 +1,4 @@
-sudo pacman -S openbox tint2 rofi tilix openssh lxappearance-obconf vim zsh lolcat xclip nodejs python jq wget pulseaudio pavucontrol compton nitrogen keepass flatpak lightdm lightdm-gtk-greeter firefox teamviewer mps-youtube youtube-dl git curl wmctrl
+sudo pacman -S openbox tint2 rofi tilix openssh lxappearance-obconf vim zsh lolcat xclip nodejs python jq wget pulseaudio pavucontrol compton nitrogen keepass flatpak lightdm lightdm-gtk-greeter firefox  mps-youtube youtube-dl git curl wmctrl
 
 # private dotfiles
 git clone https://Avahe@bitbucket.org/Avahe/dotfiles.git ~/.keepass
@@ -9,6 +9,13 @@ cd pb
 makepkg -sric
 cd ..
 rm -r pb
+
+#teamviewer
+git clone https://aur.archlinux.org/teamviewer.git
+cd teamviewer
+makepkg -sric
+cd ..
+rm -r teamviewer
 
 # wmctrl-switch-by-application
 curl -Lo- "https://raw.githubusercontent.com/avahe-kellenberger/wmctrl-switch-by-application/master/install.sh" | sudo bash
