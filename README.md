@@ -37,6 +37,14 @@ Link your `themes` folder:
 $ ln -s ~/.dotfiles/themes/ ~/.themes
 ```
 
+## tint2
+
+Link your `tint2` folder:
+
+```sh
+$ ln -s ~/.dotfiles/tint2 ~/.config/tint2
+```
+
 ## Rofi
 
 Link your `rofi` folder:
