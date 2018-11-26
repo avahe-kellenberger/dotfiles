@@ -1,7 +1,7 @@
 # Notes: Change the shell to zsh prior to running this script.
 # chsh USER -s /usr/bin/zsh
 
-sudo pacman -S openbox tint2 rofi tilix openssh lxappearance-obconf vim zsh lolcat xclip nodejs python jq wget pulseaudio pavucontrol compton nitrogen keepass firefox mps-youtube youtube-dl git curl wmctrl xorg-xinit xorg-server xorg-xprop networkmanager
+sudo pacman -S openbox tint2 rofi tilix openssh lxappearance-obconf vim zsh lolcat xclip nodejs python jq wget pulseaudio pavucontrol compton nitrogen keepass firefox mps-youtube youtube-dl git curl wmctrl xorg-xinit xorg-server xorg-xprop networkmanager bc
 
 # private dotfiles
 git clone https://Avahe@bitbucket.org/Avahe/dotfiles.git ~/.keepass
