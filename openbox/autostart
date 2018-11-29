@@ -1,5 +1,5 @@
-compton -b --no-fading-openclose -G -C
 nitrogen --restore &
+compton -b --no-fading-openclose -G -C
 tint2 &
 tint2 -c ~/.dotfiles/tint2/tint2rc-top &
 
