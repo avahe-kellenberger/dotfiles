@@ -59,57 +59,57 @@
         <keepBorder>yes</keepBorder>
         <animateIconify>no</animateIconify>
         <font place="ActiveWindow">
-            <name>sans</name>
+            <name>Dina</name>
             <size>8</size>
             <!-- font size in points -->
-            <weight>bold</weight>
+            <weight>Normal</weight>
             <!-- 'bold' or 'normal' -->
-            <slant>normal</slant>
+            <slant>Normal</slant>
             <!-- 'italic' or 'normal' -->
         </font>
         <font place="InactiveWindow">
-            <name>sans</name>
+            <name>Dina</name>
             <size>8</size>
             <!-- font size in points -->
-            <weight>bold</weight>
+            <weight>Normal</weight>
             <!-- 'bold' or 'normal' -->
-            <slant>normal</slant>
+            <slant>Normal</slant>
             <!-- 'italic' or 'normal' -->
         </font>
         <font place="MenuHeader">
-            <name>sans</name>
-            <size>9</size>
+            <name>Dina</name>
+            <size>8</size>
             <!-- font size in points -->
-            <weight>normal</weight>
+            <weight>Normal</weight>
             <!-- 'bold' or 'normal' -->
-            <slant>normal</slant>
+            <slant>Normal</slant>
             <!-- 'italic' or 'normal' -->
         </font>
         <font place="MenuItem">
-            <name>sans</name>
-            <size>9</size>
+            <name>Dina</name>
+            <size>8</size>
             <!-- font size in points -->
-            <weight>normal</weight>
+            <weight>Normal</weight>
             <!-- 'bold' or 'normal' -->
-            <slant>normal</slant>
+            <slant>Normal</slant>
             <!-- 'italic' or 'normal' -->
         </font>
         <font place="ActiveOnScreenDisplay">
-            <name>sans</name>
-            <size>9</size>
+            <name>Dina</name>
+            <size>8</size>
             <!-- font size in points -->
-            <weight>bold</weight>
+            <weight>Normal</weight>
             <!-- 'bold' or 'normal' -->
-            <slant>normal</slant>
+            <slant>Normal</slant>
             <!-- 'italic' or 'normal' -->
         </font>
         <font place="InactiveOnScreenDisplay">
-            <name>sans</name>
-            <size>9</size>
+            <name>Dina</name>
+            <size>8</size>
             <!-- font size in points -->
-            <weight>bold</weight>
+            <weight>Normal</weight>
             <!-- 'bold' or 'normal' -->
-            <slant>normal</slant>
+            <slant>Normal</slant>
             <!-- 'italic' or 'normal' -->
         </font>
     </theme>
@@ -385,6 +385,11 @@
                 <command>pb png | xclip -sel clipboard</command>
             </action>
         </keybind>
+        <keybind key="C-A-w">
+            <action name="Execute">
+                <command>pb png | xclip -sel clipboard</command>
+            </action>
+        </keybind>
         <keybind key="W-space">
             <action name="Execute">
                 <startupnotify>
@@ -400,7 +405,7 @@
                     <enabled>true</enabled>
                     <name>rofi</name>
                 </startupnotify>
-                <command>rofi -show window monitor 1 -location 7 -width 20 -yoffset -24</command>
+                <command>rofi -show window monitor 1 -location 7 -width 20 -yoffset 0</command>
             </action>
         </keybind>
         <keybind key="W-e">
@@ -801,12 +806,12 @@
             <desktop>1</desktop>
             <position force="yes">
                 <monitor>1</monitor>
-                <x>891</x>
-                <y>521</y>
+                <x>895</x>
+                <y>548</y>
             </position>
             <size>
-                <width>984</width>
-                <height>516</height>
+                <width>1017</width>
+                <height>500</height>
             </size>
         </application>
         <application title="nuclearthrone">
@@ -818,7 +823,7 @@
             </position>
         </application>
         <application name="leagueclientux.exe">
-            <desktop>2</desktop>
+            <desktop>1</desktop>
             <position force="yes">
                 <monitor>2</monitor>
                 <x>center</x>
@@ -826,7 +831,7 @@
             </position>
         </application>
         <application name="league of legends.exe">
-            <desktop>2</desktop>
+            <desktop>1</desktop>
             <position force="yes">
                 <monitor>2</monitor>
                 <x>0</x>
