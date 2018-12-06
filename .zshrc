@@ -13,3 +13,8 @@ export MYVIMRC='~/.vim/.vimrc'
 
 source /home/avahe/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+bg_proc() {
+    (nohup "$@" &>/dev/null &)
+}
+
