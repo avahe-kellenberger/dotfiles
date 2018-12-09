@@ -4,6 +4,7 @@ alias grep="grep --color"
 alias copy="xclip -sel clipboard"
 alias vi="vim"
 alias screenfetch="screenfetch | lolcat"
+alias pdf="masterpdfeditor5"
 
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 export ANDROID_HOME=~/android-sdk
