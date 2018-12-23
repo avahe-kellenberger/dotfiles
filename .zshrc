@@ -19,3 +19,10 @@ bg_proc() {
     (nohup "$@" &>/dev/null &)
 }
 
+mem() {
+    (free | awk '$1 ~ /Mem/ { print $3 / 1000 }' | bc)
+}
+
+screen_shot() {
+    (scrot -se 'curl -s -F c=@- https://ptpb.pw/ < $f' | awk '$1 = /url/ { printf $2".png" }' | xclip -sel clipboard)
+}
