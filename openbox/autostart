@@ -5,5 +5,6 @@ tint2 -c ~/.dotfiles/tint2/tint2rc-deepin &
 tilix --geometry=121x78+16+16 &
 tilix --geometry=145x39+885+16 &
 
+dunst -config ~/.dotfiles/dunst/dunstrc &
+nm-applet &
 keepass &
-
