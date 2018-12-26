@@ -5,6 +5,7 @@ alias copy="xclip -sel clipboard"
 alias vi="vim"
 alias screenfetch="screenfetch | lolcat"
 alias pdf="masterpdfeditor5"
+alias mpv="mpv --no-keepaspect-window"
 
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 export ANDROID_HOME=~/android-sdk

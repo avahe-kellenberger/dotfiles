@@ -190,6 +190,11 @@
     <keyboard>
         <!--{{{-->
         <chainQuitKey>C-g</chainQuitKey>
+        <keybind key="W-l">
+            <action name="execute">
+                <execute>dm-tool lock</execute>
+            </action>
+        </keybind>
         <!-- Keybindings for desktop switching -->
         <keybind key="C-A-Left">
             <action name="GoToDesktop">
@@ -263,6 +268,17 @@
             <action name="ToggleShowDesktop"/>
         </keybind>
         <!-- Keybindings for windows -->
+        <keybind key="C-S-d">
+            <action name="ToggleDecorations"/>
+        </keybind>
+
+        <keybind key="W-Up">
+            <action name="ToggleMaximize"/>
+        </keybind>
+        <keybind key="W-Down">
+            <action name="Iconify"/>
+        </keybind>
+
         <keybind key="W-KP_7">
             <action name="UnmaximizeFull"/>
             <action name="MoveResizeTo">
@@ -476,7 +492,7 @@
                     <enabled>true</enabled>
                     <name>rofi</name>
                 </startupnotify>
-                <command>rofi -show run -monitor 1 -location 7 -width 20 -yoffset -32</command>
+                <command>rofi -show run -terminal tilix -monitor 1 -location 7 -width 20 -yoffset -32</command>
             </action>
         </keybind>
         <keybind key="W-Tab">
@@ -485,7 +501,7 @@
                     <enabled>true</enabled>
                     <name>rofi</name>
                 </startupnotify>
-                <command>rofi -show window monitor 1 -location 7 -width 20 -yoffset 0</command>
+                <command>rofi -show window -monitor 1 -terminal tilix -location 7 -width 20 -yoffset -32</command>
             </action>
         </keybind>
         <keybind key="W-e">
@@ -894,16 +910,7 @@
                 <height>500</height>
             </size>
         </application>
-        <application title="nuclearthrone">
-            <desktop>1</desktop>
-            <position force="yes">
-                <monitor>2</monitor>
-                <x>0</x>
-                <y>0</y>
-            </position>
-        </application>
         <application name="leagueclientux.exe">
-            <desktop>1</desktop>
             <position force="yes">
                 <monitor>2</monitor>
                 <x>center</x>
@@ -911,7 +918,6 @@
             </position>
         </application>
         <application name="league of legends.exe">
-            <desktop>1</desktop>
             <position force="yes">
                 <monitor>2</monitor>
                 <x>0</x>
