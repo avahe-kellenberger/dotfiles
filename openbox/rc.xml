@@ -508,9 +508,9 @@
             <action name="Execute">
                 <startupnotify>
                     <enabled>true</enabled>
-                    <name>pcmanfm</name>
+                    <name>nemo</name>
                 </startupnotify>
-                <command>pcmanfm</command>
+                <command>nemo</command>
             </action>
         </keybind>
         <keybind key="W-f">
@@ -897,18 +897,6 @@
                 <x>center</x>
                 <y>center</y>
             </position>
-        </application>
-        <application class="discord">
-            <desktop>1</desktop>
-            <position force="yes">
-                <monitor>1</monitor>
-                <x>885</x>
-                <y>532</y>
-            </position>
-            <size>
-                <width>1017</width>
-                <height>500</height>
-            </size>
         </application>
         <application name="leagueclientux.exe">
             <position force="yes">
