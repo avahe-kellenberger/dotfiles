@@ -1,6 +1,7 @@
 PROMPT="%F{white}[%f%F{green}%n%f %F{yellow}%T%f %F{blue}%~%f%F{white}]:%f "
 alias ls="ls -al --color=auto"
 alias grep="grep --color"
+alias rename="perl-rename"
 alias copy="xclip -sel clipboard"
 alias vi="vim"
 alias screenfetch="screenfetch | lolcat"
@@ -26,4 +27,8 @@ mem() {
 
 screen_shot() {
     (scrot -se 'curl -s -F c=@- https://ptpb.pw/ < $f' | awk '$1 = /url/ { printf $2".png" }' | xclip -sel clipboard)
+}
+
+set_title() {
+    (echo -n -e "\033]0;${1}\007")
 }
