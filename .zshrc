@@ -1,4 +1,5 @@
 PROMPT="%F{white}[%f%F{green}%n%f %F{yellow}%T%f %F{blue}%~%f%F{white}]:%f "
+
 alias ls="ls -al --color=auto"
 alias grep="grep --color"
 alias rename="perl-rename"
@@ -32,3 +33,17 @@ screen_shot() {
 set_title() {
     (echo -n -e "\033]0;${1}\007")
 }
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+setopt beep
+unsetopt autocd
+bindkey -v
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/avahe/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
