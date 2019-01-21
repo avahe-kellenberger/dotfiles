@@ -1,6 +1,6 @@
 ~/.fehbg &
 ~/.dotfiles/compton/compton.sh &
-tint2 -c ~/.dotfiles/tint2/tint2rc-deepin &
+tint2 &
 dunst -config ~/.dotfiles/dunst/dunstrc &
 nm-applet &
 
