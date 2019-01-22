@@ -3,5 +3,3 @@
 tint2 &
 dunst -config ~/.dotfiles/dunst/dunstrc &
 nm-applet &
-pasystray &
-
