@@ -58,7 +58,7 @@ $ ln -s ~/.dotfiles/rofi/ ~/.config/rofi
 Link your `vim` folder:
 
 ```sh
-$ ln -s ~/.dotfiles/vim/ ~/.vim/
+$ ln -s ~/.dotfiles/vim/ ~/.vim
 ```
 
 **Example of the `muon`** themed used:
