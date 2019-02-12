@@ -8,7 +8,9 @@ alias vi="vim"
 alias screenfetch="screenfetch | lolcat"
 alias pdf="masterpdfeditor5"
 alias mpv="mpv --no-keepaspect-window"
+alias def="sdcv"
 
+export STARDICT_DATA_DIR=~/.dict
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
 export ANDROID_HOME=~/android-sdk
 export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
