@@ -7,7 +7,6 @@ alias copy="xclip -sel clipboard"
 alias vi="vim"
 alias screenfetch="screenfetch | lolcat"
 alias pdf="masterpdfeditor5"
-alias mpv="mpv --no-keepaspect-window"
 alias def="sdcv"
 
 export STARDICT_DATA_DIR=~/.dict
@@ -36,6 +35,11 @@ screen_shot() {
 set_title() {
     (echo -n -e "\033]0;${1}\007")
 }
+
+nextcloud_sync() {
+    (nextcloudcmd -u Avahe /home/avahe/Nextcloud 'https://avahe.tech/nextcloud')
+}
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
