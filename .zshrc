@@ -10,12 +10,8 @@ alias pdf="masterpdfeditor5"
 alias def="sdcv"
 
 export STARDICT_DATA_DIR=~/.dict
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
-export ANDROID_HOME=~/android-sdk
-export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
 export VIMINIT='source $MYVIMRC'
 export MYVIMRC='~/.vim/.vimrc'
-export _JAVA_OPTIONS="-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel -Dswing.crossplatformlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
 
 source /home/avahe/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -26,10 +22,6 @@ bg_proc() {
 
 mem() {
     (free | awk '$1 ~ /Mem/ { print $3 / 1000 }' | bc)
-}
-
-screen_shot() {
-    (scrot -se 'curl -s -F c=@- https://ptpb.pw/ < $f' | awk '$1 = /url/ { printf $2".png" }' | xclip -sel clipboard)
 }
 
 set_title() {
