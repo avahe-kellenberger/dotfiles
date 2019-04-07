@@ -169,6 +169,9 @@ bar {
         status_command i3status
 }
 
+bindsym Control+Mod1+c exec --no-startup-id "$HOME/.dotfiles/scripts/screen_shot.sh"
+bindsym Control+Mod1+l exec --no-startup-id "i3lock -i $(cat $HOME/.config/i3/wallpaper) -t"
+
 for_window [class=".*"] border pixel 4
 
 gaps inner 20
