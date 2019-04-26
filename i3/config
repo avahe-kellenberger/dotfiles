@@ -170,9 +170,10 @@ bar {
 }
 
 bindsym Control+Mod1+c exec --no-startup-id "$HOME/.dotfiles/scripts/screen_shot.sh"
-bindsym Control+Mod1+l exec --no-startup-id "i3lock -i $(cat $HOME/.config/i3/wallpaper) -t"
+bindsym Control+Mod1+l exec --no-startup-id "i3lock -i $HOME/.dotfiles/i3/wallpaper -t"
 
 for_window [class=".*"] border pixel 4
 
 gaps inner 15
 
+exec xautolock -detectsleep -time 5 -locker "i3lock -i $HOME/.dotfiles/i3/wallpaper -t" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'locking screen in 30 seconds'"
