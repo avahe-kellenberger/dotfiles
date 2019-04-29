@@ -17,6 +17,9 @@ filetype plugin indent on
 syntax enable
 set grepprg=grep\ -nH\ $*
 
+" Autocomplete
+set omnifunc=syntaxcomplete#Complete
+
 " Indentation
 set autoindent
 filetype indent on
