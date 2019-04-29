@@ -2,12 +2,7 @@ PROMPT="%F{white}[%f%F{green}%n%f %F{yellow}%T%f %F{blue}%~%f%F{white}]:%f "
 
 alias ls="ls -al --color=auto"
 alias grep="grep --color"
-alias rename="perl-rename"
 alias copy="xclip -sel clipboard"
-alias vi="vim"
-alias screenfetch="screenfetch | lolcat"
-alias pdf="masterpdfeditor5"
-alias def="sdcv"
 
 export STARDICT_DATA_DIR=~/.dict
 export VIMINIT='source $MYVIMRC'
@@ -22,14 +17,6 @@ bg_proc() {
 
 mem() {
     (free | awk '$1 ~ /Mem/ { print $3 / 1000 }' | bc)
-}
-
-set_title() {
-    (echo -n -e "\033]0;${1}\007")
-}
-
-nextcloud_sync() {
-    (nextcloudcmd -u Avahe /home/avahe/Nextcloud 'https://avahe.tech/nextcloud')
 }
 
 # Lines configured by zsh-newuser-install
