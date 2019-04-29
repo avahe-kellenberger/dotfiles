@@ -10,7 +10,7 @@ set statusline=%F
 
 " Syntax highlighting
 syntax on
-colorscheme muon-transparent
+colorscheme srcery
 filetype on
 filetype plugin on
 filetype plugin indent on
