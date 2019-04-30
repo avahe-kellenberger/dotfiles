@@ -76,6 +76,12 @@ nnoremap <silent> K :tabnext<CR>
 " Display the cursor location with lines
 set cursorline
 
+autocmd Filetype java set makeprg=javac\ %
+set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
+map <F9> :make<Return>:copen<Return>
+map <F10> :cprevious<Return>
+map <F11> :cnext<Return>
+
 " ===Custom functions===
 
 " Upload motion range to ptpb.pw and copy the link to your clipboard.
