@@ -1,5 +1,7 @@
 " vim documentation: http://vimdoc.sourceforge.net/htmldoc/usr_toc.html
 
+set encoding=utf-8
+
 " Configuration{{{
 
 let mapleader=","
