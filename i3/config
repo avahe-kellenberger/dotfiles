@@ -176,4 +176,3 @@ for_window [class=".*"] border pixel 4
 
 gaps inner 15
 
-exec xautolock -detectsleep -time 5 -locker "i3lock -i $HOME/.dotfiles/i3/wallpaper -t" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'locking screen in 30 seconds'"
