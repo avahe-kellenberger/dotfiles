@@ -144,10 +144,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 5 px or 5 ppt
-        bindsym j resize grow height 5 px or 5 ppt
-        bindsym k resize shrink height 5 px or 5 ppt
-        bindsym l resize grow width 5 px or 5 ppt
+        bindsym h resize shrink width 1 px or 1 ppt
+        bindsym j resize grow height 1 px or 1 ppt
+        bindsym k resize shrink height 1 px or 1 ppt
+        bindsym l resize grow width 1 px or 1 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -157,29 +157,26 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-        status_command i3status
-}
-
 # Screen shot
 bindsym Control+Mod1+c exec --no-startup-id "$HOME/.dotfiles/scripts/screen_shot.sh"
 # Lock screen
 bindsym Control+Mod1+l exec --no-startup-id "i3lock -i $HOME/.dotfiles/i3/wallpaper -t"
 
 # Volume control
-bindsym $mod+equal exec --no-startup-id ~/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-volume %s +2.5%"
-bindsym $mod+minus exec --no-startup-id ~/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-volume %s -2.5%"
-bindsym $mod+m exec --no-startup-id ~/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-mute %s toggle"
+bindsym $mod+equal exec --no-startup-id $HOME/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-volume %s +2.5%"
+bindsym $mod+minus exec --no-startup-id $HOME/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-volume %s -2.5%"
+bindsym $mod+m exec --no-startup-id $HOME/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-mute %s toggle"
 
 # Inner gaps off
 bindsym $mod+Shift+g gaps inner all set 0
 
 # Inner gaps on
-bindsym $mod+g gaps inner all set 15
+bindsym $mod+g gaps inner all set 60
 
+# Window borders
 for_window [class=".*"] border pixel 4
 
-gaps inner 15
+# Enable gaps by default
+gaps inner 60
 
+exec_always --no-startup-id $HOME/.config/polybar/launch-polybar.sh
