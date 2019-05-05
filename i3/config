@@ -169,8 +169,15 @@ bar {
         status_command i3status
 }
 
+# Screen shot
 bindsym Control+Mod1+c exec --no-startup-id "$HOME/.dotfiles/scripts/screen_shot.sh"
+# Lock screen
 bindsym Control+Mod1+l exec --no-startup-id "i3lock -i $HOME/.dotfiles/i3/wallpaper -t"
+
+# Volume control
+bindsym $mod+equal exec --no-startup-id ~/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-volume %s +2.5%"
+bindsym $mod+minus exec --no-startup-id ~/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-volume %s -2.5%"
+bindsym $mod+m exec --no-startup-id ~/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-mute %s toggle"
 
 for_window [class=".*"] border pixel 4
 

@@ -448,21 +448,21 @@
         <keybind key="XF86AudioLowerVolume">
             <action name="Execute">
                 <command>
-                    sh -c '~/.dotfiles/scripts/active-pactlsink.sh "pactl set-sink-mute %s false"; ~/.dotfiles/scripts/active-pactlsink.sh "pactl set-sink-volume %s -2.5%"'
+                    sh -c '~/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-mute %s false"; ~/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-volume %s -2.5%"'
                 </command>
             </action>
         </keybind>
         <keybind key="XF86AudioRaiseVolume">
             <action name="Execute">
                 <command>
-                    sh -c '~/.dotfiles/scripts/active-pactlsink.sh "pactl set-sink-mute %s false"; ~/.dotfiles/scripts/active-pactlsink.sh "pactl set-sink-volume %s +2.5%"'
+                    sh -c '~/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-mute %s false"; ~/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-volume %s +2.5%"'
                 </command>
             </action>
         </keybind>
         <keybind key="XF86AudioMute">
             <action name="Execute">
                 <command>
-                    sh -c '~/.dotfiles/scripts/active-pactlsink.sh "pactl set-sink-mute %s toggle"'
+                    sh -c '~/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-mute %s toggle"'
                 </command>
             </action>
         </keybind>
