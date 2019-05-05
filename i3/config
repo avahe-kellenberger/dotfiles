@@ -144,16 +144,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 5 px or 5 ppt
-        bindsym k resize grow height 5 px or 5 ppt
-        bindsym l resize shrink height 5 px or 5 ppt
-        bindsym semicolon resize grow width 5 px or 5 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 5 px or 5 ppt
-        bindsym Down resize grow height 5 px or 5 ppt
-        bindsym Up resize shrink height 5 px or 5 ppt
-        bindsym Right resize grow width 5 px or 5 ppt
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym j resize grow height 5 px or 5 ppt
+        bindsym k resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -178,6 +172,12 @@ bindsym Control+Mod1+l exec --no-startup-id "i3lock -i $HOME/.dotfiles/i3/wallpa
 bindsym $mod+equal exec --no-startup-id ~/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-volume %s +2.5%"
 bindsym $mod+minus exec --no-startup-id ~/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-volume %s -2.5%"
 bindsym $mod+m exec --no-startup-id ~/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-mute %s toggle"
+
+# Inner gaps off
+bindsym $mod+Shift+g gaps inner all set 0
+
+# Inner gaps on
+bindsym $mod+g gaps inner all set 15
 
 for_window [class=".*"] border pixel 4
 
