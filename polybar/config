@@ -56,7 +56,7 @@ font-0 = Dina:size=10:anialias=false;
 
 modules-left = i3
 ; modules-center =
-modules-right = filesystem xbacklight pulseaudio memory cpu wlan eth battery temperature date powermenu
+modules-right = filesystem pulseaudio memory cpu wlan eth battery temperature date powermenu
 
 tray-position = right
 tray-padding = 0
@@ -204,16 +204,15 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix = "CPU: "
+;format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #f90000
 label = %percentage:2%%
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix = "Mem: "
 format-underline = #4bffdc
 label = %percentage_used%%
 
@@ -226,11 +225,11 @@ format-connected = <ramp-signal> <label-connected>
 format-connected-underline = ${colors.primary}
 label-connected = %essid%
 
-format-disconnected =
+format-disconnected = "No connection"
 ;format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+label-disconnected-foreground = ${colors.foreground-alt}
 
 ramp-signal-0 = 
 ramp-signal-1 = 
@@ -330,7 +329,7 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 type = internal/battery
 battery = BAT0
 adapter = ADP1
-full-at = 98
+full-at = 100
 
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = #ffb52a
@@ -338,8 +337,8 @@ format-charging-underline = #ffb52a
 format-discharging = <animation-discharging> <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-prefix = "Full: "
+;format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 
 ramp-capacity-0 = 
@@ -369,8 +368,8 @@ format-underline = #f50a4d
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 
-label = %temperature-c%
-label-warn = %temperature-c%
+label = %temperature-f%
+label-warn = %temperature-f%
 label-warn-foreground = ${colors.secondary}
 
 ramp-0 = 
