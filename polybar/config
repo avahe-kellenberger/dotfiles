@@ -56,7 +56,7 @@ font-0 = Dina:size=10:anialias=false;
 
 modules-left = i3
 ; modules-center =
-modules-right = filesystem pulseaudio memory cpu wlan eth battery temperature date powermenu
+modules-right = filesystem pulseaudio memory cpu wlan eth battery date powermenu
 
 tray-position = right
 tray-padding = 0
