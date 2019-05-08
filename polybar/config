@@ -18,7 +18,7 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #222
+background = #1c1b19
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
@@ -28,7 +28,6 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/example]
-monitor = ${env:MONITOR:}
 width = 100%
 height = 28
 ;offset-x = 1%
@@ -135,7 +134,7 @@ index-sort = true
 wrapping-scroll = false
 
 ; Only show workspaces on the same output as the bar
-;pin-workspaces = true
+pin-workspaces = true
 
 label-mode-padding = 2
 label-mode-foreground = #000
@@ -218,10 +217,10 @@ label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = wlp5s0
+interface = wlo1
 interval = 3.0
 
-format-connected = <ramp-signal> <label-connected>
+format-connected = <label-connected>
 format-connected-underline = ${colors.primary}
 label-connected = %essid%
 
@@ -244,7 +243,7 @@ interface = enp3s0
 interval = 3.0
 
 format-connected-underline = ${colors.primary}
-format-connected-prefix = " "
+format-connected-prefix =
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
 
