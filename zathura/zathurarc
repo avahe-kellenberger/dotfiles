@@ -1,0 +1,9 @@
+set recolor true
+set recolor-lightcolor "#1c1b19"
+set recolor-darkcolor "#fce8c3"
+
+set default-fg "#fce8c3"
+set default-bg "#1c1b19"
+
+set font "Dina normal 8"
+
