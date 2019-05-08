@@ -171,12 +171,13 @@ bindsym $mod+m exec --no-startup-id $HOME/.dotfiles/scripts/for-each-pactlsink.s
 bindsym $mod+Shift+g gaps inner all set 0
 
 # Inner gaps on
-bindsym $mod+g gaps inner all set 60
+bindsym $mod+g gaps inner all set 45
 
 # Window borders
 for_window [class=".*"] border pixel 4
+hide_edge_borders smart
 
 # Enable gaps by default
-gaps inner 60
+gaps inner 45
 
 exec_always --no-startup-id $HOME/.config/polybar/launch-polybar.sh
