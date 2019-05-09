@@ -78,8 +78,9 @@ nnoremap <silent> K :tabnext<CR>
 " Display the cursor location with lines
 set cursorline
 
-autocmd Filetype java set makeprg=javac\ **/*.java
+autocmd Filetype java set makeprg=javac\ -d\ bin\ **/*.java
 set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
+map <F5> :make<Return>:!java -classpath bin Boot &<Return><Return>
 map <F9> :make<Return>:copen<Return>
 map <F10> :cprevious<Return>
 map <F11> :cnext<Return>
