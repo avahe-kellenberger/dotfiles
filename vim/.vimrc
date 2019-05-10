@@ -1,8 +1,25 @@
 " vim documentation: http://vimdoc.sourceforge.net/htmldoc/usr_toc.html
 
-set encoding=utf-8
+" Vundle{{{
+
+" Required for Vundle
+filetype off
+set nocompatible
+
+call vundle#begin()
+
+" Plugins{{{
+Plugin 'leafgarland/typescript-vim'
+Plugin 'peitalin/vim-jsx-typescript'
+Plugin 'Quramy/tsuquyomi'
+"}}}
+
+call vundle#end()
+
+"}}}
 
 " Configuration{{{
+set encoding=utf-8
 
 let mapleader=","
 
@@ -42,9 +59,6 @@ set softtabstop=4
 set ignorecase
 set smartcase
 
-" Compatibility setting, unsure
-set nocompatible
-
 " Shows what you are typing as a command
 set showcmd
 
@@ -78,12 +92,19 @@ nnoremap <silent> K :tabnext<CR>
 " Display the cursor location with lines
 set cursorline
 
+" Java
 autocmd Filetype java set makeprg=javac\ -d\ bin\ **/*.java
 set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
 map <F5> :make<Return>:!java -classpath bin Boot &<Return><Return>
 map <F9> :make<Return>:copen<Return>
 map <F10> :cprevious<Return>
 map <F11> :cnext<Return>
+
+" TypeScript
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+autocmd FileType typescript nmap <buffer> <Leader>r <Plug>(TsuquyomiRenameSymbolC)
+autocmd FileType typescript nmap <buffer> <Leader>q <Plug>(TsuquyomiQuickFix)
+autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
 
 " ===Custom functions===
 
