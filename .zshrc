@@ -4,6 +4,7 @@ alias ls="ls -al --color=auto"
 alias grep="grep --color"
 alias copy="xclip -sel clipboard"
 alias e='vim $(fzf +s --reverse --color=dark)'
+alias wallpaper='rm ~/.config/i3/wallpaper &>/dev/null; ln -s $(find ~/Pictures -name "*\.*" | sxiv -riot | head -n 1) ~/.config/i3/wallpaper';
 
 export STARDICT_DATA_DIR=~/.dict
 export VIMINIT='source $MYVIMRC'
