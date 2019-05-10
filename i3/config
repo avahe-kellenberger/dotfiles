@@ -179,5 +179,6 @@ hide_edge_borders smart
 
 # Enable gaps by default
 gaps inner 45
+smart_gaps on
 
 exec_always --no-startup-id $HOME/.config/polybar/launch-polybar.sh
