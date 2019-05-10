@@ -102,9 +102,11 @@ map <F11> :cnext<Return>
 
 " TypeScript
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
-autocmd FileType typescript nmap <buffer> <Leader>r <Plug>(TsuquyomiRenameSymbolC)
+autocmd FileType typescript nmap <buffer> <Leader>f <Plug>(TsuquyomiRenameSymbolC)
 autocmd FileType typescript nmap <buffer> <Leader>q <Plug>(TsuquyomiQuickFix)
-autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
+autocmd FileType typescript nmap <buffer> <Leader>d <Plug>(TsuquyomiTypeDefinition)
+autocmd FileType typescript nmap <buffer> <Leader>b <Plug>(TsuquyomiGoBack)
+autocmd FileType typescript nmap <buffer> <Leader>t :<C-u>echo tsuquyomi#hint()<CR>
 
 " ===Custom functions===
 

@@ -205,7 +205,7 @@ call s:HL('SrceryXgray5', s:xgray5)
 "
 if g:srcery_transparent_background == 1 && !has('gui_running')
   call s:HL('Normal', s:bright_white, s:none)
- else
+else
   call s:HL('Normal', s:bright_white, s:black)
 endif
 
@@ -216,15 +216,10 @@ if v:version >= 700
   hi! link CursorColumn CursorLine
 
 
-  if g:srcery_transparent_background == 1 && !has('gui_running')
-    " Tab pages line filler
-    call s:HL('TabLineFill', s:green, s:none)
-    " Active tab page label
-    call s:HL('TabLineSel', s:red, s:none, s:bold)
-  else
-    call s:HL('TabLineFill', s:green, s:black)
-    call s:HL('TabLineSel', s:red, s:black, s:bold)
-  endif
+  " Tab pages line filler
+  call s:HL('TabLineFill', s:white, s:xgray2)
+  " Active tab page label
+  call s:HL('TabLineSel', s:green, s:none, s:bold)
 
   " Not active tab page label
   hi! link TabLine TabLineFill
@@ -495,10 +490,10 @@ hi! link SneakStreakStatusLine Search
 
 if !exists('g:rbpt_colorpairs')
   let g:rbpt_colorpairs =
-    \ [
-      \ ['blue',  '#2C78BF'], ['166',  '#D75F00'],
-      \ ['red',  '#EF2F27'], ['magenta', '#E02C6D']
-    \ ]
+        \ [
+        \ ['blue',  '#2C78BF'], ['166',  '#D75F00'],
+        \ ['red',  '#EF2F27'], ['magenta', '#E02C6D']
+        \ ]
 endif
 
 let g:rainbow_guifgs = [ '#E02C6D', '#EF2F27', '#D75F00', '#2C78BF']
