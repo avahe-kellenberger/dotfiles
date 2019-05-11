@@ -12,6 +12,7 @@ call vundle#begin()
 Plugin 'leafgarland/typescript-vim'
 Plugin 'peitalin/vim-jsx-typescript'
 Plugin 'Quramy/tsuquyomi'
+Plugin 'scrooloose/nerdtree'
 "}}}
 
 call vundle#end()
@@ -54,6 +55,7 @@ set expandtab
 set smarttab
 set shiftwidth=4
 set softtabstop=4
+set tabstop=4
 
 " Search with smart casing
 set ignorecase
@@ -92,7 +94,37 @@ nnoremap <silent> K :tabnext<CR>
 " Display the cursor location with lines
 set cursorline
 
-" Java
+" Nerdtree{{{
+
+" Automatically open nerdtree with vim
+map <C-n> :NERDTreeToggle<CR>
+
+" Filetype colors
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+    exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+    exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+
+call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
+call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
+call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
+call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+call NERDTreeHighlightFile('jsx', 'Red', 'none', '#ffa500', '#151515')
+call NERDTreeHighlightFile('ts', 'green', 'none', '#ffa500', '#151515')
+call NERDTreeHighlightFile('tsx', 'green', 'none', '#ffa500', '#151515')
+call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
+
+" }}}
+
+" Java{{{
 autocmd Filetype java set makeprg=javac\ -d\ bin\ **/*.java
 set errorformat=%A%f:%l:\ %m,%-Z%p^,%-C%.%#
 map <F5> :make<Return>:!java -classpath bin Boot &<Return><Return>
@@ -100,15 +132,20 @@ map <F9> :make<Return>:copen<Return>
 map <F10> :cprevious<Return>
 map <F11> :cnext<Return>
 
-" TypeScript
+"}}}
+
+" TypeScript{{{
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 autocmd FileType typescript nmap <buffer> <Leader>f <Plug>(TsuquyomiRenameSymbolC)
+autocmd FileType typescript nmap <buffer> <Leader>i <Plug>(TsuquyomiImport)
 autocmd FileType typescript nmap <buffer> <Leader>q <Plug>(TsuquyomiQuickFix)
 autocmd FileType typescript nmap <buffer> <Leader>d <Plug>(TsuquyomiTypeDefinition)
-autocmd FileType typescript nmap <buffer> <Leader>b <Plug>(TsuquyomiGoBack)
+autocmd FileType typescript nmap <buffer> <Leader>b <Plug>(TsuquyomiGoBack
 autocmd FileType typescript nmap <buffer> <Leader>t :<C-u>echo tsuquyomi#hint()<CR>
 
-" ===Custom functions===
+"}}}
+
+" ===Custom functions==={{{
 
 " Upload motion range to ptpb.pw and copy the link to your clipboard.
 " This function requires curl and xclip to be installed.
@@ -122,3 +159,5 @@ nnoremap <leader>P :set opfunc=UploadRange<CR>g@gg, G
 
 " Copy all lines to the system clipboard.
 nnoremap <leader>ca :%!xclip -sel clipboard<CR>u<CR><C>O<CR>"}}}
+
+"}}}
