@@ -14,6 +14,8 @@ Plugin 'peitalin/vim-jsx-typescript'
 Plugin 'Quramy/tsuquyomi'
 Plugin 'scrooloose/nerdtree'
 Plugin 'prettier/vim-prettier'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 "}}}
 
 call vundle#end()
@@ -98,6 +100,10 @@ nnoremap <silent> K :tabnext<CR>
 
 " Display the cursor location with lines
 set cursorline
+
+" AirLine{{{
+let g:airline_theme='base16_atelierseaside'
+" }}}
 
 " Nerdtree{{{
 
