@@ -101,7 +101,6 @@ set cursorline
 
 " Nerdtree{{{
 
-" Automatically open nerdtree with vim
 map <C-n> :NERDTreeToggle<CR>
 
 " Filetype colors
