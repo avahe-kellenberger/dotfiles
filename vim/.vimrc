@@ -13,6 +13,7 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'peitalin/vim-jsx-typescript'
 Plugin 'Quramy/tsuquyomi'
 Plugin 'scrooloose/nerdtree'
+Plugin 'prettier/vim-prettier'
 "}}}
 
 call vundle#end()
@@ -23,6 +24,10 @@ call vundle#end()
 set encoding=utf-8
 
 let mapleader=","
+
+" Split settings
+set splitbelow
+set splitright
 
 " Display the file name and path as the status (%f for just file name).
 set laststatus=2
@@ -136,28 +141,17 @@ map <F11> :cnext<Return>
 
 " TypeScript{{{
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
-autocmd FileType typescript nmap <buffer> <Leader>f <Plug>(TsuquyomiRenameSymbolC)
+autocmd FileType typescript nmap <buffer> <Leader>r <Plug>(TsuquyomiRenameSymbolC)
 autocmd FileType typescript nmap <buffer> <Leader>i <Plug>(TsuquyomiImport)
 autocmd FileType typescript nmap <buffer> <Leader>q <Plug>(TsuquyomiQuickFix)
 autocmd FileType typescript nmap <buffer> <Leader>d <Plug>(TsuquyomiTypeDefinition)
-autocmd FileType typescript nmap <buffer> <Leader>b <Plug>(TsuquyomiGoBack
+autocmd FileType typescript nnoremap <buffer> <Leader>b <Plug>(TsuquyomiGoBack
 autocmd FileType typescript nmap <buffer> <Leader>t :<C-u>echo tsuquyomi#hint()<CR>
 
-"}}}
-
-" ===Custom functions==={{{
-
-" Upload motion range to ptpb.pw and copy the link to your clipboard.
-" This function requires curl and xclip to be installed.
-function! UploadRange(type)
-    silent execute "'[,']w !curl -F c=@- 'https://ptpb.pw/' | grep -Pazoi 'https:\/\/ptpb\.pw\/.*' | xclip -sel clipboard"
-endfunction
-
-" Pass a motion or entire file to UploadRange.
-nnoremap <leader>p :set opfunc=UploadRange<CR>g@
-nnoremap <leader>P :set opfunc=UploadRange<CR>g@gg, G
-
-" Copy all lines to the system clipboard.
-nnoremap <leader>ca :%!xclip -sel clipboard<CR>u<CR><C>O<CR>"}}}
+let g:prettier#autoformat = 0
+let g:prettier#exec_cmd_async = 1
+let g:prettier#quickfix_auto_focus = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
 
 "}}}
+
