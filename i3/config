@@ -161,6 +161,8 @@ bindsym $mod+r mode "resize"
 bindsym Control+Mod1+c exec --no-startup-id "$HOME/.dotfiles/scripts/screen_shot.sh"
 # Lock screen
 bindsym Control+Mod1+l exec --no-startup-id "i3lock -i $HOME/.dotfiles/i3/wallpaper -t"
+# Select video to play
+bindsym Control+Mod1+v exec --no-startup-id "$HOME/.dotfiles/scripts/play_vid.sh"
 
 # Volume control
 bindsym $mod+equal exec --no-startup-id $HOME/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-volume %s +2.5%"
