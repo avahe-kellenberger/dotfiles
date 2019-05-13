@@ -3,7 +3,7 @@ PROMPT="%F{white}[%f%F{green}%n%f %F{yellow}%T%f %F{blue}%~%f%F{white}]:%f "
 alias ls="ls -al --color=auto"
 alias grep="grep --color"
 alias copy="xclip -sel clipboard"
-alias e='vim $(fzf +s --reverse --color=dark)'
+alias e='vim $(fzf +s --reverse --color=dark --exact)'
 alias wallpaper='rm ~/.config/i3/wallpaper &>/dev/null; ln -s $(find ~/Pictures -name "*\.png" | sxiv -riot | head -n 1) ~/.config/i3/wallpaper';
 
 export STARDICT_DATA_DIR=~/.dict
