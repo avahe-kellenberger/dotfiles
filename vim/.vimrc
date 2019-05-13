@@ -145,6 +145,7 @@ map <F11> :cnext<Return>
 "}}}
 
 " TypeScript{{{
+let g:typescript_indent_disable = 1
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 autocmd FileType typescript nmap <buffer> <Leader>r <Plug>(TsuquyomiRenameSymbolC)
 autocmd FileType typescript nmap <buffer> <Leader>i <Plug>(TsuquyomiImport)
