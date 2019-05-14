@@ -151,7 +151,7 @@ autocmd FileType typescript nmap <buffer> <Leader>r <Plug>(TsuquyomiRenameSymbol
 autocmd FileType typescript nmap <buffer> <Leader>i <Plug>(TsuquyomiImport)
 autocmd FileType typescript nmap <buffer> <Leader>q <Plug>(TsuquyomiQuickFix)
 autocmd FileType typescript nmap <buffer> <Leader>d <Plug>(TsuquyomiTypeDefinition)
-autocmd FileType typescript nnoremap <buffer> <Leader>b <Plug>(TsuquyomiGoBack
+autocmd FileType typescript nmap <buffer> <Leader>b <Plug>(TsuquyomiGoBack)
 autocmd FileType typescript nmap <buffer> <Leader>t :<C-u>echo tsuquyomi#hint()<CR>
 
 let g:prettier#autoformat = 0
