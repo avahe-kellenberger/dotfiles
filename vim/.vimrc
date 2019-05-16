@@ -10,8 +10,9 @@ call vundle#begin()
 
 " Plugins{{{
 Plugin 'leafgarland/typescript-vim'
-Plugin 'peitalin/vim-jsx-typescript'
-Plugin 'Quramy/tsuquyomi'
+Plugin 'prabirshrestha/async.vim'
+Plugin 'prabirshrestha/vim-lsp'
+Plugin 'ryanolsonx/vim-lsp-typescript'
 Plugin 'scrooloose/nerdtree'
 Plugin 'prettier/vim-prettier'
 Plugin 'vim-airline/vim-airline'
@@ -147,12 +148,12 @@ map <F11> :cnext<Return>
 " TypeScript{{{
 let g:typescript_indent_disable = 1
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
-autocmd FileType typescript nmap <buffer> <Leader>r <Plug>(TsuquyomiRenameSymbolC)
-autocmd FileType typescript nmap <buffer> <Leader>i <Plug>(TsuquyomiImport)
-autocmd FileType typescript nmap <buffer> <Leader>q <Plug>(TsuquyomiQuickFix)
-autocmd FileType typescript nmap <buffer> <Leader>d <Plug>(TsuquyomiTypeDefinition)
-autocmd FileType typescript nmap <buffer> <Leader>b <Plug>(TsuquyomiGoBack)
-autocmd FileType typescript nmap <buffer> <Leader>t :<C-u>echo tsuquyomi#hint()<CR>
+autocmd FileType typescript nmap <buffer> <Leader>r :LspRename<CR>
+autocmd FileType typescript nmap <buffer> <Leader>q :LspCodeAction<CR>
+autocmd FileType typescript nmap <buffer> <C-S-f> :LspWorkspaceSymbol<CR>
+autocmd FileType typescript nmap <buffer> <Leader>d :LspDefinition<CR>
+autocmd FileType typescript nmap <buffer> <Leader>b :bp<CR>
+autocmd FileType typescript nmap <buffer> <Leader>t :LspHover<CR>
 
 let g:prettier#autoformat = 0
 let g:prettier#exec_cmd_async = 1
