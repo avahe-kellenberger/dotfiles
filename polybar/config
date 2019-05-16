@@ -333,10 +333,10 @@ battery = BAT0
 adapter = ADP1
 full-at = 100
 
-format-charging = <label-charging>
+format-charging = Charging <label-charging>
 format-charging-underline = #ffb52a
 
-format-discharging = <label-discharging>
+format-discharging = Discharging <label-discharging>
 format-discharging-underline = ${self.format-charging-underline}
 
 format-full-prefix = "Full: "
