@@ -10,6 +10,7 @@ call vundle#begin()
 
 " Plugins{{{
 Plugin 'leafgarland/typescript-vim'
+Plugin 'ianks/vim-tsx'
 Plugin 'prabirshrestha/async.vim'
 Plugin 'prabirshrestha/vim-lsp'
 Plugin 'ryanolsonx/vim-lsp-typescript'
