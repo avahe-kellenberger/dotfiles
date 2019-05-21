@@ -1,1 +1,1 @@
-mount -t davfs https://avahe.tech/nextcloud/remote.php/webdav/ /home/avahe/NextCloud
+mount -t davfs https://avahe.tk/nextcloud/remote.php/webdav/ $HOME/NextCloud
