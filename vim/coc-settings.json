@@ -1,0 +1,4 @@
+{
+    "tsserver.orgnizeImportOnSave": true,
+    "tsserver.npm": "/usr/bin/npm"
+}
