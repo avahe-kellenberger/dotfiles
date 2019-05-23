@@ -1,4 +1,4 @@
-PROMPT="%F{white}[%f%F{green}%n%f %F{yellow}%T%f %F{blue}%~%f%F{white}]:%f "
+PROMPT="%F{white}[%f%F{green}%n%f%F{yellow}@%f%F{blue}%m%f %F{yellow}%T%f %F{blue}%~%f%F{white}]:%f "
 
 alias ls="ls -al --color=auto"
 alias grep="grep --color"
@@ -46,3 +46,5 @@ man() {
         command man "$@"
 }
 
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
