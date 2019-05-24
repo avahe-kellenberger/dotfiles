@@ -1,4 +1,6 @@
 {
+    "tsserver.npm": "/usr/bin/npm",
     "tsserver.orgnizeImportOnSave": true,
-    "tsserver.npm": "/usr/bin/npm"
+    "typescript.preferences.noSemicolons": true,
+    "typescript.format.insertSpaceAfterConstructor": true
 }
