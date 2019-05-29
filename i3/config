@@ -157,18 +157,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Screen shot
-bindsym Control+Mod1+c exec --no-startup-id "$HOME/.dotfiles/scripts/screen_shot.sh"
-# Lock screen
-bindsym Control+Mod1+l exec --no-startup-id "i3lock -i $HOME/.dotfiles/i3/wallpaper -t"
-# Select video to play
-bindsym Control+Mod1+v exec --no-startup-id "$HOME/.dotfiles/scripts/play_vid.sh"
-
-# Volume control
-bindsym $mod+equal exec --no-startup-id $HOME/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-volume %s +2.5%"
-bindsym $mod+minus exec --no-startup-id $HOME/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-volume %s -2.5%"
-bindsym $mod+m exec --no-startup-id $HOME/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-mute %s toggle"
-
 # Inner gaps off
 bindsym $mod+Shift+g gaps inner all set 0
 

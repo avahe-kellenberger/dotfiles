@@ -1,0 +1,25 @@
+# Terminal
+super + Return
+    st
+
+# Application Launcher
+super + d
+    rofi -show run
+
+# Screen shot
+control + alt + c
+    $HOME/.dotfiles/scripts/screen_shot.sh
+
+# Lock screen
+control + alt + l
+    i3lock -i $HOME/.dotfiles/i3/wallpaper -t
+
+# Volume control
+super + equal
+    $HOME/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-volume %s +2.5%"
+
+super + minus
+    $HOME/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-volume %s -2.5%"
+
+super + m
+    $HOME/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-mute %s toggle"
