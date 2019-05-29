@@ -14,7 +14,6 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'HerringtonDarkholme/yats.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'prettier/vim-prettier'
 "}}}
 
 call vundle#end()
@@ -184,7 +183,7 @@ function! s:show_documentation()
 endfunction
 
 " Highlight symbol under cursor on CursorHold
-" autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
@@ -279,19 +278,10 @@ map <F11> :cnext<Return>
 
 " TypeScript{{{
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
-" autocmd FileType typescript nmap <buffer> <Leader>r :LspRename<CR>
-" autocmd FileType typescript nmap <buffer> <Leader>q :LspCodeAction<CR>
-" autocmd FileType typescript nmap <buffer> <C-S-f> :LspWorkspaceSymbol<CR>
-" autocmd FileType typescript nmap <buffer> <Leader>d :LspDefinition<CR>
-" autocmd FileType typescript nmap <buffer> <Leader>b :bp<CR>
-" autocmd FileType typescript nmap <buffer> <Leader>t :LspHover<CR>
 
 " Prettier
-let g:prettier#autoformat = 0
-let g:prettier#exec_cmd_async = 1
-let g:prettier#quickfix_auto_focus = 0
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
-
 "}}}
 
 " JSON{{{
