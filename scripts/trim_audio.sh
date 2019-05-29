@@ -1,0 +1,8 @@
+#!/bin/bash
+
+in="$1"
+out="$2"
+
+$(sox "${in}" temp.mp3 silence 1 0.1 0.05% reverse silence 1 0.1 0.05% reverse)
+$(mv temp.mp3 "$out")
+
