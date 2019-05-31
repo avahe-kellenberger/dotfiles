@@ -1,0 +1,151 @@
+#urlbar, .searchbar-textbox {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+@-moz-document url(about:home), url(about:newtab), url(about:preferences) {
+    .activity-stream {
+        background: #1C1B19 !important;
+        color: #FCE8C3 !important;
+    }
+}
+
+#main-window #urlbar {
+  background: #1C1B19 !important;
+  color: #FCE8C3 !important;
+}
+
+#main-window {
+  background: #1C1B19 !important;
+  color: #FCE8C3 !important;
+}
+
+#TabsToolbar {
+  padding-top: 0px !important;
+}
+
+#TabsToolbar {
+    background: #1C1B19 !important;
+  /* visibility: collapse !important; */
+}
+
+.tabbrowser-tab[visuallyselected="true"] {
+  color: inherit !important; /* Use background tab text color for foreground tabs */
+}
+
+.tab-background[selected=true] {
+  background-color: transparent !important; /* Make selected tab bg transparent */
+}
+
+.tab-line {
+    /*visibility: hidden !important;*/
+}
+
+.tab-line[selected=true] {
+  background-color: #519F50 !important;
+  visibility: hidden;
+}
+
+.tabbrowser-tab::after, .tabbrowser-tab::before {
+   border-left: none !important; /* Remove borders from inactive tabs */
+}
+
+:root {
+  --tabs-border: transparent !important; /* Remove borders from active tab and below tabs */
+  --toolbarbutton-border-radius: 0px !important;
+  --sidebar-hover-width: 0px;
+  --sidebar-visible-width: 0px;
+}
+
+#context-sendpagetodevice, #context-sep-sendpagetodevice,
+#context-sendlinktodevice, #context-sep-sendlinktodevice,
+#context_sendTabToDevice, #context_sendTabToDevice_separator {
+  display: none !important;
+}
+
+.browserContainer > findbar {
+  -moz-box-ordinal-group: 0;
+  position: fixed !important;
+  right: 1em;
+  border: 1px solid threedshadow !important;
+
+  /* Hide the "border" at the top by removing the box-shadow and background-image */
+  border-top: none !important;
+  box-shadow: none !important;
+  background-image: none !important;
+
+  /* Uncomment to add a transition from the top */
+  /*
+  transition: 400ms !important;
+  z-index: 0 !important;
+  */
+}
+
+/* Margin from top when hidden (necessary for the transition to work) */
+/*findbar[hidden]{ margin-top: -2em !important; }*/
+
+/* Aligns the close button to the center */
+.findbar-closebutton {
+  margin-inline-start: 0.5em !important;
+  vertical-align: middle !important;
+  margin-bottom: 0.25em !important;
+  height: inherit !important;
+}
+
+#sidebar-box {
+  position: relative !important;
+  overflow-x: hidden !important;
+  margin-right: calc(var(--sidebar-hover-width) * -1) !important;
+  left: var(--sidebar-hover-width) !important;
+  min-width: var(--sidebar-hover-width) !important;
+  max-width: var(--sidebar-hover-width) !important;
+  border-right: 0px solid var(--sidebar-border-color);
+}
+
+#sidebar-box:hover {
+  margin-right: calc(var(--sidebar-visible-width) * -1) !important;
+  left: var(--sidebar-visible-width) !important;
+  min-width: var(--sidebar-visible-width) !important;
+  max-width: var(--sidebar-visible-width) !important;
+}
+
+#sidebar {
+  opacity: 0 !important;
+}
+
+#sidebar-box:hover #sidebar {
+  opacity: 1 !important;
+}
+
+/* #sidebar-header is hidden by default, change "none" to "inherit" to restore it. */
+#sidebar-header {
+  display: none !important;
+}
+
+/* #sidebar-splitter styles the divider between the sidebar and the rest of the browser. */
+#sidebar-splitter {
+  display: none;
+}
+
+:root:not([uidensity="compact"]) #back-button > .toolbarbutton-icon {
+  background-color: unset !important;
+  border: unset !important;
+  padding: var(--toolbarbutton-inner-padding) !important;
+  border-radius: var(--toolbarbutton-border-radius) !important;
+  width: calc(2 * var(--toolbarbutton-inner-padding) + 16px) !important;
+}
+
+/* Hover and Active states to mimic other buttons */
+:root:not([uidensity="compact"]) #back-button:hover:not([disabled]) > .toolbarbutton-icon {
+  background-color: var(--toolbarbutton-hover-background) !important;
+}
+
+:root:not([uidensity="compact"]) #back-button:active:not([disabled]) > .toolbarbutton-icon {
+  background-color: var(--toolbarbutton-active-background) !important;
+}
+
+/* Remove pre-padding */
+:root:not([uidensity="compact"]) #back-button {
+  padding-inline-start: 3px !important;
+}
+
