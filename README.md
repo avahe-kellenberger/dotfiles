@@ -1,4 +1,5 @@
 # dotfiles
+
 Personal dotfiles for my multiple systems.
 
 # Recommended setup
@@ -42,7 +43,7 @@ $ ln -s ~/.dotfiles/themes/ ~/.themes
 Link your `tint2` folder:
 
 ```sh
-$ ln -s ~/.dotfiles/tint2 ~/.config/tint2
+$ ln -s ~/.dotfiles/tint2/ ~/.config/tint2
 ```
 
 ## Rofi
@@ -58,7 +59,7 @@ $ ln -s ~/.dotfiles/rofi/ ~/.config/rofi
 Link your `vim` folder:
 
 ```sh
-$ ln -s ~/.vim ~/.dotfiles/vim
+$ ln -s ~/.dotfiles/vim/ ~/.vim
 ```
 
 **Example of the `muon`** themed used:
@@ -71,12 +72,13 @@ It is recommended to place the following commands in your shell's rc file (such 
 export VIMINIT='source $MYVIMRC'
 export MYVIMRC='~/.vim/.vimrc'
 ```
+
 ## Zsh
 
 Link your `.zshrc` config file:
 
 ```sh
-$ ln -s ~/.zshrc ~/.dotfiles/.zshrc
+$ ln -s ~/.dotfiles/.zshrc ~/.zshrc
 ```
 
 ### Syntax Highlighting
@@ -96,6 +98,7 @@ $ git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosugg
 ![zshrc](https://user-images.githubusercontent.com/34498340/47609503-d2bf9100-da0d-11e8-8e54-e73e3619fbd3.png)
 
 Run the following command after creating the symlink to use the `.zshrc` file in the current terminal:
+
 ```sh
 $ . ~/.zshrc
 ```
