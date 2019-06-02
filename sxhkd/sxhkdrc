@@ -1,3 +1,10 @@
+# Fn Keys
+XF86MonBrightnessDown
+    light -U 10
+
+XF86MonBrightnessUp
+    light -A 10
+
 # Terminal
 super + Return
     st
@@ -15,11 +22,11 @@ control + alt + l
     i3lock -i $HOME/.dotfiles/i3/wallpaper -t
 
 # Volume control
-super + equal
+{super + equal, XF86AudioRaiseVolume}
     $HOME/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-mute %s off"; $HOME/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-volume %s +2.5%"
 
-super + minus
+{super + minus, XF86AudioLowerVolume}
     $HOME/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-mute %s off"; $HOME/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-volume %s -2.5%"
 
-super + m
+{super + m, XF86AudioMute}
     $HOME/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-mute %s toggle"
