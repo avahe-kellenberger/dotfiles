@@ -287,3 +287,14 @@ autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.gra
 " JSON{{{
 autocmd FileType json syntax match Comment +\/\/.\+$+
 "}}}
+
+" groff{{{
+au BufNewFile,BufRead *.ms,*.groff set filetype=groff
+
+function! CompileGroff(filename)
+    let l:newname = split(a:filename, '\.')[0]
+    call system('groff -e -p -t -ms ' . a:filename . ' -Tps | ps2pdf - ' . l:newname . '.pdf')
+endfunction
+
+autocmd BufWritePost *.ms :call CompileGroff(expand("%:t"))
+"}}}
