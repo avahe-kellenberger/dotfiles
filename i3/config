@@ -152,6 +152,12 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# Color theme
+client.focused #1c1b19 #519f50 #fce8c3
+client.focused_inactive #1c1b19 #1c1b19 #fce8c3
+client.unfocused #1c1b19 #1c1b19 #fce8c3
+client.background #1c1b19
+
 # Inner gaps off
 bindsym $mod+Shift+g gaps inner all set 0
 
@@ -159,7 +165,7 @@ bindsym $mod+Shift+g gaps inner all set 0
 bindsym $mod+g gaps inner all set 45
 
 # Window borders
-for_window [class=".*"] border pixel 4
+for_window [class=".*"] border pixel 2
 hide_edge_borders smart
 
 # Enable gaps by default
