@@ -1,9 +1,9 @@
 # Fn Keys
 XF86MonBrightnessDown
-    light -U 5
+    light -U 1.25
 
 XF86MonBrightnessUp
-    light -A 5
+    light -A 1.25
 
 # Terminal
 super + Return
