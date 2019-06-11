@@ -122,6 +122,7 @@ set cursorline
 
 "CtrlP {{{
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*
+let g:ctrlp_show_hidden = 1
 " }}}
 
 " CoC{{{
