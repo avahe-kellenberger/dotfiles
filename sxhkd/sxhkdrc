@@ -13,6 +13,10 @@ super + Return
 super + d
     rofi -show run
 
+# Browser
+super + i
+    $BROWSER
+
 # Screen shot
 control + alt + c
     $HOME/.dotfiles/scripts/screen_shot.sh
