@@ -7,7 +7,7 @@ XF86MonBrightnessUp
 
 # Terminal
 super + Return
-    st
+    $TERM
 
 # Application Launcher
 super + d
