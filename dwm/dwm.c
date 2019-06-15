@@ -97,7 +97,6 @@ struct Client {
 	Client *snext;
 	Monitor *mon;
 	Window win;
-	Client *crop;
 };
 
 typedef struct {
@@ -242,6 +241,7 @@ static void updatetitle(Client *c);
 static void updatewindowtype(Client *c);
 static void updatewmhints(Client *c);
 static void view(const Arg *arg);
+static void warp(const Client *c);
 static Client *wintoclient(Window w);
 static Monitor *wintomon(Window w);
 static int xerror(Display *dpy, XErrorEvent *ee);
@@ -291,88 +291,6 @@ static Window root, wmcheckwin;
 struct NumTags { char limitexceeded[LENGTH(tags) > 31 ? -1 : 1]; };
 
 /* function implementations */
-Client *
-cropwintoclient(Window w)
-{
-	Client *c;
-	Monitor *m;
-
-	for (m = mons; m; m = m->next)
-		for (c = m->clients; c; c = c->next)
-			if (c->crop && c->crop->win == w)
-				return c;
-	return NULL;
-}
-
-void
-cropwindow(Client *c)
-{
-	int x, y;
-	XEvent ev;
-	XSetWindowAttributes wa = { .event_mask = SubstructureRedirectMask };
-
-	if (!getrootptr(&x, &y))
-		return;
-	if (!c->crop) {
-		c->crop = ecalloc(1, sizeof(Client));
-		memcpy(c->crop, c, sizeof(Client));
-		c->crop->crop = NULL;
-		c->crop->x = c->crop->y = c->crop->bw = 0;
-		c->basew = c->baseh = c->mina = c->maxa = 0;
-		c->maxw = c->maxh = c->incw = c->inch = 0;
-		c->minw = c->minh = 1;
-		if (!c->isfloating)
-			togglefloating(NULL);
-		c->win = XCreateWindow(dpy, root, x, y, 1, 1, c->bw,
-			0, 0, 0, CWEventMask, &wa);
-		XReparentWindow(dpy, c->crop->win, c->win, 0, 0);
-		XMapWindow(dpy, c->win);
-		focus(c);
-		XCheckTypedWindowEvent(dpy, c->crop->win, UnmapNotify, &ev);
-		if (XCheckTypedWindowEvent(dpy, root, UnmapNotify, &ev)
-		&& ev.xunmap.window != c->crop->win)
-			XPutBackEvent(dpy, &ev);
-	}
-	resizeclient(c->crop, c->crop->x + c->x - x, c->crop->y + c->y - y,
-		     c->crop->w, c->crop->h);
-	resizeclient(c, x, y, 1, 1);
-}
-
-void
-cropdelete(Client *c)
-{
-	Client *crop;
-	XEvent ev;
-
-	c->crop->x += c->x;
-	c->crop->y += c->y;
-	c->crop->bw = c->bw;
-	c->crop->next = c->next;
-	c->crop->snext = c->snext;
-	c->crop->tags = c->tags;
-	c->crop->mon = c->mon;
-	XReparentWindow(dpy, c->crop->win, root, c->crop->x, c->crop->y);
-	XDestroyWindow(dpy, c->win);
-	crop = c->crop;
-	memcpy(c, c->crop, sizeof(Client));
-	free(crop);
-	resize(c, c->x, c->y, c->w, c->h, 0);
-	focus(c);
-	XCheckTypedWindowEvent(dpy, c->win, UnmapNotify, &ev);
-}
-
-void
-cropresize(Client* c)
-{
-	resizeclient(c->crop,
-		     BETWEEN(c->crop->x, -(c->crop->w), 0) ? c->crop->x : 0,
-		     BETWEEN(c->crop->y, -(c->crop->h), 0) ? c->crop->y : 0,
-		     c->crop->w, c->crop->h);
-	resize(c, c->x, c->y,
-	       MIN(c->w, c->crop->x + c->crop->w),
-	       MIN(c->h, c->crop->y + c->crop->h), 0);
-}
-
 void
 applyrules(Client *c)
 {
@@ -613,7 +531,7 @@ clientmessage(XEvent *e)
 	XClientMessageEvent *cme = &e->xclient;
 	Client *c = wintoclient(cme->window);
 
-	if (!c && !(c = cropwintoclient(cme->window)))
+	if (!c)
 		return;
 	if (cme->message_type == netatom[NetWMState]) {
 		if (cme->data.l[1] == netatom[NetWMFullscreen]
@@ -676,19 +594,16 @@ configurenotify(XEvent *e)
 void
 configurerequest(XEvent *e)
 {
-	Client *c, *cc = NULL;
+	Client *c;
 	Monitor *m;
 	XConfigureRequestEvent *ev = &e->xconfigurerequest;
 	XWindowChanges wc;
 
-	if ((c = wintoclient(ev->window))
-	|| (c = cc = cropwintoclient(ev->window))) {
+	if ((c = wintoclient(ev->window))) {
 		if (ev->value_mask & CWBorderWidth)
 			c->bw = ev->border_width;
 		else if (c->isfloating || !selmon->lt[selmon->sellt]->arrange) {
 			m = c->mon;
-			if (c->crop)
-				c = c->crop;
 			if (ev->value_mask & CWX) {
 				c->oldx = c->x;
 				c->x = m->mx + ev->x;
@@ -713,8 +628,6 @@ configurerequest(XEvent *e)
 				configure(c);
 			if (ISVISIBLE(c))
 				XMoveResizeWindow(dpy, c->win, c->x, c->y, c->w, c->h);
-			if (cc)
-				cropresize(cc);
 		} else
 			configure(c);
 	} else {
@@ -757,7 +670,7 @@ destroynotify(XEvent *e)
 	Client *c;
 	XDestroyWindowEvent *ev = &e->xdestroywindow;
 
-	if ((c = wintoclient(ev->window)) || (c = cropwintoclient(ev->window)))
+	if ((c = wintoclient(ev->window)))
 		unmanage(c, 1);
 }
 
@@ -868,8 +781,6 @@ enternotify(XEvent *e)
 	if ((ev->mode != NotifyNormal || ev->detail == NotifyInferior) && ev->window != root)
 		return;
 	c = wintoclient(ev->window);
-	if (!c)
-		c = cropwintoclient(ev->window);
 	m = c ? c->mon : wintomon(ev->window);
 	if (m != selmon) {
 		unfocus(selmon->sel, 1);
@@ -936,6 +847,7 @@ focusmon(const Arg *arg)
 	unfocus(selmon->sel, 0);
 	selmon = m;
 	focus(NULL);
+	warp(selmon->sel);
 }
 
 void
@@ -1112,8 +1024,6 @@ killclient(const Arg *arg)
 {
 	if (!selmon->sel)
 		return;
-	if (selmon->sel->crop)
-		cropdelete(selmon->sel);
 	if (!sendevent(selmon->sel, wmatom[WMDelete])) {
 		XGrabServer(dpy);
 		XSetErrorHandler(xerrordummy);
@@ -1259,10 +1169,6 @@ movemouse(const Arg *arg)
 	restack(selmon);
 	ocx = c->x;
 	ocy = c->y;
-	if (arg->i == 1 && c->crop) {
-		ocx = c->crop->x;
-		ocy = c->crop->y;
-	}
 	if (XGrabPointer(dpy, root, False, MOUSEMASK, GrabModeAsync, GrabModeAsync,
 		None, cursor[CurMove]->cursor, CurrentTime) != GrabSuccess)
 		return;
@@ -1283,12 +1189,6 @@ movemouse(const Arg *arg)
 
 			nx = ocx + (ev.xmotion.x - x);
 			ny = ocy + (ev.xmotion.y - y);
-			if (arg->i == 1 && c->crop) {
-				c->crop->x = nx;
-				c->crop->y = ny;
-				cropresize(c);
-				continue;
-			}
 			if (abs(selmon->wx - nx) < snap)
 				nx = selmon->wx;
 			else if (abs((selmon->wx + selmon->ww) - (nx + WIDTH(c))) < snap)
@@ -1340,10 +1240,7 @@ propertynotify(XEvent *e)
 		updatestatus();
 	else if (ev->state == PropertyDelete)
 		return; /* ignore */
-	else if ((c = wintoclient(ev->window))
-	|| (c = cropwintoclient(ev->window))) {
-		if (c->crop)
-			c = c->crop;
+	else if ((c = wintoclient(ev->window))) {
 		switch(ev->atom) {
 		default: break;
 		case XA_WM_TRANSIENT_FOR:
@@ -1425,16 +1322,12 @@ resizemouse(const Arg *arg)
 	if (c->isfullscreen) /* no support resizing fullscreen windows by mouse */
 		return;
 	restack(selmon);
-	if (arg->i == 1)
-		cropwindow(c);
 	ocx = c->x;
 	ocy = c->y;
 	if (XGrabPointer(dpy, root, False, MOUSEMASK, GrabModeAsync, GrabModeAsync,
 		None, cursor[CurResize]->cursor, CurrentTime) != GrabSuccess)
 		return;
-	if (arg->i != 1)
-		XWarpPointer(dpy, None, c->win, 0, 0, 0, 0,
-			c->w + c->bw - 1, c->h + c->bw - 1);
+	XWarpPointer(dpy, None, c->win, 0, 0, 0, 0, c->w + c->bw - 1, c->h + c->bw - 1);
 	do {
 		XMaskEvent(dpy, MOUSEMASK|ExposureMask|SubstructureRedirectMask, &ev);
 		switch(ev.type) {
@@ -1450,10 +1343,6 @@ resizemouse(const Arg *arg)
 
 			nw = MAX(ev.xmotion.x - ocx - 2 * c->bw + 1, 1);
 			nh = MAX(ev.xmotion.y - ocy - 2 * c->bw + 1, 1);
-			if (c->crop) {
-				nw = MIN(nw, c->crop->w + c->crop->x);
-				nh = MIN(nh, c->crop->h + c->crop->y);
-			}
 			if (c->mon->wx + nw >= selmon->wx && c->mon->wx + nw <= selmon->wx + selmon->ww
 			&& c->mon->wy + nh >= selmon->wy && c->mon->wy + nh <= selmon->wy + selmon->wh)
 			{
@@ -1499,6 +1388,10 @@ restack(Monitor *m)
 	}
 	XSync(dpy, False);
 	while (XCheckMaskEvent(dpy, EnterWindowMask, &ev));
+
+	if (m == selmon && (m->tagset[m->seltags] & m->sel->tags) && selmon->lt[selmon->sellt] != &layouts[2]) {
+		warp(m->sel);
+    }
 }
 
 void
@@ -1560,8 +1453,6 @@ setclientstate(Client *c, long state)
 {
 	long data[] = { state, None };
 
-	if (c->crop)
-		c = c->crop;
 	XChangeProperty(dpy, c->win, wmatom[WMState], wmatom[WMState], 32,
 		PropModeReplace, (unsigned char *)data, 2);
 }
@@ -1594,8 +1485,6 @@ sendevent(Client *c, Atom proto)
 void
 setfocus(Client *c)
 {
-	if (c->crop)
-		c = c->crop;
 	if (!c->neverfocus) {
 		XSetInputFocus(dpy, c->win, RevertToPointerRoot, CurrentTime);
 		XChangeProperty(dpy, root, netatom[NetActiveWindow],
@@ -1608,8 +1497,6 @@ setfocus(Client *c)
 void
 setfullscreen(Client *c, int fullscreen)
 {
-	if (c->crop)
-		c = c->crop;
 	if (fullscreen && !c->isfullscreen) {
 		XChangeProperty(dpy, c->win, netatom[NetWMState], XA_ATOM, 32,
 			PropModeReplace, (unsigned char*)&netatom[NetWMFullscreen], 1);
@@ -1739,6 +1626,7 @@ incrivgaps(const Arg *arg)
 		selmon->gappiv + arg->i
 	);
 }
+
 
 void
 setlayout(const Arg *arg)
@@ -1931,7 +1819,7 @@ tile(Monitor *m)
 		mw = m->nmaster ? (m->ww + m->gappiv*ie) * m->mfact : 0;
 	else
 		mw = m->ww - 2*m->gappov*oe + m->gappiv*ie;
-	for (i = 0, my = ty = m->gappoh*oe, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
+	for (i = 0, my = ty = m->gappoh*oe, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++) {
 		if (i < m->nmaster) {
 			r = MIN(n, m->nmaster) - i;
 			h = (m->wh - my - m->gappoh*oe - m->gappih*ie * (r - 1)) / r;
@@ -1943,6 +1831,7 @@ tile(Monitor *m)
 			resize(c, m->wx + mw + m->gappov*oe, m->wy + ty, m->ww - mw - (2*c->bw) - 2*m->gappov*oe, h - (2*c->bw), 0);
 			ty += HEIGHT(c) + m->gappih*ie;
 		}
+    }
 }
 
 void
@@ -1965,8 +1854,6 @@ togglefloating(const Arg *arg)
 	if (selmon->sel->isfloating)
 		resize(selmon->sel, selmon->sel->x, selmon->sel->y,
 			selmon->sel->w, selmon->sel->h, 0);
-	if (!selmon->sel->isfloating && selmon->sel->crop)
-		cropdelete(selmon->sel);
 	arrange(selmon);
 }
 
@@ -2016,8 +1903,6 @@ unmanage(Client *c, int destroyed)
 	Monitor *m = c->mon;
 	XWindowChanges wc;
 
-	if (c->crop)
-		cropdelete(c);
 	detach(c);
 	detachstack(c);
 	if (!destroyed) {
@@ -2043,8 +1928,7 @@ unmapnotify(XEvent *e)
 	Client *c;
 	XUnmapEvent *ev = &e->xunmap;
 
-	if ((c = wintoclient(ev->window))
-	|| (c = cropwintoclient(ev->window))) {
+	if ((c = wintoclient(ev->window))) {
 		if (ev->send_event)
 			setclientstate(c, WithdrawnState);
 		else
@@ -2298,6 +2182,28 @@ view(const Arg *arg)
 	arrange(selmon);
 }
 
+void
+warp(const Client *c)
+{
+	int x, y;
+
+	if (!c) {
+		XWarpPointer(dpy, None, root, 0, 0, 0, 0, selmon->wx + selmon->ww/2, selmon->wy + selmon->wh/2);
+		return;
+	}
+
+	if (!getrootptr(&x, &y) ||
+	    (x > c->x - c->bw &&
+	     y > c->y - c->bw &&
+	     x < c->x + c->w + c->bw*2 &&
+	     y < c->y + c->h + c->bw*2) ||
+	    (y > c->mon->by && y < c->mon->by + bh) ||
+	    (c->mon->topbar && !y))
+		return;
+
+	XWarpPointer(dpy, None, c->win, 0, 0, 0, 0, c->w / 2, c->h / 2);
+}
+
 Client *
 wintoclient(Window w)
 {
@@ -2323,7 +2229,7 @@ wintomon(Window w)
 	for (m = mons; m; m = m->next)
 		if (w == m->barwin)
 			return m;
-	if ((c = wintoclient(w)) || (c = cropwintoclient(w)))
+	if ((c = wintoclient(w)))
 		return c->mon;
 	return selmon;
 }
