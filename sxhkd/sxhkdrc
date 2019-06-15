@@ -10,7 +10,7 @@ super + Return
     $TERM
 
 # Application Launcher
-super + d
+super + p
     rofi -show run
 
 # Browser
@@ -32,5 +32,5 @@ control + alt + l
 {super + minus, XF86AudioLowerVolume}
     $HOME/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-mute %s off"; $HOME/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-volume %s -2.5%"
 
-{super + m, XF86AudioMute}
+{super + backspace, XF86AudioMute}
     $HOME/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-mute %s toggle"
