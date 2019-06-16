@@ -63,7 +63,7 @@ static unsigned int cursorthickness = 2;
 static int bellvolume = 0;
 
 /* default TERM value */
-char *termname = "st-256color";
+char *termname = "st";
 
 /*
  * spaces per tab
@@ -171,6 +171,8 @@ static MouseShortcut mshortcuts[] = {
 #define MODKEY Mod1Mask
 #define TERMMOD (ControlMask|ShiftMask)
 
+static char *copyurlcmd[] = { "/bin/sh", "-c", "sed 's/.*│//g' | tr -d '\n' | grep -aEo '(((http|https)://|www\\.)[a-zA-Z0-9.]*[:]?[a-zA-Z0-9./&%?=_-]*)|((magnet:\\?xt=urn:btih:)[a-zA-Z0-9]*)' | uniq | sed 's/^www./http:\\/\\/www\\./g' | rofi -dmenu -i -p 'Copy URL' -l 10 | tr -d '\n' | xclip -selection clipboard", "externalpipe", NULL };
+
 static Shortcut shortcuts[] = {
     /* mask                 keysym          function        argument */
     { XK_ANY_MOD,           XK_Break,       sendbreak,      {.i =  0} },
@@ -185,6 +187,7 @@ static Shortcut shortcuts[] = {
     { TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
     { ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
     { TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
+    { TERMMOD,              XK_L,           externalpipe,   {.v = copyurlcmd} },
 };
 
 /*
