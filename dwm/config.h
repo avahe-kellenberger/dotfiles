@@ -22,7 +22,7 @@ static const char selfgcolor[]      = "#519f50";
 static const char selbgcolor[]      = "#1c1b19";
 static const char selbordercolor[]  = "#519f50"; 
 /* static const unsigned int baralpha = 0xd0; */
-static const unsigned int baralpha = 0xDE;
+static const unsigned int baralpha = 0xf9;
 static const unsigned int borderalpha = OPAQUE;
 
 static const char *colors[][3]      = {
