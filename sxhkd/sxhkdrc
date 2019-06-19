@@ -21,6 +21,10 @@ super + i
 control + alt + c
     $HOME/.dotfiles/scripts/screen_shot.sh
 
+# Disable touchpad
+control + alt + m
+    $HOME/.dotfiles/scripts/toggle-touchpad.sh
+
 # Lock screen
 control + alt + l
     i3lock -i $HOME/.dotfiles/i3/wallpaper -t
