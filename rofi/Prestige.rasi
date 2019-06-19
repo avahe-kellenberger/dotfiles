@@ -2,8 +2,8 @@
  * Author: Primetoxinz
  */
 * {
-    text-color:                  #f2f2f2;
-    background-color:            #121212;
+    text-color:                  #fce8c3;
+    background-color:            #1c1b19;
     border-color:                rgba(50, 50, 50, 0.5);
     red:                         #f15d22;
     orange:                      #faa41a; 
