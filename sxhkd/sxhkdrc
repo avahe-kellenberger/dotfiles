@@ -19,11 +19,11 @@ super + i
 
 # Screen shot
 control + alt + c
-    $HOME/.dotfiles/scripts/screen_shot.sh
+    $HOME/.dotfiles/scripts/screen_shot
 
 # Disable touchpad
 control + alt + m
-    $HOME/.dotfiles/scripts/toggle-touchpad.sh
+    $HOME/.dotfiles/scripts/toggle-touchpad
 
 # Lock screen
 control + alt + l
@@ -31,11 +31,11 @@ control + alt + l
 
 # Volume control
 {super + equal, XF86AudioRaiseVolume}
-    $HOME/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-mute %s off"; $HOME/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-volume %s +2.5%"
+    $HOME/.dotfiles/scripts/for-each-pactlsink "pactl set-sink-mute %s off"; $HOME/.dotfiles/scripts/for-each-pactlsink "pactl set-sink-volume %s +2.5%" && refresh_dwmbar
 
 {super + minus, XF86AudioLowerVolume}
-    $HOME/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-mute %s off"; $HOME/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-volume %s -2.5%"
+    $HOME/.dotfiles/scripts/for-each-pactlsink "pactl set-sink-mute %s off"; $HOME/.dotfiles/scripts/for-each-pactlsink "pactl set-sink-volume %s -2.5%" && refresh_dwmbar
 
 {super + BackSpace, XF86AudioMute}
-    $HOME/.dotfiles/scripts/for-each-pactlsink.sh "pactl set-sink-mute %s toggle"
+    $HOME/.dotfiles/scripts/for-each-pactlsink "pactl set-sink-mute %s toggle" && refresh_dwmbar
 

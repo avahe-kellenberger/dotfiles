@@ -1,0 +1,3 @@
+#!/bin/bash
+
+kill $(pstree -lp | pcregrep -o1 "dwmbar\(.*sleep\(([0-9].*)\)")
