@@ -2,9 +2,9 @@
 
 # Set the overall status
 get_status() {
-    battery_status="$(get_battery_status)";
-    if [[ ! -z battery_status ]]; then
-        battery_status="${battery_status} | "
+    battery_status="";
+    if [ "$(has_battery)" ]; then
+        battery_status="$(get_battery_status) | ";
     fi
 
     echo "${battery_status}Vol: $(get_volume) | $(get_datetime)";
@@ -22,13 +22,15 @@ get_datetime() {
 
 battery="BAT0";
 
-get_battery_status() {
-    battery_status="";
-    charging_status="$(get_charging_status)";
-    if [[ ! -z charging_status ]]; then
-        battery_status="${charging_status} $(get_charge)%"
+has_battery() {
+    if [ -f /sys/class/power_supply/$battery ]; then
+        return 0;
     fi
-    echo "$battery_status";
+    return 1;
+}
+
+get_battery_status() {
+    echo "$(get_charging_status) $(get_charge)%"
 }
 
 get_charging_status() {
