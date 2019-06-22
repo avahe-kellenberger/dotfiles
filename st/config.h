@@ -171,7 +171,11 @@ static MouseShortcut mshortcuts[] = {
 #define MODKEY Mod1Mask
 #define TERMMOD (ControlMask|ShiftMask)
 
-static char *copyurlcmd[] = { "/bin/sh", "-c", "sed 's/.*│//g' | tr -d '\n' | grep -aEo '(((http|https)://|www\\.)[a-zA-Z0-9.]*[:]?[a-zA-Z0-9./&%?=_+-]*)|((magnet:\\?xt=urn:btih:)[a-zA-Z0-9]*)' | uniq | sed 's/^www./http:\\/\\/www\\./g' | rofi -dmenu -i -p 'Copy URL' -l 10 | tr -d '\n' | xclip -selection clipboard", "externalpipe", NULL };
+static char *copyurlcmd[] = { "/bin/sh", "-c", "tr -d '\n|│' | grep -aEo '(((http|https)://|www\\.)[a-zA-Z0-9.]*[:]?[a-zA-Z0-9./&%?=_+-]*)|((magnet:\\?xt=urn:btih:)[a-zA-Z0-9]*)' | uniq | sed 's/^www./http:\\/\\/www\\./g' | rofi -dmenu -i -p 'Copy URL' -l 10 | tr -d '\n' | xclip -selection clipboard", "externalpipe", NULL };
+
+/* static char *copyurlcmd[] = { "/bin/sh", "-c", "sed 's/.*│//g' | tr -d '\n|│' | grep -aEo '(((http|https)://|www\\.)[a-zA-Z0-9.]*[:]?[a-zA-Z0-9./&%?=_+-]*)|((magnet:\\?xt=urn:btih:)[a-zA-Z0-9]*)' | uniq | sed 's/^www./http:\\/\\/www\\./g' | rofi -dmenu -i -p 'Copy URL' -l 10 | tr -d '\n' | xclip -selection clipboard", "externalpipe", NULL }; */
+
+static char *copycontents[] = { "/bin/sh", "-c", "xclip -selection clipboard", "externalpipe", NULL };
 
 static Shortcut shortcuts[] = {
     /* mask                 keysym          function        argument */
@@ -188,6 +192,7 @@ static Shortcut shortcuts[] = {
     { ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
     { TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
     { TERMMOD,              XK_L,           externalpipe,   {.v = copyurlcmd} },
+    { TERMMOD,              XK_O,           externalpipe,   {.v = copycontents} },
 };
 
 /*
