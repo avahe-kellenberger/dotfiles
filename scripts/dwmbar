@@ -3,7 +3,7 @@
 # Set the overall status
 get_status() {
     battery_status="";
-    if [ "$(has_battery)" ]; then
+    if $(has_battery); then
         battery_status="$(get_battery_status) | ";
     fi
 
@@ -11,11 +11,11 @@ get_status() {
 }
 
 get_volume() {
-    echo "$(pamixer --get-volume-human)";
+    pamixer --get-volume-human
 }
 
 get_datetime() {
-    echo "$(date +"%a %e %b %Y - %I:%M %p %Z")";
+    date +"%a %e %b %Y - %I:%M %p %Z"
 }
 
 # Battery
@@ -34,11 +34,11 @@ get_battery_status() {
 }
 
 get_charging_status() {
-    echo "$(cat /sys/class/power_supply/$battery/status)"
+    cat "/sys/class/power_supply/$battery/status"
 }
 
 get_charge() {
-    echo "$(cat /sys/class/power_supply/$battery/capacity)"
+    cat "/sys/class/power_supply/$battery/capacity"
 }
 
 # Set the status bar
