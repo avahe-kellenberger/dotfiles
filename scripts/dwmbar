@@ -23,7 +23,7 @@ get_datetime() {
 battery="BAT0";
 
 has_battery() {
-    if [ -f /sys/class/power_supply/$battery ]; then
+    if [ -d /sys/class/power_supply/$battery ]; then
         return 0;
     fi
     return 1;
