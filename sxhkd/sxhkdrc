@@ -27,7 +27,7 @@ control + alt + m
 
 # Lock screen
 control + alt + l
-    i3lock -i $HOME/.dotfiles/i3/wallpaper -t
+    i3lock -i $HOME/.dotfiles/wallpaper -t
 
 # Volume control
 {super + equal, XF86AudioRaiseVolume}
