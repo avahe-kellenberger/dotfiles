@@ -1,4 +1,4 @@
 #!/bin/bash
 
-feh --bg-scale $(find ~/Pictures -name "*\.png" | sxiv -riot | head -n 1)
+feh --bg-scale $(find ~/.dotfiles/wallpapers/ -name "*.png" | sxiv -riot | head -n 1)
 
