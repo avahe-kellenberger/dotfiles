@@ -1,11 +1,9 @@
 PROMPT="%F{white}[%f%F{green}%n%f%F{yellow}@%f%F{blue}%m%f %F{yellow}%T%f %F{blue}%~%f%F{white}]:%f "
 
-alias ls="ls -al --color=auto"
+alias l="ls -al --color=auto"
 alias grep="grep --color"
 alias copy="xclip -sel clipboard"
 alias e='vim $(fzf +s --reverse --color=dark --exact)'
-alias lock_wallpaper='~/.dotfiles/scripts/lock-wallpaper';
-alias wallpaper='~/.dotfiles/scripts/wallpaper';
 
 export STARDICT_DATA_DIR=~/.dict
 export VIMINIT='source $MYVIMRC'
@@ -24,8 +22,8 @@ mem() {
 
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=100000
+SAVEHIST=100000
 setopt beep
 unsetopt autocd
 bindkey -v
