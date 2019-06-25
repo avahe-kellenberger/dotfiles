@@ -287,6 +287,7 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 " groff{{{
 au BufNewFile,BufRead *.ms,*.groff set filetype=groff
 
+" NOTE: Requires ghostscript package to use ps2pdf.
 function! CompileGroff(filename)
     let l:newname = split(a:filename, '\.')[0]
     call system('groff -e -p -t -ms ' . a:filename . ' -Tps | ps2pdf - ' . l:newname . '.pdf')
