@@ -1,4 +1,15 @@
-PROMPT="%F{white}[%f%F{green}%n%f%F{yellow}@%f%F{blue}%m%f %F{yellow}%T%f %F{blue}%~%f%F{white}]:%f "
+git_branch() {
+    if out="$(git -C . rev-parse > /dev/null 2>&1)"; then 
+        printf " $%s" $(git branch | pcregrep -o1 "\*[\S]*( .*)")
+    fi
+}
+
+set_prompt() {
+    PROMPT="%F{white}[%f%F{green}%n%f%F{yellow}@%f%F{blue}%m%f %F{yellow}%T%f %F{blue}%~%f%F{red}$(git_branch)%{%f%F{white}]:%f "
+}
+
+precmd_functions+=(set_prompt)
+set_prompt
 
 alias l="ls -al --color=auto"
 alias grep="grep --color"
