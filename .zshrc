@@ -6,7 +6,7 @@ git_branch() {
 
 set_prompt() {
     branch="$(git_branch)"
-    PROMPT="%F{white}[%f%F{green}%n%f%F{yellow}@%f%F{blue}%m%f %F{yellow}%T%f %F{blue}%~%f%F{red}%}$git_branchf%F{white}]:%f "
+    PROMPT="%F{white}[%f%F{green}%n%f%F{yellow}@%f%F{blue}%m%f %F{yellow}%T%f %F{blue}%~%f%F{red}%}$branch%F{white}]:%f "
 }
 
 precmd_functions+=(set_prompt)
