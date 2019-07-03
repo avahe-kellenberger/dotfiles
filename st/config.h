@@ -171,7 +171,7 @@ static MouseShortcut mshortcuts[] = {
 #define MODKEY Mod1Mask
 #define TERMMOD (ControlMask|ShiftMask)
 
-static char *copyurlcmd[] = { "/bin/sh", "-c", "sed -n '1!G;h;$p' | grep -aEo '(((http|https)://|www\\.)[a-zA-Z0-9.]*[:]?[a-zA-Z0-9./&%?=_+-]*)|((magnet:\\?xt=urn:btih:)[a-zA-Z0-9]*)' | uniq | sed 's/^www./http:\\/\\/www\\./g' | rofi -dmenu -i -p 'Copy URL' -l 10 | tr -d '\n' | xclip -selection clipboard", "externalpipe", NULL };
+static char *copyurlcmd[] = { "/bin/sh", "-c", "sed -n '1!G;h;$p' | grep -aEo '(((http|https)://|www\\.)[a-zA-Z0-9.]*[:]?[a-zA-Z0-9./&%?=_+-]*)|((magnet:\\?xt=urn:btih:)[a-zA-Z0-9]*)' | uniq | sed 's/^www./http:\\/\\/www\\./g' | dmenu -i -l 16 -p 'Copy URL' -l 10 | tr -d '\n' | xclip -selection clipboard", "externalpipe", NULL };
 
 static char *openurlcmd[] = { "/bin/sh", "-c", "sed -n '1!G;h;$p' | grep -aEo -m 1 '(((http|https)://|www\\.)[a-zA-Z0-9.]*[:]?[a-zA-Z0-9./&%?=_+-]*)|((magnet:\\?xt=urn:btih:)[a-zA-Z0-9]*)' | xargs xdg-open", "externalpipe", NULL };
 
