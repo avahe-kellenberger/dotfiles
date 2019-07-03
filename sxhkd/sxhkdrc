@@ -11,7 +11,7 @@ super + Return
 
 # Application Launcher
 super + p
-    rofi -show run
+    dmenu_run -h 12 -l 16
 
 # Browser
 super + i
