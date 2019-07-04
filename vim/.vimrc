@@ -78,7 +78,6 @@ set wrapmargin=0
 
 " Smart tabbing
 set expandtab
-set smarttab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
@@ -273,6 +272,7 @@ autocmd BufWritePre *.java :CocCommand java.action.organizeImports
 "}}}
 
 " TypeScript{{{
+autocmd BufNewFile,BufRead *.ts,*.js set filetype=typescript
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
 " Prettier
