@@ -1,0 +1,4 @@
+#!/bin/bash
+
+sort "$HOME/.contacts" | fzf --layout=reverse
+

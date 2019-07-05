@@ -1,11 +1,9 @@
 #!/bin/bash
 
 msg="$*"
-IFS=':' read -r name phone_number < <(sort -u "$HOME/.contacts" | fzf)
-if [[ -z "${phone_number}" ]]; then
-    printf "No recipient was chosen\n" >&2
-else
+IFS=':' read -r name phone_number < <(contacts)
+if [[ ! -z "${phone_number}" ]]; then
     kdeconnect-cli --device "${_KDECONNECT_DEFAULT_DEVICE}" --send-sms "${msg}" --destination "${phone_number}" && \
-    printf "Sending text to %s <%s>\n" "${name}" "${phone_number}"
+    notify-send "Sending text to ${name}"
 fi
 
