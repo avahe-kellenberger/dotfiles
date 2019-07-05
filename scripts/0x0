@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Uploads stdin to https://0x0.st
+
+curl -s -F 'file=@-' 'https://0x0.st'
+

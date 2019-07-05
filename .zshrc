@@ -57,5 +57,8 @@ man() {
         command man "$@"
 }
 
+if [ "$(tty)" = "/dev/tty1" ] && [ -z "$(pgrep -i xorg)" ]; then
+    startx
+    exit 0;
+fi
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
