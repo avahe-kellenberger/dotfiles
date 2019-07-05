@@ -1,5 +1,5 @@
 export PATH="$PATH:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.local/bin/"
-export BROWSER=brave
+export BROWSER=qutebrowser
 export _KDECONNECT_DEFAULT_DEVICE="67272c00cac1fcf5"
 
 compton &
