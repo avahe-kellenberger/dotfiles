@@ -1,4 +1,4 @@
 #!/bin/bash
 
-sort "$HOME/.contacts" | fzf --layout=reverse
+sort "$HOME/.contacts" | dmenu -i -h 12 -l 16
 
