@@ -9,7 +9,7 @@ set nocompatible
 call vundle#begin()
 
 " Plugins{{{
-Plugin 'neoclide/coc.nvim'
+Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 Plugin 'itchyny/lightline.vim'
 Plugin 'HerringtonDarkholme/yats.vim'
 Plugin 'kien/ctrlp.vim'
