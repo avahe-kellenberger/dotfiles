@@ -1,9 +1,11 @@
 #!/bin/bash
 
-msg="$*"
 IFS=':' read -r name phone_number < <(contacts)
 if [[ ! -z "${phone_number}" ]]; then
-    kdeconnect-cli --device "${_KDECONNECT_DEFAULT_DEVICE}" --send-sms "${msg}" --destination "${phone_number}" && \
-    notify-send "Sending text to ${name}"
+    msg="$(echo "" | dmenu -i -w 555)";
+    if [[ ! -z "${msg}" ]]; then
+        kdeconnect-cli --device "${_KDECONNECT_DEFAULT_DEVICE}" --send-sms "${msg}" --destination "${phone_number}" && \
+        notify-send "Sending text to ${name}"
+    fi
 fi
 
