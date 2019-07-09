@@ -7,7 +7,17 @@ get_status() {
         battery_status="$(get_battery_status) | ";
     fi
 
-    echo "${battery_status}Vol: $(get_volume) | $(get_datetime)";
+    net_info="$(get_net_info)"
+    echo "${net_info}${battery_status}Vol: $(get_volume) | $(get_datetime)";
+}
+
+get_net_info() {
+    info="$(nmcli)"
+    device="$(echo "$info" | pcregrep -o1 -i "connected to (.*)")"
+    if [[ ! -z "$device" ]]; then
+        type="$(echo "$info" | awk 'NR==3 { print $1 }')"
+        printf "%s: %s | " "$type" "$device"
+    fi
 }
 
 get_volume() {
@@ -15,7 +25,7 @@ get_volume() {
 }
 
 get_datetime() {
-    date +"%a %e %b %Y - %I:%M %p %Z"
+    date +"%a%e %b %Y - %I:%M %p %Z"
 }
 
 # Battery
