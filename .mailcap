@@ -1,0 +1,3 @@
+image/*; xdg-open '%s'
+video/*; xdg-open '%s'
+text/*; xdg-open '%s'
