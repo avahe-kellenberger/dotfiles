@@ -25,7 +25,7 @@ get_volume() {
 }
 
 get_datetime() {
-    date +"%a%e %b %Y - %I:%M %p %Z"
+    date +"%a %e %b %Y - %I:%M %p %Z"
 }
 
 # Battery
