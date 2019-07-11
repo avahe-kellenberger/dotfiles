@@ -5,14 +5,9 @@
   "typescript.format.insertSpaceAfterConstructor": true,
   "languageserver": {
     "golang": {
-      /* Install the AUR package go-langserver-git */
-      "command": "go-langserver",
-      "filetypes": ["go"],
-      "initializationOptions": {
-        "gocodeCompletionEnabled": true,
-        "diagnosticsEnabled": true,
-        "lintTool": "golint"
-      }
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"]
     }
   }
 }
