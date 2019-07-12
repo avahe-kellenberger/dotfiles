@@ -4,6 +4,7 @@ export PATH="$HOME/.local/opt/pso:$PATH:$GOBIN:$HOME/.yarn/bin:$HOME/.config/yar
 export BROWSER=qutebrowser
 export _KDECONNECT_DEFAULT_DEVICE="67272c00cac1fcf5"
 
+compton &
 sxhkd &
 dunst &
 xmodmap ~/.Xmodmap
