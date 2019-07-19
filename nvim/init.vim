@@ -7,14 +7,14 @@ set nocompatible
 call vundle#begin()
 
 " Plugins{{{
-Plugin 'fatih/vim-go'
+Plugin 'mhinz/vim-startify'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 Plugin 'itchyny/lightline.vim'
 Plugin 'HerringtonDarkholme/yats.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'zxqfl/TabNine'
-Plugin 'mhinz/vim-startify'
+Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plugin 'fatih/vim-go'
 "}}}
 
 call vundle#end()
@@ -245,7 +245,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 "}}}
 
-"{{{ vim-startify
+"vim-startify{{{
 let g:startify_custom_header = [
             \'                       _ __   ___  _____   _(_)_ __ ___',
             \'                      | ''_ \ / _ \/ _ \ \ / / | ''_ ` _ \',
@@ -254,6 +254,11 @@ let g:startify_custom_header = [
             \]
 
 "}}}
+
+" deoplete{{{
+let g:deoplete#enable_at_startup = 1
+"}}}
+
 " Nerdtree{{{
 
 map <C-n> :NERDTreeToggle<CR>
