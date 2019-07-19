@@ -14,6 +14,7 @@ Plugin 'HerringtonDarkholme/yats.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'zxqfl/TabNine'
+Plugin 'mhinz/vim-startify'
 "}}}
 
 call vundle#end()
@@ -47,6 +48,12 @@ let mapleader=","
 " Split settings
 set splitbelow
 set splitright
+
+" Easier split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 " Display the file name and path as the status (%f for just file name).
 set laststatus=2
@@ -121,6 +128,8 @@ set cursorline
 "CtrlP {{{
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*
 let g:ctrlp_show_hidden = 1
+
+nnoremap <C-o> :CtrlPBuffer<CR>
 " }}}
 
 " CoC{{{
@@ -236,6 +245,15 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 "}}}
 
+"{{{ vim-startify
+let g:startify_custom_header = [
+            \'                       _ __   ___  _____   _(_)_ __ ___',
+            \'                      | ''_ \ / _ \/ _ \ \ / / | ''_ ` _ \',
+            \'                      | | | |  __/ (_) \ V /| | | | | | |',
+            \'                      |_| |_|\___|\___/ \_/ |_|_| |_| |_|',
+            \]
+
+"}}}
 " Nerdtree{{{
 
 map <C-n> :NERDTreeToggle<CR>
