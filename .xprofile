@@ -1,6 +1,8 @@
 export GOPATH="$HOME/go/"
 export GOBIN="$HOME/go/bin/"
 export PATH="$HOME/.local/opt/pso:$PATH:$GOBIN:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.local/bin/"
+export EDITOR=nvim
+export VISUAL=nvim
 export BROWSER=qutebrowser
 export _KDECONNECT_DEFAULT_DEVICE="67272c00cac1fcf5"
 
