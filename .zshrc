@@ -18,8 +18,8 @@ alias copy="xclip -sel clipboard"
 alias e='vim $(fzf +s --reverse --color=dark --exact)'
 
 export STARDICT_DATA_DIR=~/.dict
+export MYVIMRC='~/.config/nvim/init.vim'
 export VIMINIT='source $MYVIMRC'
-export MYVIMRC='~/.vim/.vimrc'
 
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
