@@ -1,0 +1,13 @@
+{
+  "tsserver.npm": "/usr/bin/npm",
+  "tsserver.orgnizeImportOnSave": true,
+  "typescript.preferences.noSemicolons": true,
+  "typescript.format.insertSpaceAfterConstructor": true,
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"]
+    }
+  }
+}

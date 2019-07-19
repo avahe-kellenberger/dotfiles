@@ -2,5 +2,6 @@ openbox/menu.xml
 vim/bundle/*
 vim/sessions/*
 lock-wallpaper
+nvim/bundle/*
 
 firefox/*
