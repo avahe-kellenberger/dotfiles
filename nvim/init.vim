@@ -1,20 +1,21 @@
 " vim documentation: http://vimdoc.sourceforge.net/htmldoc/usr_toc.html
 
 " Required for Vundle
-filetype off
 set nocompatible
-
+filetype off
+set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin()
 
 " Plugins{{{
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'mhinz/vim-startify'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 Plugin 'itchyny/lightline.vim'
 Plugin 'HerringtonDarkholme/yats.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plugin 'fatih/vim-go'
+Plugin 'Raimondi/delimitMate'
 "}}}
 
 call vundle#end()
@@ -54,6 +55,10 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" up/down mapped to ctrl{j,k}
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
 " Display the file name and path as the status (%f for just file name).
 set laststatus=2
@@ -155,11 +160,10 @@ set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-            \ pumvisible() ? "\<C-n>" :
-            \ <SID>check_back_space() ? "\<TAB>" :
-            \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+"inoremap <silent><expr> <TAB>
+""            \ pumvisible() ? "\<C-n>" :
+""            \ <SID>check_back_space() ? "\<TAB>" :
+""            \ coc#refresh()
 
 function! s:check_back_space() abort
     let col = col('.') - 1
@@ -253,10 +257,6 @@ let g:startify_custom_header = [
             \'                      |_| |_|\___|\___/ \_/ |_|_| |_| |_|',
             \]
 
-"}}}
-
-" deoplete{{{
-let g:deoplete#enable_at_startup = 1
 "}}}
 
 " Nerdtree{{{

@@ -1,5 +1,4 @@
 {
-  "suggest.autoTrigger": "none",
   "tsserver.npm": "/usr/bin/npm",
   "tsserver.orgnizeImportOnSave": true,
   "typescript.preferences.noSemicolons": true,
