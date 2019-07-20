@@ -177,7 +177,7 @@ call s:HL('SrceryMagentaBold', s:magenta, s:none, s:bold)
 call s:HL('SrceryCyanBold', s:cyan, s:none, s:bold)
 
 call s:HL('SrceryBrightRed', s:bright_red, s:none)
-call s:HL('SrceryBrightGreen', s:bright_green, s:none)
+call s:HL('SrceryBrightGreen', s:green, s:none)
 call s:HL('SrceryBrightYellow', s:bright_yellow, s:none)
 call s:HL('SrceryBrightBlue', s:bright_blue, s:none)
 call s:HL('SrceryBrightMagenta', s:bright_magenta, s:none)
@@ -351,7 +351,7 @@ endif
 call s:HL('Error', s:bright_white, s:red, s:bold)
 
 " String constant: "this is a string"
-call s:HL('String',  s:bright_green)
+call s:HL('String',  s:green)
 
 " Generic statement
 hi! link Statement SrceryRed
