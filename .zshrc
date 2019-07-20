@@ -15,9 +15,7 @@ set_prompt
 alias l="ls -al --color=auto"
 alias grep="grep --color"
 alias copy="xclip -sel clipboard"
-alias e='vim $(fzf +s --reverse --color=dark --exact)'
 
-export STARDICT_DATA_DIR=~/.dict
 export MYVIMRC='~/.config/nvim/init.vim'
 export VIMINIT='source $MYVIMRC'
 
@@ -30,6 +28,16 @@ bg_proc() {
 
 mem() {
     (free | awk '$1 ~ /Mem/ { print $3 / 1000 }' | bc)
+}
+
+man() {
+    LESS_TERMCAP_md=$'\e[01;31m' \
+        LESS_TERMCAP_me=$'\e[0m' \
+        LESS_TERMCAP_se=$'\e[0m' \
+        LESS_TERMCAP_so=$'\e[01;44;33m' \
+        LESS_TERMCAP_ue=$'\e[0m' \
+        LESS_TERMCAP_us=$'\e[01;32m' \
+        command man "$@"
 }
 
 # Lines configured by zsh-newuser-install
@@ -47,15 +55,10 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-man() {
-    LESS_TERMCAP_md=$'\e[01;31m' \
-        LESS_TERMCAP_me=$'\e[0m' \
-        LESS_TERMCAP_se=$'\e[0m' \
-        LESS_TERMCAP_so=$'\e[01;44;33m' \
-        LESS_TERMCAP_ue=$'\e[0m' \
-        LESS_TERMCAP_us=$'\e[01;32m' \
-        command man "$@"
-}
+# fzf bindings
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+
 
 if [ "$(tty)" = "/dev/tty1" ] && [ -z "$(pgrep -i xorg)" ]; then
     startx
