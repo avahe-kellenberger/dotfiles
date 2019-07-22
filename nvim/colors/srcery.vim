@@ -551,7 +551,7 @@ hi! link StartifyFile Normal
 hi! link StartifyPath String
 hi! link StartifySlash Normal
 hi! link StartifyBracket Comment
-hi! link StartifyHeader Type
+hi! link StartifyHeader String
 hi! link StartifyFooter Normal
 hi! link StartifySpecial Comment
 hi! link StartifySection Identifier
@@ -751,8 +751,8 @@ hi! link sassIdChar SrceryBrightBlue
 " }}}
 " JavaScript: {{{
 
-hi! link javaScriptMember SrceryBlue
-hi! link javaScriptNull SrceryMagenta
+"hi! link javaScriptMember SrceryBlue
+"hi! link javaScriptNull SrceryMagenta
 
 " }}}
 " YAJS: {{{
@@ -775,6 +775,57 @@ hi! link javascriptFuncKeyword SrceryBrightRed
 hi! link javascriptFunctionMethod SrceryYellow
 hi! link javascriptReturn SrceryBrightRed
 hi! link javascriptEndColons Normal
+
+" }}}
+
+" YATS: {{{
+
+hi! link typescriptComment SrceryGreen
+hi! link typescriptDocComment SrceryGreen
+hi! link typescriptLineComment SrceryXgray1
+
+hi! link typescriptImport SrceryXgray1
+hi! link typescriptMember SrceryMagenta
+hi! link typescriptPredefinedType SrceryGreen
+hi! link typescriptNodeGlobal SrceryYellow
+hi! link typescriptDOMDocMethod SrceryWhite
+hi! link typescriptCall SrceryOrange
+hi! link typescriptExport SrceryRed
+hi! link typescriptVariable SrceryBlue
+hi! link typescriptString SrceryGreen
+hi! link typescriptBOMWindowProp SrceryRed
+hi! link typescriptStatementKeyword SrceryRed
+hi! link typescriptObjectLabel SrceryBrightOrange
+hi! link typescriptAmbientDeclaration SrceryMagenta
+hi! link typescriptAliasKeyword SrceryMagenta
+hi! link typescriptKeywordOp SrceryOrange
+hi! link typescriptNumber SrceryOrange
+hi! link typescriptObjectLiteral SrceryBlue
+hi! link typescriptFuncCallArg SrceryMagenta
+hi! link typescriptObjectStaticMethod SrceryOrange
+hi! link typescriptClassKeyword SrceryRed
+hi! link typescriptClassExtends SrceryMagenta
+hi! link typescriptIdentifier SrceryWhite
+hi! link typescriptAccessibilityModifier SrceryBlue
+hi! link typescriptTemplate SrceryRed
+hi! link typescriptBlock SrceryOrange
+hi! link typescriptStatementKeyword SrceryRed
+hi! link typescriptTypeBrackets SrceryRed
+hi! link typescriptTypeBracket SrceryBlue
+hi! link typescriptBinaryOp SrceryRed
+hi! link typescriptParamImpl SrceryWhite
+hi! link typescriptTypeReference SrceryOrange
+hi! link typescriptTypeReference SrceryOrange
+hi! link typescriptCase SrceryRed
+hi! link typescriptMethodAccessor SrceryMagenta
+hi! link typescriptArrowFunc SrceryRed
+hi! link typescriptModule SrceryOrange
+hi! link typescriptEnumKeyword SrceryMagenta
+hi! link typescriptInterfaceKeyword SrceryRed
+hi! link typescriptInterfaceExtends SrceryMagenta
+hi! link typescriptSpecial SrceryMagenta
+hi! link typescriptParens SrceryBrightWhite
+hi! link typescriptRestOrSpread SrceryWhite
 
 " }}}
 " CoffeeScript: {{{
