@@ -354,19 +354,19 @@ call s:HL('Error', s:bright_white, s:red, s:bold)
 call s:HL('String',  s:green)
 
 " Generic statement
-hi! link Statement SrceryRed
+hi! link Statement SrceryBrightRed
 " if, then, else, endif, swicth, etc.
-hi! link Conditional SrceryRed
+hi! link Conditional SrceryBrightRed
 " for, do, while, etc.
-hi! link Repeat SrceryRed
+hi! link Repeat SrceryBrightRed
 " case, default, etc.
-hi! link Label SrceryRed
+hi! link Label SrceryBrightRed
 " try, catch, throw
-hi! link Exception SrceryRed
+hi! link Exception SrceryBrightRed
 " sizeof, "+", "*", etc.
 hi! link Operator Normal
 " Any other keyword
-hi! link Keyword SrceryRed
+hi! link Keyword SrceryBrightRed
 
 " Variable name
 hi! link Identifier SrceryCyan
@@ -385,22 +385,22 @@ hi! link Macro SrceryOrange
 hi! link PreCondit SrceryCyan
 
 " Generic constant
-hi! link Constant SrceryBrightMagenta
+hi! link Constant SrceryYellow
 " Character constant: 'c', '/n'
-hi! link Character SrceryBrightMagenta
+hi! link Character SrceryYellow
 " Boolean constant: TRUE, false
-hi! link Boolean SrceryBrightMagenta
+hi! link Boolean SrceryYellow
 " Number constant: 234, 0xff
-hi! link Number SrceryBrightMagenta
+hi! link Number SrceryYellow
 " Floating point constant: 2.3e10
-hi! link Float SrceryBrightMagenta
+hi! link Float SrceryYellow
 
 " Generic type
 hi! link Type SrceryBrightBlue
 " static, register, volatile, etc
 hi! link StorageClass SrceryOrange
 " struct, union, enum, etc.
-hi! link Structure SrceryCyan
+hi! link Structure SrceryBrightBlue
 " typedef
 hi! link Typedef SrceryMagenta
 
@@ -517,14 +517,14 @@ let g:niji_light_colours = g:rbpt_colorpairs
 
 hi! link GitGutterAdd SrceryGreen
 hi! link GitGutterChange SrceryYellow
-hi! link GitGutterDelete SrceryRed
+hi! link GitGutterDelete SrceryBrightRed
 hi! link GitGutterChangeDelete SrceryYellow
 
 " }}}
 " GitCommit: "{{{
 
 hi! link gitcommitSelectedFile SrceryGreen
-hi! link gitcommitDiscardedFile SrceryRed
+hi! link gitcommitDiscardedFile SrceryBrightRed
 
 " }}}
 " Asynchronous Lint Engine: {{{
@@ -533,7 +533,7 @@ call s:HL('ALEError', s:none, s:none, s:undercurl, s:red)
 call s:HL('ALEWarning', s:none, s:none, s:undercurl, s:yellow)
 call s:HL('ALEInfo', s:none, s:none, s:undercurl, s:blue)
 
-hi! link ALEErrorSign SrceryRed
+hi! link ALEErrorSign SrceryBrightRed
 hi! link ALEWarningSign SrceryYellow
 hi! link ALEInfoSign SrceryBlue
 
@@ -562,7 +562,7 @@ hi! link StartifySection Identifier
 " Diff: {{{
 
 hi! link diffAdded SrceryGreen
-hi! link diffRemoved SrceryRed
+hi! link diffRemoved SrceryBrightRed
 hi! link diffChanged SrceryCyan
 
 hi! link diffFile SrceryOrange
@@ -580,7 +580,7 @@ hi! link htmlTagName SrceryBlue
 hi! link htmlTag SrceryWhite
 hi! link htmlArg SrceryYellow
 
-hi! link htmlScriptTag SrceryRed
+hi! link htmlScriptTag SrceryBrightRed
 hi! link htmlTagN SrceryBlue
 hi! link htmlSpecialTagName SrceryBlue
 
@@ -655,15 +655,15 @@ else
 endif
 
 hi! link clojureKeyword SrceryBlue
-hi! link clojureCond SrceryRed
-hi! link clojureSpecial SrceryRed
-hi! link clojureDefine SrceryRed
+hi! link clojureCond SrceryBrightRed
+hi! link clojureSpecial SrceryBrightRed
+hi! link clojureDefine SrceryBrightRed
 
 hi! link clojureFunc SrceryYellow
 hi! link clojureRepeat SrceryYellow
 hi! link clojureCharacter SrceryCyan
 hi! link clojureStringEscape SrceryCyan
-hi! link clojureException SrceryRed
+hi! link clojureException SrceryBrightRed
 
 hi! link clojureRegexp SrceryCyan
 hi! link clojureRegexpEscape SrceryCyan
@@ -692,12 +692,12 @@ hi! link pythonBuiltin SrceryYellow
 hi! link pythonBuiltinObj SrceryYellow
 hi! link pythonBuiltinFunc SrceryYellow
 hi! link pythonFunction SrceryCyan
-hi! link pythonDecorator SrceryRed
+hi! link pythonDecorator SrceryBrightRed
 hi! link pythonInclude SrceryBlue
 hi! link pythonImport SrceryBlue
 hi! link pythonRun SrceryBlue
 hi! link pythonCoding SrceryBlue
-hi! link pythonOperator SrceryRed
+hi! link pythonOperator SrceryBrightRed
 hi! link pythonExceptions SrceryMagenta
 hi! link pythonBoolean SrceryMagenta
 hi! link pythonDot SrceryBrightWhite
@@ -751,14 +751,14 @@ hi! link sassIdChar SrceryBrightBlue
 " }}}
 " JavaScript: {{{
 
-"hi! link javaScriptMember SrceryBlue
-"hi! link javaScriptNull SrceryMagenta
+hi! link javaScriptMember SrceryBlue
+hi! link javaScriptNull SrceryYellow
 
 " }}}
 " YAJS: {{{
 
 hi! link javascriptParens SrceryBrightCyan
-hi! link javascriptFuncArg Normal
+hi! link javascriptFuncArg SrceryBrightWhite
 hi! link javascriptDocComment SrceryGreen
 hi! link javascriptArrayMethod Function
 hi! link javascriptReflectMethod Function
@@ -780,52 +780,51 @@ hi! link javascriptEndColons Normal
 
 " YATS: {{{
 
-hi! link typescriptComment SrceryGreen
-hi! link typescriptDocComment SrceryGreen
-hi! link typescriptLineComment SrceryXgray1
+hi! link typescriptComment SrceryYellow
+hi! link typescriptDocComment SrceryYellow
+hi! link typescriptLineComment SrceryWhite
 
-hi! link typescriptImport SrceryXgray1
-hi! link typescriptMember SrceryMagenta
+hi! link typescriptImport SrceryBrightRed
+hi! link typescriptMember SrceryBrightWhite
 hi! link typescriptPredefinedType SrceryGreen
-hi! link typescriptNodeGlobal SrceryYellow
-hi! link typescriptDOMDocMethod SrceryWhite
-hi! link typescriptCall SrceryOrange
-hi! link typescriptExport SrceryRed
-hi! link typescriptVariable SrceryBlue
+hi! link typescriptNodeGlobal SrceryBrightRed
+hi! link typescriptDOMDocMethod SrceryBrightRed
+hi! link typescriptCall SrceryBrightWhite
+hi! link typescriptExport SrceryBrightRed
+hi! link typescriptVariable SrceryBrightBlue
 hi! link typescriptString SrceryGreen
-hi! link typescriptBOMWindowProp SrceryRed
-hi! link typescriptStatementKeyword SrceryRed
-hi! link typescriptObjectLabel SrceryBrightOrange
-hi! link typescriptAmbientDeclaration SrceryMagenta
-hi! link typescriptAliasKeyword SrceryMagenta
-hi! link typescriptKeywordOp SrceryOrange
-hi! link typescriptNumber SrceryOrange
-hi! link typescriptObjectLiteral SrceryBlue
-hi! link typescriptFuncCallArg SrceryMagenta
-hi! link typescriptObjectStaticMethod SrceryOrange
-hi! link typescriptClassKeyword SrceryRed
-hi! link typescriptClassExtends SrceryMagenta
-hi! link typescriptIdentifier SrceryWhite
-hi! link typescriptAccessibilityModifier SrceryBlue
-hi! link typescriptTemplate SrceryRed
-hi! link typescriptBlock SrceryOrange
-hi! link typescriptStatementKeyword SrceryRed
-hi! link typescriptTypeBrackets SrceryRed
-hi! link typescriptTypeBracket SrceryBlue
-hi! link typescriptBinaryOp SrceryRed
-hi! link typescriptParamImpl SrceryWhite
-hi! link typescriptTypeReference SrceryOrange
-hi! link typescriptTypeReference SrceryOrange
-hi! link typescriptCase SrceryRed
-hi! link typescriptMethodAccessor SrceryMagenta
-hi! link typescriptArrowFunc SrceryRed
-hi! link typescriptModule SrceryOrange
+hi! link typescriptBOMWindowProp SrceryBrightRed
+hi! link typescriptStatementKeyword SrceryBrightRed
+hi! link typescriptObjectLabel SrceryGreen
+hi! link typescriptAmbientDeclaration SrceryGreen
+hi! link typescriptAliasKeyword SrceryBrightRed
+hi! link typescriptKeywordOp SrceryGreen
+hi! link typescriptNumber SrceryBrightBlue
+hi! link typescriptObjectLiteral SrceryBrightBlue
+hi! link typescriptFuncCallArg SrceryOrange
+hi! link typescriptObjectStaticMethod SrceryBrightRed
+hi! link typescriptClassKeyword SrceryBrightRed
+hi! link typescriptClassExtends SrceryOrange
+hi! link typescriptIdentifier SrceryBrightRed
+hi! link typescriptAccessibilityModifier SrceryBrightRed
+hi! link typescriptTemplate SrceryBrightRed
+hi! link typescriptBlock SrceryBrightWhite
+hi! link typescriptTypeBrackets SrceryBrightRed
+hi! link typescriptTypeBracket SrceryBrightBlue
+hi! link typescriptBinaryOp SrceryBrightRed
+hi! link typescriptParamImpl SrceryBrightWhite
+hi! link typescriptTypeReference SrceryGreen
+hi! link typescriptCase SrceryBrightRed
+hi! link typescriptMethodAccessor SrceryBrightRed
+hi! link typescriptArrowFunc SrceryYellow
+hi! link typescriptModule SrceryBrightRed
 hi! link typescriptEnumKeyword SrceryMagenta
-hi! link typescriptInterfaceKeyword SrceryRed
-hi! link typescriptInterfaceExtends SrceryMagenta
-hi! link typescriptSpecial SrceryMagenta
+hi! link typescriptInterfaceKeyword SrceryBrightRed
+hi! link typescriptInterfaceExtends SrceryOrange
+hi! link typescriptSpecial SrceryOrange
 hi! link typescriptParens SrceryBrightWhite
-hi! link typescriptRestOrSpread SrceryWhite
+hi! link typescriptRestOrSpread SrceryBrightWhite
+hi! link typescriptTypeParameter SrceryBrightWhite
 
 " }}}
 " CoffeeScript: {{{
@@ -846,7 +845,7 @@ hi! link rubyDefine Keyword
 " }}}
 " ObjectiveC: {{{
 
-hi! link objcTypeModifier SrceryRed
+hi! link objcTypeModifier SrceryBrightRed
 hi! link objcDirective SrceryBlue
 
 " }}}
@@ -854,14 +853,14 @@ hi! link objcDirective SrceryBlue
 
 hi! link goDirective SrceryCyan
 hi! link goConstants SrceryMagenta
-hi! link goDeclaration SrceryRed
+hi! link goDeclaration SrceryBrightRed
 hi! link goDeclType SrceryBlue
 hi! link goBuiltins SrceryYellow
 
 " }}}
 " Lua: {{{
 
-hi! link luaIn SrceryRed
+hi! link luaIn SrceryBrightRed
 hi! link luaFunction SrceryCyan
 hi! link luaTable SrceryYellow
 
@@ -906,8 +905,8 @@ hi! link scalaCaseFollowing SrceryBlue
 hi! link scalaCapitalWord SrceryBlue
 hi! link scalaTypeExtension SrceryBlue
 
-hi! link scalaKeyword SrceryRed
-hi! link scalaKeywordModifier SrceryRed
+hi! link scalaKeyword SrceryBrightRed
+hi! link scalaKeywordModifier SrceryBrightRed
 
 hi! link scalaSpecial SrceryCyan
 hi! link scalaOperator SrceryBlue
@@ -1000,7 +999,7 @@ hi! link rustCommentLineDoc SrceryGreen
 hi! link rustModPathSep SrceryWhite
 " }}}
 " Make: {{{
-hi! link makePreCondit SrceryRed
+hi! link makePreCondit SrceryBrightRed
 hi! link makeCommands SrceryBrightWhite
 hi! link makeTarget SrceryYellow
 " }}}
