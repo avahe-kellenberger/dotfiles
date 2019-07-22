@@ -257,7 +257,7 @@ static void xinitvisual();
 static void zoom(const Arg *arg);
 
 /* variables */
-static const char broken[] = "broken";
+static const char broken[] = "<No Name>";
 static char stext[256];
 static int screen;
 static int sw, sh;           /* X display screen geometry width, height */
@@ -774,14 +774,16 @@ drawbar(Monitor *m)
 	/*if (m == selmon || 1) {  status is only drawn on selected monitor */
 		drw_setscheme(drw, scheme[SchemeNorm]);
 		sw = TEXTW(stext) - lrpad + 2; /* 2px right padding */
-		drw_text(drw, m->ww - sw, 0, sw, bh, 0, stext, 0);
+        drw_text(drw, m->ww - sw, 0, sw, bh, 0, stext, 0);
 	/*} */
 
 	for (c = m->clients; c; c = c->next) {
 		occ |= c->tags;
-		if (c->isurgent)
+		if (c->isurgent) {
 			urg |= c->tags;
+        }
 	}
+
 	x = 0;
 	for (i = 0; i < LENGTH(tags); i++) {
 		w = TEXTW(tags[i]);
@@ -793,13 +795,15 @@ drawbar(Monitor *m)
 				urg & 1 << i);
 		x += w;
 	}
+
 	w = blw = TEXTW(m->ltsymbol);
 	drw_setscheme(drw, scheme[SchemeNorm]);
 	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
 
 	if ((w = m->ww - sw - x) > bh) {
 		if (m->sel) {
-			int mid = (m->ww - TEXTW(m->sel->name)) / 2 - x;
+			// int mid = (m->ww - TEXTW(m->sel->name)) / 2 - x;
+			int mid = (m->ww - TEXTW(m->sel->name)) / 2 - x + lrpad / 2;
 			drw_setscheme(drw, scheme[m == selmon ? SchemeSel : SchemeNorm]);
 			drw_text(drw, x, 0, w, bh, mid, m->sel->name, 0);
 			if (m->sel->isfloating)
@@ -2250,10 +2254,14 @@ updatestatus(void)
 void
 updatetitle(Client *c)
 {
-	if (!gettextprop(c->win, netatom[NetWMName], c->name, sizeof c->name))
+	if (!gettextprop(c->win, netatom[NetWMName], c->name, sizeof c->name)) {
 		gettextprop(c->win, XA_WM_NAME, c->name, sizeof c->name);
-	if (c->name[0] == '\0') /* hack to mark broken clients */
+    }
+
+	if (c->name[0] == '\0') {
+         /* hack to mark broken clients */
 		strcpy(c->name, broken);
+    }
 }
 
 void
