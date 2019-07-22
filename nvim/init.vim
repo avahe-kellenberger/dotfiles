@@ -31,8 +31,11 @@ let g:lightline = {
             \ },
             \ 'component_function': {
             \   'cocstatus': 'coc#status'
-            \ },
             \ }
+        \ }
+
+let g:lightline.separator = { 'left': '', 'right': '' }
+let g:lightline.subseparator = { 'left': '|', 'right': '|' }
 
 " Status line shows status - hide default
 set noshowmode
