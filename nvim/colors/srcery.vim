@@ -780,12 +780,12 @@ hi! link javascriptEndColons Normal
 
 " YATS: {{{
 
-hi! link typescriptComment SrceryYellow
-hi! link typescriptDocComment SrceryYellow
+hi! link typescriptComment SrceryWhite
+hi! link typescriptDocComment SrceryWhite
 hi! link typescriptLineComment SrceryWhite
 
 hi! link typescriptImport SrceryBrightRed
-hi! link typescriptMember SrceryBrightWhite
+hi! link typescriptMember SrceryYellow
 hi! link typescriptPredefinedType SrceryGreen
 hi! link typescriptNodeGlobal SrceryBrightRed
 hi! link typescriptDOMDocMethod SrceryBrightRed
