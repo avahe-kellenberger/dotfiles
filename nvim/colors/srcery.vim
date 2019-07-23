@@ -801,10 +801,10 @@ hi! link typescriptAliasKeyword SrceryBrightRed
 hi! link typescriptKeywordOp SrceryGreen
 hi! link typescriptNumber SrceryBrightBlue
 hi! link typescriptObjectLiteral SrceryBrightBlue
-hi! link typescriptFuncCallArg SrceryOrange
+hi! link typescriptFuncCallArg SrceryBrightOrange
 hi! link typescriptObjectStaticMethod SrceryBrightRed
 hi! link typescriptClassKeyword SrceryBrightRed
-hi! link typescriptClassExtends SrceryOrange
+hi! link typescriptClassExtends SrceryBrightOrange
 hi! link typescriptIdentifier SrceryBrightRed
 hi! link typescriptAccessibilityModifier SrceryBrightRed
 hi! link typescriptTemplate SrceryBrightRed
@@ -820,8 +820,8 @@ hi! link typescriptArrowFunc SrceryYellow
 hi! link typescriptModule SrceryBrightRed
 hi! link typescriptEnumKeyword SrceryMagenta
 hi! link typescriptInterfaceKeyword SrceryBrightRed
-hi! link typescriptInterfaceExtends SrceryOrange
-hi! link typescriptSpecial SrceryOrange
+hi! link typescriptInterfaceExtends SrceryBrightOrange
+hi! link typescriptSpecial SrceryBrightOrange
 hi! link typescriptParens SrceryBrightWhite
 hi! link typescriptRestOrSpread SrceryBrightWhite
 hi! link typescriptTypeParameter SrceryBrightWhite
