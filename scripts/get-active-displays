@@ -1,0 +1,5 @@
+#!/bin/bash
+
+connected="$(xrandr | pcregrep -o1 "(.*?) connected.*")"
+echo "$connected" 
+
