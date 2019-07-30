@@ -3,6 +3,8 @@
   "tsserver.orgnizeImportOnSave": true,
   "typescript.preferences.noSemicolons": true,
   "typescript.format.insertSpaceAfterConstructor": true,
+  // make vim select first item on completion
+  "suggest.noselect": false,
   "languageserver": {
     "golang": {
       "command": "gopls",
