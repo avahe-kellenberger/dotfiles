@@ -5,7 +5,6 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-// static char *font = "Dina:pixelsize=12:antialias=true:autohint=true";
 static char *font = "BitstreamVeraSansMono:pixelsize=12:antialias=true:autohint=true";
 static int borderpx = 0;
 
@@ -74,7 +73,7 @@ const int boxdraw_braille = 0;
  * bell volume. It must be a value between -100 and 100. Use 0 for disabling
  * it
  */
-static int bellvolume = 0;
+static int bellvolume = 1;
 
 /* default TERM value */
 char *termname = "st-256color";
@@ -125,18 +124,18 @@ static const char *colorname[] = {
 };
 
 /*
- *  * Default colors (colorname index)
- *   * foreground, background, cursor
- *    */
+ * Default colors (colorname index)
+ * foreground, background, cursor
+ */
 unsigned int defaultfg = 257;
 unsigned int defaultbg = 256;
 unsigned int defaultcs = 257;
 
 /*
- *  * Colors used, when the specific fg == defaultfg. So in reverse mode this
- *   * will reverse too. Another logic would only make the simple feature too
- *    * complex.
- *     */
+ * Colors used, when the specific fg == defaultfg. So in reverse mode this
+ * will reverse too. Another logic would only make the simple feature too
+ * complex.
+ */
 static unsigned int defaultitalic = 7;
 static unsigned int defaultunderline = 7;
 
