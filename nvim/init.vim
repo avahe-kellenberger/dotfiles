@@ -16,6 +16,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'fatih/vim-go'
 Plugin 'Raimondi/delimitMate'
+Plugin 'calviken/vim-gdscript3'
 "}}}
 
 call vundle#end()
