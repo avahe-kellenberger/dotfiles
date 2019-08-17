@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Attempts to open clipboard contents with xdg-open.
+
+xdg-open "$(xclip -selection clipboard -o)"
+
