@@ -6,7 +6,7 @@ export VISUAL=nvim
 export BROWSER=qutebrowser
 export _KDECONNECT_DEFAULT_DEVICE="67272c00cac1fcf5"
 
-compton --blur-method kawase --blur-strength 7 --backend glx  --blur-background --config ~/.config/compton/compton.conf &
+compton --blur-method kawase --blur-strength 7 --backend glx  --blur-background --config ~/.config/compton/compton-transparent.conf &
 sxhkd &
 dunst &
 xmodmap ~/.Xmodmap
