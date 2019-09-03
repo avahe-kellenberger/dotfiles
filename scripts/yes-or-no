@@ -5,12 +5,12 @@ cmd=$2
 
 if [[ -z "$msg" ]] || [[ -z "$cmd" ]]; then
     printf "Invalid input - exiting.\n"
-    return -1;
+    return 1;
 fi
 
 response=$(echo -e "no\nyes" | dmenu -l 2 -p "${msg}");
 
-if [ ${response} == "yes" ]; then
+if [ "${response}" == "yes" ]; then
     sh -c "${cmd}"
 fi
 

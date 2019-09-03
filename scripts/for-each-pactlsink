@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-pactl list sinks short | while read -r id info; do
+pactl list sinks short | while read -r id _; do
     ${1//%s/"$id"}
 done

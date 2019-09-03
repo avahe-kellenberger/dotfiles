@@ -1,4 +1,4 @@
 #!/bin/bash
 
-rm ~/.dotfiles/lock-wallpaper &>/dev/null; ln -s $(find ~/.dotfiles/wallpapers/ -name "*.png" | sxiv -riot | head -n 1) ~/.dotfiles/lock-wallpaper
+rm ~/.dotfiles/lock-wallpaper &>/dev/null; ln -s "$(find ~/.dotfiles/wallpapers/ -name "*.png" | sxiv -riot | head -n 1)" ~/.dotfiles/lock-wallpaper
 
