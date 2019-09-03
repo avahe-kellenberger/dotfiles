@@ -4,7 +4,7 @@ export PATH="$HOME/.local/opt/pso:$PATH:$GOBIN:$HOME/.yarn/bin:$HOME/.config/yar
 export EDITOR=nvim
 export VISUAL=nvim
 export BROWSER=qutebrowser
-export _KDECONNECT_DEFAULT_DEVICE="67272c00cac1fcf5"
+export _KDECONNECT_DEFAULT_DEVICE="bb89add356ad357b"
 
 compton --blur-method kawase --blur-strength 7 --backend glx  --blur-background --config ~/.config/compton/compton-transparent.conf &
 sxhkd &
