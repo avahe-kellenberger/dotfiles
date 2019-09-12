@@ -1,0 +1,4 @@
+#!/bin/bash
+
+compton --blur-method kawase --blur-strength 7 --backend glx  --blur-background --config ~/.config/compton/compton-transparent.conf
+
