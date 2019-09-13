@@ -21,7 +21,7 @@ super + i
 control + alt + c
     $HOME/.dotfiles/scripts/screen_shot
 
-# Screen shot
+# Open content from clipboard
 control + alt + x
     $HOME/.dotfiles/scripts/open-clipboard
 
