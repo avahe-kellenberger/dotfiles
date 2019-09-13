@@ -8,3 +8,10 @@ settings:
       normal:
         M: hint links spawn mpv {hint-url}
         m: spawn mpv {url}
+  content.geolocation:
+    https://na2.docusign.net: false
+  content.notifications:
+    https://na.op.gg: false
+    https://nextcloud.avahe.tk: false
+  content.register_protocol_handler:
+    https://mail.google.com?extsrc=mailto&url=%25s: false
