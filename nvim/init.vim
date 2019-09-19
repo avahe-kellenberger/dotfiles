@@ -9,7 +9,7 @@ call vundle#begin()
 " Plugins{{{
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'mhinz/vim-startify'
-Plugin 'neoclide/coc.nvim', {'branch': 'release'}
+Plugin 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
 Plugin 'itchyny/lightline.vim'
 Plugin 'HerringtonDarkholme/yats.vim'
 Plugin 'kien/ctrlp.vim'
@@ -206,7 +206,7 @@ nmap <leader>f  <Plug>(coc-format-selected)
 augroup mygroup
     autocmd!
     " Setup formatexpr specified filetype(s).
-    autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+    autocmd FileType typescript,javascript,json setl formatexpr=CocAction('formatSelected')
     " Update signature help on jump placeholder
     autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
@@ -293,9 +293,15 @@ autocmd BufWritePre *.java :CocCommand java.action.organizeImports
 "}}}
 
 " TypeScript{{{
-autocmd BufNewFile,BufRead *.ts,*.js set filetype=typescript
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+autocmd BufNewFile,BufRead *.ts, set filetype=typescript
+autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
+"}}}
 
+" JavaScript{{{
+autocmd BufNewFile,BufRead *.js, set filetype=javascript
+autocmd BufNewFile,BufRead *.jsx set filetype=javascript.tsx
+"}}}
+"
 " Prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.yaml,*.html Prettier

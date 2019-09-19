@@ -1,8 +1,19 @@
 {
   "tsserver.npm": "/usr/bin/npm",
   "tsserver.orgnizeImportOnSave": true,
-  "typescript.preferences.noSemicolons": true,
-  "typescript.format.insertSpaceAfterConstructor": true,
+
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "json"
+  ],
+
+  "prettier.singleQuote": false,
+  "prettier.semi": false,
+  "prettier.tabWidth": 2,
+
   // make vim select first item on completion
   "suggest.noselect": false,
   "languageserver": {
