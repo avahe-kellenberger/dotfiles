@@ -2,17 +2,11 @@
   "tsserver.npm": "/usr/bin/npm",
   "tsserver.orgnizeImportOnSave": true,
 
-  "coc.preferences.formatOnSaveFiletypes": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "json"
-  ],
-
   "prettier.singleQuote": false,
   "prettier.semi": false,
   "prettier.tabWidth": 2,
+
+  "eslint.autoFixOnSave": true,
 
   // make vim select first item on completion
   "suggest.noselect": false,
