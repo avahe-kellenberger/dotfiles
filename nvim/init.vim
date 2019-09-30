@@ -302,13 +302,13 @@ autocmd BufNewFile,BufRead *.js, set filetype=javascript
 autocmd BufNewFile,BufRead *.jsx set filetype=javascript.tsx
 "}}}
 "
-" Prettier
+"Prettier
 " command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.yaml,*.html Prettier
 "}}}
 
 " JSON{{{
-autocmd FileType json syntax match Comment +\/\/.\+$+
+" autocmd FileType json syntax match Comment +\/\/.\+$+
 "}}}
 
 " groff{{{
