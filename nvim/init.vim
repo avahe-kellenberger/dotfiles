@@ -1,25 +1,21 @@
 " vim documentation: http://vimdoc.sourceforge.net/htmldoc/usr_toc.html
 
-" Required for Vundle
-set nocompatible
-filetype off
-set rtp+=~/.config/nvim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
 " Plugins{{{
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'mhinz/vim-startify'
-Plugin 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
-Plugin 'itchyny/lightline.vim'
-Plugin 'HerringtonDarkholme/yats.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'fatih/vim-go'
-Plugin 'Raimondi/delimitMate'
-Plugin 'calviken/vim-gdscript3'
+Plug 'VundleVim/Vundle.vim'
+Plug 'mhinz/vim-startify'
+Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
+Plug 'itchyny/lightline.vim'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'fatih/vim-go'
+Plug 'Raimondi/delimitMate'
+Plug 'calviken/vim-gdscript3'
 "}}}
 
-call vundle#end()
+call plug#end()
 
 " Status line{{{
 

@@ -2,13 +2,9 @@
   "tsserver.npm": "/usr/bin/npm",
   "tsserver.orgnizeImportOnSave": true,
 
-  "prettier.singleQuote": false,
-  "prettier.semi": false,
-  "prettier.tabWidth": 2,
-
   "eslint.autoFixOnSave": true,
+  "eslint.filetypes": ["javascript", "typescript"],
 
-  // make vim select first item on completion
   "suggest.noselect": false,
   "languageserver": {
     "golang": {
