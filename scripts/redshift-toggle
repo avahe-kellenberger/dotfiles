@@ -1,0 +1,12 @@
+#!/bin/bash
+
+current="$(cat "$HOME/.config/redshift/gamma")"
+
+if [ -n "$current" ]; then
+    redshift -x
+    : > "$HOME/.config/redshift/gamma"
+else
+    redshift -P -O 4000
+    echo "4000" > "$HOME/.config/redshift/gamma"
+fi
+
