@@ -6,7 +6,8 @@ git_branch() {
 
 set_prompt() {
     branch="$(git_branch)"
-    PROMPT="%F{white}[%f%F{green}%n%f%F{yellow}@%f%F{blue}%m%f %F{yellow}%T%f %F{blue}%~%f%F{red}%}$branch%F{white}]:%f "
+    NEWLINE=$'\n'
+    PROMPT="%F{white}┌[%f%F{blue}%~%f%F{white}]%f${NEWLINE}%F{white}└[%f%F{green}%n%f%F{yellow}@%f%F{blue}%m%f%F{red}%}${branch}%F{white}]:%f "
 }
 
 precmd_functions+=(set_prompt)
@@ -59,6 +60,8 @@ compinit
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
+# Needed for nodenv to work.
+eval "$(nodenv init -)";
 
 if [ "$(tty)" = "/dev/tty1" ] && [ -z "$(pgrep -i xorg)" ]; then
     startx

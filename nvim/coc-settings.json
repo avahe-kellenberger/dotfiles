@@ -3,7 +3,7 @@
   "tsserver.orgnizeImportOnSave": true,
 
   "eslint.autoFixOnSave": true,
-  "eslint.filetypes": ["javascript", "typescript"],
+  "eslint.filetypes": ["javascript", "javascriptreact", "typescript"],
 
   "suggest.noselect": false,
   "languageserver": {

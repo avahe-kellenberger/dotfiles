@@ -1,4 +1,5 @@
 export XDG_CONFIG_HOME="$HOME/.config"
+export NODE_PATH="$(where node)"
 export GOPATH="$HOME/go/"
 export GOBIN="$HOME/go/bin/"
 export PATH="$HOME/.local/opt/pso:$PATH:$GOBIN:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.local/bin/"
@@ -7,7 +8,6 @@ export VISUAL=nvim
 export BROWSER=qutebrowser
 export _KDECONNECT_DEFAULT_DEVICE="bb89add356ad357b"
 
-launch-compton &
 sxhkd &
 dunst &
 xmodmap ~/.Xmodmap

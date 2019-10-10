@@ -13,6 +13,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'fatih/vim-go'
 Plug 'Raimondi/delimitMate'
 Plug 'calviken/vim-gdscript3'
+Plug 'neoclide/jsonc.vim'
 "}}}
 
 call plug#end()
@@ -304,7 +305,10 @@ autocmd BufNewFile,BufRead *.jsx set filetype=javascript.tsx
 "}}}
 
 " JSON{{{
-" autocmd FileType json syntax match Comment +\/\/.\+$+
+autocmd FileType json syntax match Comment +\/\/.\+$+
+autocmd FileType jsonc syntax match Comment +\/\/.\+$+
+" tsconfig.json is actually jsonc, help TypeScript set the correct filetype
+autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 "}}}
 
 " groff{{{
