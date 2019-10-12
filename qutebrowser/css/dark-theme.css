@@ -1,0 +1,12 @@
+::-webkit-scrollbar {
+	width: 0px; height: 0px;
+}
+
+html, img {
+  -webkit-filter: invert(1) hue-rotate(180deg);
+  filter: invert(1) hue-rotate(180deg);
+}
+
+body {
+  background: black;
+}
