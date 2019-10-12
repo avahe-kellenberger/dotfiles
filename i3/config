@@ -172,4 +172,5 @@ hide_edge_borders smart
 gaps inner 45
 smart_gaps on
 
-exec_always --no-startup-id $HOME/.config/polybar/launch-polybar.sh
+exec_always --no-startup-id polybar --config $HOME/.config/polybar/i3-config i3
+

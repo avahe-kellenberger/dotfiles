@@ -3,12 +3,14 @@ export NODE_PATH="$(where node)"
 export GOPATH="$HOME/go/"
 export GOBIN="$HOME/go/bin/"
 export PATH="$HOME/.local/opt/pso:$PATH:$GOBIN:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.local/bin/"
+
 export EDITOR=nvim
 export VISUAL=nvim
 export BROWSER=qutebrowser
 export _KDECONNECT_DEFAULT_DEVICE="bb89add356ad357b"
 
-sxhkd &
+launch-compton &
+>>>>>>> Changed polybar config for i3 and bspwm.
 dunst &
 xmodmap ~/.Xmodmap
 unclutter &

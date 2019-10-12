@@ -1,3 +1,7 @@
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd && notify-send "Restarted sxhkd"
+
 # Fn Keys
 XF86MonBrightnessDown
     light -U 1.25
