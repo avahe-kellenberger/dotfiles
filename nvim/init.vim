@@ -3,7 +3,6 @@
 call plug#begin('~/.vim/plugged')
 
 " Plugins{{{
-Plug 'VundleVim/Vundle.vim'
 Plug 'mhinz/vim-startify'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
 Plug 'itchyny/lightline.vim'
