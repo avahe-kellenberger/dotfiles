@@ -1,0 +1,21 @@
+#!/bin/bash
+
+bar_geom="$(xdotool search --name 'Polybar' getwindowgeometry)"
+tray_geom="$(xdotool search --name 'Polybar tray window' getwindowgeometry)"
+
+yposition="$(xdotool search --name Polybar getwindowgeometry | pcregrep -o1 "Position: -?[0-9]*?,(-?[0-9].*?) .*")"
+
+if [ "$yposition" != "0" ]; then
+    xdotool search --name "Polybar" windowmove 0 0    
+    bar_width="$(echo "$bar_geom" | pcregrep -o1 "Geometry: (-?[0-9]*?)x-?[0-9].*")"
+    bar_width="$((bar_width+0))"
+    tray_width="$(echo "$tray_geom" | pcregrep -o1 "Geometry: (-?[0-9]*?)x-?[0-9].*")"
+    tray_width="$((tray_width+0))"
+    tray_xposition="$((bar_width - tray_width))"
+    xdotool search --name "Polybar tray window" windowmove $tray_xposition 0
+else 
+    height="$(echo "$bar_geom" | pcregrep -o1 "Geometry: -?[0-9]*?x(-?[0-9].*)")"
+    xdotool search --name "Polybar" windowmove 0 -"$height"
+    xdotool search --name "Polybar tray window" windowmove 0 -"$height"
+fi
+
