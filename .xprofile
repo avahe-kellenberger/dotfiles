@@ -10,7 +10,6 @@ export BROWSER=qutebrowser
 export _KDECONNECT_DEFAULT_DEVICE="bb89add356ad357b"
 
 launch-compton &
->>>>>>> Changed polybar config for i3 and bspwm.
 dunst &
 xmodmap ~/.Xmodmap
 unclutter &
