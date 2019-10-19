@@ -3,5 +3,8 @@ vim/bundle/*
 vim/sessions/*
 lock-wallpaper
 nvim/bundle/*
+vim/plugged/*
+
+qutebrowser/qsettings/QtProject.conf
 
 firefox/*

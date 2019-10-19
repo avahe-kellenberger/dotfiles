@@ -19,5 +19,6 @@ settings:
     https://www.reddit.com: false
   content.register_protocol_handler:
     https://mail.google.com?extsrc=mailto&url=%25s: false
+    https://mail.yandex.com?mailto=%25s: false
   content.user_stylesheets:
     global: ~/.config/qutebrowser/css/solarized.css
