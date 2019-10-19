@@ -1,6 +1,6 @@
 git_branch() {
     if out="$(git -C . rev-parse > /dev/null 2>&1)"; then 
-        printf " $%s" $(git branch | pcregrep -o1 "\*[\S]*( .*)")
+        printf " $%s$(git branch | pcregrep -o1 "\*[\s]*(.*)")"
     fi
 }
 
@@ -59,9 +59,6 @@ compinit
 # fzf bindings
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
-
-# Needed for nodenv to work.
-eval "$(nodenv init -)";
 
 if [ "$(tty)" = "/dev/tty1" ] && [ -z "$(pgrep -i xorg)" ]; then
     startx
