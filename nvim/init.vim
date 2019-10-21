@@ -13,6 +13,7 @@ Plug 'fatih/vim-go'
 Plug 'Raimondi/delimitMate'
 Plug 'calviken/vim-gdscript3'
 Plug 'neoclide/jsonc.vim'
+Plug 'voldikss/vim-floaterm'
 "}}}
 
 call plug#end()
@@ -302,6 +303,17 @@ autocmd BufNewFile,BufRead *.jsx set filetype=javascript.tsx
 " command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.yaml,*.html Prettier
 "}}}
+
+" Floaterm{{{
+
+" Fixes Startified bug
+autocmd User Startified setlocal buflisted
+
+noremap  <silent> <C-i>           :FloatermToggle<CR>i
+noremap! <silent> <C-i>           <Esc>:FloatermToggle<CR>i
+tnoremap <silent> <C-i>           <C-\><C-n>:FloatermToggle<CR>
+
+" }}}
 
 " JSON{{{
 autocmd FileType json syntax match Comment +\/\/.\+$+
