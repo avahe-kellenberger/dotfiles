@@ -21,4 +21,4 @@ settings:
     https://mail.google.com?extsrc=mailto&url=%25s: false
     https://mail.yandex.com?mailto=%25s: false
   content.user_stylesheets:
-    global: ~/.config/qutebrowser/css/solarized.css
+    global: null
