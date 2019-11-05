@@ -21,6 +21,10 @@ super + p
 super + i
     $BROWSER
 
+# Redshift
+super + r
+    $HOME/.dotfiles/scripts/redshift-toggle
+
 # Screen shot
 control + alt + c
     $HOME/.dotfiles/scripts/screen_shot
