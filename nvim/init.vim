@@ -3,6 +3,7 @@
 call plug#begin('~/.vim/plugged')
 
 " Plugins{{{
+
 Plug 'mhinz/vim-startify'
 Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
 Plug 'itchyny/lightline.vim'
@@ -10,12 +11,24 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'fatih/vim-go'
-Plug 'Raimondi/delimitMate'
 Plug 'calviken/vim-gdscript3'
 Plug 'neoclide/jsonc.vim'
+Plug 'tmsvg/pear-tree'
+Plug 'meain/vim-package-info', { 'do': 'npm install' }
+
 "}}}
 
 call plug#end()
+
+" vim-package-info{{{
+
+let g:vim_package_info_virutaltext_highlight = 'NonText'
+
+hi VimPackageInfoPatch guifg=#8BC34A
+hi VimPackageInfoMinor guifg=#00BCD4
+hi VimPackageInfoMajor guifg=#F44336
+
+" }}}
 
 " Status line{{{
 
@@ -40,6 +53,10 @@ set noshowmode
 "}}}
 
 " Configuration{{{
+
+let g:python_host_prog = expand('~/.local/share/virtualenvs/neovim/bin/python')
+let g:python3_host_prog = expand('~/.local/share/virtualenvs/neovim3/bin/python3')
+
 set encoding=utf-8
 
 set splitright
