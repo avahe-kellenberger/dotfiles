@@ -1,0 +1,13 @@
+// Unfocused border color
+dwm.normbordercolor: #1c1b19
+// Background in bar
+dwm.normbgcolor: #1c1b19
+// Text in status bar
+dwm.normfgcolor: #fce8c3
+// Focused border color
+dwm.selbordercolor: #2c78bf
+// Selected workspace background color
+dwm.selbgcolor: #1c1b19
+// Selected workspace text color
+dwm.selfgcolor: #2c78bf
+
