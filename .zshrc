@@ -13,9 +13,11 @@ set_prompt() {
 precmd_functions+=(set_prompt)
 set_prompt
 
-alias l="ls -al --color=auto"
+alias ls='exa'
+alias l="exa -al"
 alias grep="grep --color"
 alias copy="xclip -sel clipboard"
+alias diff="diff-so-fancy"
 
 export MYVIMRC='~/.config/nvim/init.vim'
 export VIMINIT='source $MYVIMRC'
