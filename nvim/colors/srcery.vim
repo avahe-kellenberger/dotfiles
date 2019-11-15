@@ -136,6 +136,9 @@ function! s:HL(group, fg, ...)
     let l:bg = s:none
   endif
 
+  " Force transparency
+  let l:bg = s:none
+
   " emphasis
   if a:0 >= 2 && strlen(a:2)
     let l:emstr = a:2
