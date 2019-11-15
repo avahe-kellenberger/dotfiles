@@ -9,6 +9,7 @@ export VISUAL=nvim
 export BROWSER=qutebrowser
 export _KDECONNECT_DEFAULT_DEVICE="bb89add356ad357b"
 
+$HOME/.dotfiles/scripts/launch-compton &
 dunst &
 xmodmap ~/.Xmodmap
 unclutter &

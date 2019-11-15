@@ -13,8 +13,7 @@ set_prompt() {
 precmd_functions+=(set_prompt)
 set_prompt
 
-alias ls='exa'
-alias l="exa -al"
+alias l="ls -la --color=auto"
 alias grep="grep --color"
 alias copy="xclip -sel clipboard"
 alias diff="diff-so-fancy"
