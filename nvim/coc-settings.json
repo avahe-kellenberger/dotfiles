@@ -5,6 +5,9 @@
   "eslint.autoFixOnSave": true,
   "eslint.filetypes": ["javascript", "javascriptreact", "typescript"],
 
+  "jest.enabled": true,
+  "jest.pathToJest": "./node_modules/.bin/jest",
+  "jest.pathToConfig": "./package.json",
   "suggest.noselect": false,
   "languageserver": {
     "golang": {

@@ -14,7 +14,8 @@ Plug 'fatih/vim-go'
 Plug 'calviken/vim-gdscript3'
 Plug 'neoclide/jsonc.vim'
 Plug 'tmsvg/pear-tree'
-Plug 'meain/vim-package-info', { 'do': 'npm install' }
+Plug 'kkoomen/vim-doge', { 'tag': '*' }
+" Plug 'kkoomen/vim-doge', { 'branch': 'v1.17.2' }
 
 "}}}
 
