@@ -55,6 +55,18 @@ set noshowmode
 
 " Configuration{{{
 
+set path=.,,
+
+function! CCR()
+    let cmdline = getcmdline()
+    if cmdline =~ '\v\C^(dli|il)'
+        return "\<CR>:" . cmdline[0] . "j  " . split(cmdline, " ")[1] . "\<S-Left>\<Left>"
+    else
+        return "\<CR>"
+    endif
+endfunction
+cnoremap <expr> <CR> CCR()
+
 let g:python_host_prog = expand('~/.local/share/virtualenvs/neovim/bin/python')
 let g:python3_host_prog = expand('~/.local/share/virtualenvs/neovim3/bin/python3')
 

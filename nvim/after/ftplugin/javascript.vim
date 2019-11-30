@@ -1,6 +1,8 @@
 set expandtab
 set smarttab
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
+
+" From https://vimways.org/2018/death-by-a-thousand-files/
+setlocal suffixesadd=.js,.jsx
+setlocal include=^\\s*[^\/]\\+\\(from\\\|require(['\"]\\)
+setlocal define=class\\s\\\|^\\s*function
 
