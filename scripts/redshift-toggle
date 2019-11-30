@@ -6,7 +6,7 @@ if [ -n "$current" ]; then
     redshift -x
     : > "$HOME/.config/redshift/gamma"
 else
-    red="5000"
+    red="4000"
     redshift -P -O "$red"
     echo "$red" > "$HOME/.config/redshift/gamma"
 fi
