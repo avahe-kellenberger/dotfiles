@@ -5,17 +5,16 @@ call plug#begin('~/.vim/plugged')
 " Plugins{{{
 
 Plug 'mhinz/vim-startify'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
+Plug 'neoclide/coc.nvim', { 'tag': '*', 'branch': 'release' }
 Plug 'itchyny/lightline.vim'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'kien/ctrlp.vim'
-Plug 'scrooloose/nerdtree'
 Plug 'fatih/vim-go'
 Plug 'calviken/vim-gdscript3'
 Plug 'neoclide/jsonc.vim'
 Plug 'tmsvg/pear-tree'
-Plug 'kkoomen/vim-doge', { 'tag': '*' }
-" Plug 'kkoomen/vim-doge', { 'branch': 'v1.17.2' }
+Plug 'kkoomen/vim-doge', { 'tag': '*', 'branch': 'master' }
+Plug 'honza/vim-snippets'
 
 "}}}
 
@@ -52,6 +51,38 @@ let g:lightline.subseparator = { 'left': '|', 'right': '|' }
 set noshowmode
 
 "}}}
+
+" coc-snippets{{{
+
+" Use <C-l> for trigger snippet expand.
+imap <C-l> <Plug>(coc-snippets-expand)
+
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-j>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
+
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
+
+" }}}
 
 " Configuration{{{
 
@@ -284,35 +315,6 @@ let g:startify_custom_header = [
 
 "}}}
 
-" Nerdtree{{{
-
-map <C-n> :NERDTreeToggle<CR>
-
-" Filetype colors
-function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
-    exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
-    exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-endfunction
-
-call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
-call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
-call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
-call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
-call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
-call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
-call NERDTreeHighlightFile('jsx', 'Red', 'none', '#ffa500', '#151515')
-call NERDTreeHighlightFile('ts', 'green', 'none', '#ffa500', '#151515')
-call NERDTreeHighlightFile('tsx', 'green', 'none', '#ffa500', '#151515')
-call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
-
-" }}}
-
 " Java{{{
 autocmd BufWritePre *.java :CocCommand java.action.organizeImports
 
@@ -326,11 +328,6 @@ autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
 " JavaScript{{{
 autocmd BufNewFile,BufRead *.js, set filetype=javascript
 autocmd BufNewFile,BufRead *.jsx set filetype=javascript.tsx
-"}}}
-"
-"Prettier
-" command! -nargs=0 Prettier :CocCommand prettier.formatFile
-" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.vue,*.yaml,*.html Prettier
 "}}}
 
 " JSON{{{

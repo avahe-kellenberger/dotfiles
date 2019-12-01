@@ -6,5 +6,5 @@ setlocal suffixesadd=.js,.jsx
 setlocal include=^\\s*[^\/]\\+\\(from\\\|require(['\"]\\)
 setlocal define=class\\s\\\|^\\s*function
 
-nnoremap <expr> <C-D> 'Odebugger;<esc>:w<CR>:vsp<CR> :term<CR>Anode inspect ' . expand('%') .'<CR>'
+nnoremap <expr> <C-n> 'Odebugger;<esc>:w<CR>:vsp<CR> :term<CR>Anode inspect ' . expand('%') .'<CR>'
 
