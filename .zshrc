@@ -16,7 +16,8 @@ set_prompt
 alias l="ls -la --color=auto"
 alias grep="grep --color"
 alias copy="xclip -sel clipboard"
-alias diff="diff-so-fancy"
+
+alias gr="nvim \$(git status --porcelain | awk '{ if (\$1 == \"M\") print \$2 }')"
 
 export MYVIMRC='~/.config/nvim/init.vim'
 export VIMINIT='source $MYVIMRC'

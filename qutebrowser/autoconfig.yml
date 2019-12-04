@@ -14,6 +14,7 @@ settings:
   content.geolocation:
     https://na2.docusign.net: false
   content.notifications:
+    https://circleci.com: true
     https://na.op.gg: false
     https://nextcloud.avahe.tk: false
     https://www.reddit.com: false
