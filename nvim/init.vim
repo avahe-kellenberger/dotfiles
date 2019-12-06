@@ -86,7 +86,7 @@ let g:coc_snippet_next = '<tab>'
 
 " Configuration{{{
 
-nnoremap ' :execute "normal! '" . nr2char(getchar()) . 'zt'<CR>
+nnoremap <silent> ' :execute "normal! '" . nr2char(getchar()) . 'zt'<CR>
 
 set path=.,,
 
