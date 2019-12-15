@@ -15,6 +15,7 @@ Plug 'neoclide/jsonc.vim'
 Plug 'tmsvg/pear-tree'
 Plug 'kkoomen/vim-doge', { 'tag': '*', 'branch': 'master' }
 Plug 'honza/vim-snippets'
+Plug 'psliwka/vim-smoothie'
 
 "}}}
 
@@ -195,6 +196,8 @@ nnoremap <C-o> :CtrlPBuffer<CR>
 " }}}
 
 " CoC{{{
+
+let b:coc_root_patterns = ['.git']
 
 " if hidden is not set, TextEdit might fail.
 set hidden
