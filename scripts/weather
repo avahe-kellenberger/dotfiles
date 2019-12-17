@@ -16,7 +16,7 @@ CITY_ID="4352053"
 
 ICON_SUNNY=""
 ICON_CLOUDY=""
-ICON_RAINY=""
+ICON_RAINY="☔"
 ICON_STORM=""
 ICON_SNOW=""
 ICON_FOG=""
@@ -51,3 +51,4 @@ if [[ $1 == "-i" ]]; then
 fi
 
 echo "${current_icon}${WEATHER_DESCRIPTION} ${WEATHER_TEMP}${SYMBOL_FARENHEIT}" 
+
