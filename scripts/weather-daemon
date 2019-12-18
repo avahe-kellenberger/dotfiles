@@ -1,0 +1,15 @@
+#!/bin/bash
+
+interval="$1"
+if [ -z "$interval" ]; then
+    echo "Please input a delay interval to query new weather info."
+    exit 1
+fi
+
+while [ true ];
+do
+    mkdir -p $HOME/.config/weather/
+    weather -i > "$HOME/.config/weather/current"
+    sleep "$interval"
+done
+

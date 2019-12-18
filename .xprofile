@@ -16,6 +16,7 @@ unclutter &
 dwmbar &
 $HOME/.fehbg &
 $HOME/.dotfiles/scripts/redshift-toggle
+$HOME/.dotfiles/scripts/weather-daemon 60
 nm-applet &
 
 xset r rate 300 30

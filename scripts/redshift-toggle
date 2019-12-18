@@ -8,6 +8,7 @@ if [ -n "$current" ]; then
 else
     red="4000"
     redshift -P -O "$red"
+    mkdir -p "$HOME/.config/redshift/"
     echo "$red" > "$HOME/.config/redshift/gamma"
 fi
 
