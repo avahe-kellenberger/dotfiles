@@ -3,11 +3,26 @@
 if [[ "$1" = "-h" ]] || [[ "$1" = "--help" ]]; then
     printf "Help Menu:\n\n"
 
-    printf "      Run:                 ./weather.sh\n"
-    printf "      Help menu:          [-h | --help]\n"
-    printf "      Display with icon:  [-i | --icon]\n"
+    printf "      Help menu:              [-h | --help ]\n"
+    printf "      Display with icon:      [-i | --icon ]\n"
+    printf "      Round the temperature:  [-r | --round]\n"
     exit
 fi
+
+function get_icon() {
+    weather_line="$1";
+    if [[ "$weather_line" = *Snow* ]]; then
+        echo "${ICON_SNOW}"
+    elif [[ "$weather_line" = *Rain* ]] || [[ "$weather_line" = *Drizzle* ]]; then
+        echo "${ICON_RAINY}"
+    elif [[ "$weather_line" = *Cloud* ]]; then
+        echo "${ICON_CLOUDY}"
+    elif [[ "$weather_line" = *Clear* ]]; then
+        echo "${ICON_SUNNY}"
+    elif [[ "$weather_line" = *Fog* ]] || [[ "$weather_line" = *Mist* ]]; then
+        echo "${ICON_FOG}"
+    fi
+}
 
 API_KEY="730d0819cbc5feae20f1a2271c73752e"
 
@@ -36,19 +51,14 @@ WEATHER_DESCRIPTION=$(echo "${WEATHER_INFO}" | jq '.description' | tr -d '"' | s
 WEATHER_TEMP=$(echo "${WEATHER_RAW}" | jq '.main.temp')
 
 current_icon=""
-if [[ $1 == "-i" ]]; then
-    if [[ "${WEATHER_MAIN}" = *Snow* ]]; then
-        current_icon="${ICON_SNOW} "
-    elif [[ "${WEATHER_MAIN}" = *Rain* ]] || [[ "${WEATHER_MAIN}" = *Drizzle* ]]; then
-        current_icon="${ICON_RAINY} "
-    elif [[ "${WEATHER_MAIN}" = *Cloud* ]]; then
-        current_icon="${ICON_CLOUDY} "
-    elif [[ "${WEATHER_MAIN}" = *Clear* ]]; then
-        current_icon="${ICON_SUNNY} "
-    elif [[ "${WEATHER_MAIN}" = *Fog* ]] || [[ "${WEATHER_MAIN}" = *Mist* ]]; then
-        current_icon="${ICON_FOG} "
+
+for arg in "$@"; do
+    if [[ $arg == "-i" ]] || [[ $arg == "--icon" ]]; then
+        current_icon="$(get_icon "$WEATHER_MAIN") " 
+    elif [[ $arg == "-r" ]] || [[ $arg == "--round" ]]; then
+        WEATHER_TEMP="$(LC_ALL=C /usr/bin/printf "%.*f\n" "0" "$WEATHER_TEMP")"
     fi
-fi
+done
 
 echo "${current_icon}${WEATHER_DESCRIPTION} ${WEATHER_TEMP}${SYMBOL_FARENHEIT}" 
 
