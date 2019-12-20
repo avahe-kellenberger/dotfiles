@@ -9,7 +9,7 @@ fi
 while [ true ];
 do
     mkdir -p $HOME/.config/weather/
-    weather -i > "$HOME/.config/weather/current"
+    weather -i -r > "$HOME/.config/weather/current"
     sleep "$interval"
 done
 
