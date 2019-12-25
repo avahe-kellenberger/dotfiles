@@ -9,7 +9,13 @@ fi
 while [ true ];
 do
     mkdir -p $HOME/.config/weather/
-    weather -i -r > "$HOME/.config/weather/current"
-    sleep "$interval"
+    current="$(weather -i -r)"
+    if [ -z "$current" ]; then
+        sleep 1s
+        continue
+    else
+        weather -i -r > "$HOME/.config/weather/current"
+        sleep "$interval"
+    fi
 done
 

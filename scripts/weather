@@ -41,8 +41,7 @@ SYMBOL_FARENHEIT="˚F"
 WEATHER_URL="http://api.openweathermap.org/data/2.5/weather?id=${CITY_ID}&appid=${API_KEY}&units=imperial"
 WEATHER_RAW=$(wget -qO- "${WEATHER_URL}")
 if [[ -z "${WEATHER_RAW}" ]]; then
-    echo "Failed to connect."
-    exit
+    exit 1
 fi
 
 WEATHER_INFO=$(echo "${WEATHER_RAW}" | jq '.weather[0]')
