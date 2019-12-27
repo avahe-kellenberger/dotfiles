@@ -233,7 +233,7 @@ globalkeys = gears.table.join(
               {description = "reload awesome", group = "awesome"}),
     
     -- TODO: Figure out ctrl-alt-delete
-    awful.key({ modkey, "Shift"   }, "q", awesome.quit,
+    awful.key({ "Control", "Mod1"   }, "Delete", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
