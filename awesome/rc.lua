@@ -48,7 +48,7 @@ end
 beautiful.init(awful.util.getdir("config") .. "/themes/default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "xterm"
+terminal = "st"
 editor = os.getenv("EDITOR") or "nano"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -88,8 +88,47 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 -- {{{ Wibar
--- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+
+local get_volume = [[bash -c '
+    vol="$(pamixer --get-volume-human)"
+    if [ "$vol" == "muted" ]; then
+        printf "🔇 %s" "$vol"
+    else
+        printf "🔊 %s" "$vol"
+    fi
+']]
+
+local function refresh_volume()
+    awful.spawn.easy_async(get_volume, function(stdout, stderr, reason, exit_code)
+        volumeLabel.text = stdout
+    end)
+end
+
+local function set_weather()
+    awful.spawn.easy_async_with_shell("cat $HOME/.config/weather/current", function(out)
+        weatherLabel.text = out
+    end)
+end
+
+weatherLabel = wibox.widget.textbox()
+-- TODO: This is terrible but I don't see any other way
+volumeLabel = awful.widget.watch(get_volume, 0.05)
+clockLabel = awful.widget.watch("date +'📅 %a %d %b %Y | 🕓 %I:%M %p %Z'", 60)
+separatorLabel = wibox.widget.textbox(" | ")
+paddingLabel = wibox.widget.textbox(" ")
+
+refresh_volume()
+
+-- Bar loop
+local function refresh_bar()
+    set_weather()
+    awful.spawn.easy_async_with_shell("sleep 1m", function(out)
+        refresh_bar()
+    end)
+end
+refresh_bar()
+
+-- Create a wibox for each screen and add it
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -121,9 +160,8 @@ local taglist_buttons = gears.table.join(
                                           end))
  
 
---- TODO: This might not work
 local function set_wallpaper()
-    os.execute("$HOME/.fehbg &")
+    awful.spawn.easy_async_with_shell("$HOME/.fehbg &")
 end
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
@@ -166,8 +204,13 @@ awful.screen.connect_for_each_screen(function(s)
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            wibox.widget.systray(),
-            mytextclock
+            weatherLabel,
+            separatorLabel,
+            volumeLabel,
+            separatorLabel,
+            clockLabel,
+            paddingLabel,
+            wibox.widget.systray()
         },
     }
 
@@ -175,15 +218,24 @@ end)
 -- }}}
 
 -- {{{ Mouse bindings
-root.buttons(gears.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
-))
+--[[root.buttons(gears.table.join(
+awful.button({ }, 3, function () mymainmenu:toggle() end),
+awful.button({ }, 4, awful.tag.viewnext),
+awful.button({ }, 5, awful.tag.viewprev)
+))--]]
 -- }}}
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
+    awful.key({ modkey,           }, "b",
+              function()
+                  for s in screen do
+                      -- TODO
+                      screen.mywibox.visible = not screen.mywibox.visible
+                  end
+              end,
+              {description="show/hide bar", group="awesome"}),
+
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
@@ -227,12 +279,9 @@ globalkeys = gears.table.join(
         {description = "go back", group = "client"}),
 
     -- Standard program
-    --awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
-              --{description = "open a terminal", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     
-    -- TODO: Figure out ctrl-alt-delete
     awful.key({ "Control", "Mod1"   }, "Delete", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
 
@@ -265,10 +314,6 @@ globalkeys = gears.table.join(
               end,
               {description = "restore minimized", group = "client"}),
 
-    -- Prompt
-    -- awful.key({ modkey },            "b",     function () awful.screen.focused().mypromptbox:run() end,
-              -- {description = "run prompt", group = "launcher"}),
-
     awful.key({ modkey }, "x",
               function ()
                   awful.prompt.run {
@@ -279,10 +324,6 @@ globalkeys = gears.table.join(
                   }
               end,
               {description = "lua execute prompt", group = "awesome"})
-
-    -- Menubar
-     -- awful.key({ modkey }, "p", function() menubar.show() end,
-              -- {description = "show the menubar", group = "launcher"})
 )
 
 clientkeys = gears.table.join(
@@ -416,14 +457,16 @@ root.keys(globalkeys)
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
-      properties = { border_width = beautiful.border_width,
-                     border_color = beautiful.border_normal,
-                     focus = awful.client.focus.filter,
-                     raise = true,
-                     keys = clientkeys,
-                     buttons = clientbuttons,
-                     screen = awful.screen.preferred,
-                     placement = awful.placement.no_overlap+awful.placement.no_offscreen
+      properties = { 
+          size_hints_honor = false,
+          border_width = beautiful.border_width,
+          border_color = beautiful.border_normal,
+          focus = awful.client.focus.filter,
+          raise = true,
+          keys = clientkeys,
+          buttons = clientbuttons,
+          screen = awful.screen.preferred,
+          placement = awful.placement.no_overlap+awful.placement.no_offscreen
      }
     },
 
@@ -475,13 +518,26 @@ client.connect_signal("manage", function (c)
     -- Set the windows at the slave,
     -- i.e. put it at the end of others instead of setting it master.
     -- if not awesome.startup then awful.client.setslave(c) end
-
     if awesome.startup
       and not c.size_hints.user_position
       and not c.size_hints.program_position then
         -- Prevent clients from being unreachable after screen count changes.
         awful.placement.no_offscreen(c)
     end
+
+    -- Get the number of visible clients for the current screen.
+    local client_count = 0
+    for i, client in pairs(c.screen.clients) do
+        if not client.floating then
+            client_count = client_count + 1
+        end
+    end
+    if client_count == 1 then
+        c.border_color = beautiful.border_normal
+    elseif client_count == 2 then
+        c.screen.clients[1].border_color = beautiful.border_focus
+    end
+
 end)
 
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
@@ -530,7 +586,13 @@ client.connect_signal("mouse::enter", function(c)
 end)
 
 client.connect_signal("focus", function(c) 
-    if c.maximized == false then
+    local client_count = 0
+    for i, client in pairs(c.screen.clients) do
+        if not client.floating then
+            client_count = client_count + 1
+        end
+    end
+    if c.maximized == false and client_count ~= 1 then
         c.border_color = beautiful.border_focus 
     end
 end)
