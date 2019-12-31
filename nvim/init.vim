@@ -179,7 +179,7 @@ set incsearch
 " Highlight search
 set showmatch
 set hlsearch
-nnoremap <leader><space> :nohlsearch<CR>
+nnoremap <silent> <leader><space> :nohlsearch<CR>
 
 " Parenthesis matching
 highlight MatchParen ctermbg=4

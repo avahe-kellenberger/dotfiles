@@ -9,7 +9,6 @@ export VISUAL=nvim
 export BROWSER=qutebrowser
 export _KDECONNECT_DEFAULT_DEVICE="bb89add356ad357b"
 
-launch-compton &
 dunst &
 xmodmap ~/.Xmodmap
 unclutter &
@@ -21,4 +20,6 @@ dwmbar &
 nm-applet &
 
 xset r rate 300 30
+
+autorandr
 

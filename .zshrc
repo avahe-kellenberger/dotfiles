@@ -67,3 +67,4 @@ if [ "$(tty)" = "/dev/tty1" ] && [ -z "$(pgrep -i xorg)" ]; then
     exit 0;
 fi
 
+source /usr/share/nvm/init-nvm.sh

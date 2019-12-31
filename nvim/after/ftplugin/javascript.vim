@@ -1,5 +1,7 @@
-set expandtab
 set smarttab
+set expandtab
+set shiftwidth=2
+set softtabstop=2
 
 " From https://vimways.org/2018/death-by-a-thousand-files/
 setlocal suffixesadd=.js,.jsx
