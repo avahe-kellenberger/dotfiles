@@ -781,6 +781,58 @@ hi! link javascriptEndColons Normal
 
 " }}}
 
+" YATS: {{{	
+
+hi! link typescriptComment SrceryWhite	
+hi! link typescriptDocComment SrceryWhite	
+hi! link typescriptLineComment SrceryWhite	
+
+hi! link typescriptObjectMethod SrceryBrightRed
+
+hi! link typescriptImport SrceryBrightRed	
+hi! link typescriptMember SrceryYellow	
+hi! link typescriptPredefinedType SrceryGreen	
+hi! link typescriptNodeGlobal SrceryBrightRed	
+hi! link typescriptDOMDocMethod SrceryBrightRed	
+hi! link typescriptCall SrceryBrightWhite	
+hi! link typescriptExport SrceryBrightRed	
+hi! link typescriptVariable SrceryBrightBlue	
+hi! link typescriptString SrceryGreen	
+hi! link typescriptBOMWindowProp SrceryBrightRed	
+hi! link typescriptStatementKeyword SrceryBrightRed	
+hi! link typescriptObjectLabel SrceryGreen	
+hi! link typescriptAmbientDeclaration SrceryGreen	
+hi! link typescriptAliasKeyword SrceryBrightRed	
+hi! link typescriptKeywordOp SrceryGreen	
+hi! link typescriptNumber SrceryBrightBlue	
+hi! link typescriptObjectLiteral SrceryBrightBlue	
+hi! link typescriptFuncCallArg SrceryBrightOrange	
+hi! link typescriptObjectStaticMethod SrceryBrightRed	
+hi! link typescriptClassKeyword SrceryBrightRed	
+hi! link typescriptClassExtends SrceryBrightOrange	
+hi! link typescriptIdentifier SrceryBrightRed	
+hi! link typescriptAccessibilityModifier SrceryBrightRed	
+hi! link typescriptTemplate SrceryBrightRed	
+hi! link typescriptBlock SrceryBrightWhite	
+hi! link typescriptTypeBrackets SrceryBrightRed	
+hi! link typescriptTypeBracket SrceryBrightBlue	
+hi! link typescriptBinaryOp SrceryBrightRed	
+hi! link typescriptParamImpl SrceryBrightWhite	
+hi! link typescriptTypeReference SrceryGreen	
+hi! link typescriptCase SrceryBrightRed	
+hi! link typescriptMethodAccessor SrceryBrightRed	
+hi! link typescriptArrowFunc SrceryYellow	
+hi! link typescriptModule SrceryBrightRed	
+hi! link typescriptEnumKeyword SrceryMagenta	
+hi! link typescriptInterfaceKeyword SrceryBrightRed	
+hi! link typescriptInterfaceExtends SrceryBrightOrange	
+hi! link typescriptSpecial SrceryBrightOrange	
+hi! link typescriptParens SrceryBrightWhite	
+hi! link typescriptRestOrSpread SrceryBrightWhite	
+hi! link typescriptTypeParameter SrceryBrightWhite	
+
+ " }}}
+
 " CoffeeScript: {{{
 
 hi! link coffeeExtendedOp SrceryBrightWhite

@@ -16,6 +16,7 @@ Plug 'tmsvg/pear-tree'
 Plug 'kkoomen/vim-doge', { 'tag': '*', 'branch': 'master' }
 Plug 'honza/vim-snippets'
 Plug 'psliwka/vim-smoothie'
+Plug 'udalov/kotlin-vim'
 
 "}}}
 
@@ -333,6 +334,10 @@ autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
 " JavaScript{{{
 autocmd BufNewFile,BufRead *.js, set filetype=javascript
 autocmd BufNewFile,BufRead *.jsx set filetype=javascript.tsx
+"}}}
+
+" Kotlin{{{
+autocmd BufNewFile,BufRead *.kt, set filetype=kotlin
 "}}}
 
 " JSON{{{
