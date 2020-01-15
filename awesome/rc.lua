@@ -236,8 +236,26 @@ globalkeys = gears.table.join(
               end,
               {description="show/hide bar", group="awesome"}),
 
-    awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
-              {description="show help", group="awesome"}),
+    awful.key({ modkey,           }, "s",
+    function()
+        if screen:count() == 2 then
+            -- Swap the two (first) selected tags
+            local first_tag = screen[1].selected_tag
+            local second_tag = screen[2].selected_tag
+            first_tag:swap(second_tag)
+
+            -- Give the tags the other tag's name.
+            local second_tag_name = second_tag.name
+            second_tag.name = first_tag.name
+            first_tag.name = second_tag_name
+
+            -- Work around for a bug where multiple tags end up being selected.
+            first_tag:view_only()
+            second_tag:view_only()
+        end
+    end,
+              {description="swap selected tags", group="tag"}),
+
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
@@ -318,6 +336,7 @@ globalkeys = gears.table.join(
               function ()
                   awful.prompt.run {
                     prompt       = "Run Lua code: ",
+                    -- TODO: mypromptbox was deleted, woops
                     textbox      = awful.screen.focused().mypromptbox.widget,
                     exe_callback = awful.util.eval,
                     history_path = awful.util.get_cache_dir() .. "/history_eval"
@@ -517,7 +536,8 @@ awful.rules.rules = {
 client.connect_signal("manage", function (c)
     -- Set the windows at the slave,
     -- i.e. put it at the end of others instead of setting it master.
-    -- if not awesome.startup then awful.client.setslave(c) end
+    if not awesome.startup then awful.client.setslave(c) end
+
     if awesome.startup
       and not c.size_hints.user_position
       and not c.size_hints.program_position then

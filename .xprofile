@@ -16,7 +16,6 @@ $HOME/.fehbg &
 redshift-toggle
 weather-daemon 60 &
 
-dwmbar &
 nm-applet &
 
 xset r rate 300 30

@@ -10,6 +10,10 @@
   "jest.pathToConfig": "./package.json",
   "suggest.noselect": false,
   "languageserver": {
+    "kotlin": {
+      "command": "kotlin-language-server",
+      "filetypes": ["kotlin"]
+    },
     "golang": {
       "command": "gopls",
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
