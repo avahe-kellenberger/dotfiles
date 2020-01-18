@@ -8,6 +8,7 @@ export EDITOR=nvim
 export VISUAL=nvim
 export BROWSER=qutebrowser
 export _KDECONNECT_DEFAULT_DEVICE="bb89add356ad357b"
+export BATTERY="$(cat $HOME/.battery)"
 
 launch-compton &
 dunst &

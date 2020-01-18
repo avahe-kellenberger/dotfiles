@@ -110,9 +110,48 @@ local function set_weather()
     end)
 end
 
+local function set_battery_status()
+    awful.spawn.easy_async_with_shell("cat /sys/class/power_supply/$BATTERY/capacity", function(charge)
+        charge = tonumber(charge)
+        awful.spawn.easy_async_with_shell("cat /sys/class/power_supply/$BATTERY/status", function(charging_status)
+            charging_status = tostring(charging_status)
+            local icon = ""
+            if charging_status == "Discharging\n" then
+                if charge <= 10 then
+                    icon=""
+                elseif charge <= 20 then
+                    icon=""
+                elseif charge <= 30 then
+                    icon="" 
+                elseif charge <= 40 then
+                    icon="" 
+                elseif charge <= 50 then
+                    icon="" 
+                elseif charge <= 60 then
+                    icon="" 
+                elseif charge <= 70 then
+                    icon="" 
+                elseif charge <= 80 then
+                    icon="" 
+                elseif charge <= 90 then
+                    icon="" 
+                else 
+                    icon="" 
+                end
+            else
+                icon=""
+            end
+
+            batteryLabel.text = string.format("%s %s%% | ", icon, charge)
+
+        end)
+    end)
+end
+
 weatherLabel = wibox.widget.textbox()
 -- TODO: This is terrible but I don't see any other way
 volumeLabel = awful.widget.watch(get_volume, 0.05)
+batteryLabel = wibox.widget.textbox()
 clockLabel = awful.widget.watch("date +'📅 %a %d %b %Y | 🕓 %I:%M %p %Z'", 60)
 separatorLabel = wibox.widget.textbox(" | ")
 paddingLabel = wibox.widget.textbox(" ")
@@ -122,6 +161,7 @@ refresh_volume()
 -- Bar loop
 local function refresh_bar()
     set_weather()
+    set_battery_status()
     awful.spawn.easy_async_with_shell("sleep 1m", function(out)
         refresh_bar()
     end)
@@ -208,6 +248,7 @@ awful.screen.connect_for_each_screen(function(s)
             separatorLabel,
             volumeLabel,
             separatorLabel,
+            batteryLabel,
             clockLabel,
             paddingLabel,
             wibox.widget.systray()
