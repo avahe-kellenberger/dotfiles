@@ -1,4 +1,4 @@
 #!/bin/bash
 
-compton --blur-method kawase --blur-strength 7 --backend glx  --blur-background --config ~/.config/compton/compton-transparent.conf
+compton --backend glx --paint-on-overlay --glx-no-stencil --vsync opengl-swc --config ~/.config/compton/compton.conf
 

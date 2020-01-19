@@ -268,6 +268,14 @@ awful.button({ }, 5, awful.tag.viewprev)
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
+    awful.key({ modkey, "Shift" }, "=",
+              function()
+                -- TODO: https://awesomewm.org/doc/api/classes/wibox.layout.ratio.html#wibox.layout.ratio:reset
+                -- The below complains about a nil value
+                -- wibox.layout.ratio:reset(awful.layout.layouts[1])
+              end,
+              {description="Reset layout ratio", group="tag"}),
+
     awful.key({ modkey,           }, "b",
               function()
                   for s in screen do

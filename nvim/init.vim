@@ -10,7 +10,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'fatih/vim-go'
-Plug 'calviken/vim-gdscript3'
+Plug 'clktmr/vim-gdscript3'
 Plug 'neoclide/jsonc.vim'
 Plug 'tmsvg/pear-tree'
 Plug 'kkoomen/vim-doge', { 'tag': '*', 'branch': 'master' }
