@@ -19,6 +19,10 @@ Plug 'psliwka/vim-smoothie'
 Plug 'udalov/kotlin-vim'
 Plug 'tpope/vim-fugitive'
 
+Plug 'puremourning/vimspector', {'do': 'nvm install 10 && ./install_gadget.py --force-enable-node'}
+
+let g:vimspector_enable_mappings = 'HUMAN'
+
 "}}}
 
 call plug#end()
