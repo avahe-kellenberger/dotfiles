@@ -1,0 +1,12 @@
+#!/bin/bash
+
+PID="$(pgrep "byzanz-record")"
+
+if [ -z "$PID" ]; then
+    byzanz-record $(slop -f "--x=%x --y=%y --width=%w --height=%h") ".temp.gif"
+else
+    kill "$PID";
+    cat ".temp.gif" | 0x0 | awk '{printf $1}' | xclip -sel clipboard
+    rm .temp.gif
+fi
+

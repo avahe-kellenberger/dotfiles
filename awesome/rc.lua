@@ -112,6 +112,12 @@ end
 
 local function set_battery_status()
     awful.spawn.easy_async_with_shell("cat /sys/class/power_supply/$BATTERY/capacity", function(charge)
+
+        -- Exit early if there is no battery
+        if charge == "" then
+            return
+        end
+
         charge = tonumber(charge)
         awful.spawn.easy_async_with_shell("cat /sys/class/power_supply/$BATTERY/status", function(charging_status)
             charging_status = tostring(charging_status)
