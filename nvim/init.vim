@@ -1,8 +1,8 @@
 " vim documentation: http://vimdoc.sourceforge.net/htmldoc/usr_toc.html
 
-call plug#begin('~/.vim/plugged')
-
 " Plugins{{{
+
+call plug#begin('~/.vim/plugged')
 
 Plug 'mhinz/vim-startify'
 Plug 'neoclide/coc.nvim', { 'tag': '*', 'branch': 'release' }
@@ -19,13 +19,34 @@ Plug 'psliwka/vim-smoothie'
 Plug 'udalov/kotlin-vim'
 Plug 'tpope/vim-fugitive'
 
-Plug 'puremourning/vimspector', {'do': 'nvm install 10 && ./install_gadget.py --force-enable-node'}
+Plug 'liuchengxu/vista.vim'
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+let g:vista#renderer#enable_icon = 1
+let g:vista#renderer#icons = {
+\   "function": "\uf794",
+\   "variable": "\uf71b",
+\  }
 
+Plug 'pangloss/vim-javascript'
+let g:javascript_plugin_jsdoc = 1
+
+augroup javascript_folding
+    au!
+    au FileType javascript setlocal foldmethod=syntax
+augroup END
+
+Plug 'puremourning/vimspector', {'do': 'nvm install 10 && ./install_gadget.py --force-enable-node'}
 let g:vimspector_enable_mappings = 'HUMAN'
 
-"}}}
+function StartDebugFunc()
+    let job = jobstart('npm run debug:func')
+    call vimspector#LaunchWithSettings( { pid: jobpid(job) })
+endfunction
+nnoremap <F3> start_debug_func<CR>
 
 call plug#end()
+
+"}}}
 
 " vim-package-info{{{
 

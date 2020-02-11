@@ -10,3 +10,6 @@ setlocal define=class\\s\\\|^\\s*function
 
 nnoremap <expr> <C-n> 'Odebugger;<esc>:w<CR>:vsp<CR> :term<CR>Anode inspect ' . expand('%') .'<CR>'
 
+nnoremap<F1> :!npm run test:unit<CR>
+nnoremap<F2> :!npm run test:func<CR>
+

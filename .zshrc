@@ -18,11 +18,14 @@ alias grep="grep --color"
 alias copy="xclip -sel clipboard"
 
 alias gr="nvim \$(git status --porcelain | awk '{ if (\$1 == \"M\") print \$2 }')"
+alias gd="git diff"
+alias gs="git status"
 alias rg="rg -p"
 alias less="less -R"
 
 alias b="cd $HOME/programming/accounts/billing-api && clear"
 alias a="cd $HOME/programming/accounts/accusers-api && clear"
+alias as="cd $HOME/programming/accounts/account-scripts && clear"
 
 export MYVIMRC='~/.config/nvim/init.vim'
 export VIMINIT='source $MYVIMRC'
