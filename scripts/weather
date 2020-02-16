@@ -29,12 +29,12 @@ API_KEY="730d0819cbc5feae20f1a2271c73752e"
 # Check on http://openweathermap.org/find
 CITY_ID="4352053"
 
-ICON_SUNNY=""
-ICON_CLOUDY=""
-ICON_RAINY="☔"
-ICON_STORM=""
-ICON_SNOW=""
-ICON_FOG=""
+ICON_SUNNY="🌞"
+ICON_CLOUDY="⛅"
+ICON_RAINY="🌧"
+ICON_STORM="🌩"
+ICON_SNOW="❄"
+ICON_FOG="🌁"
 
 SYMBOL_FARENHEIT="˚F"
 
