@@ -27,6 +27,8 @@ alias b="cd $HOME/programming/accounts/billing-api && clear"
 alias a="cd $HOME/programming/accounts/accusers-api && clear"
 alias as="cd $HOME/programming/accounts/account-scripts && clear"
 
+alias randomcommit="curl http://whatthecommit.com/index.txt"
+
 export MYVIMRC='~/.config/nvim/init.vim'
 export VIMINIT='source $MYVIMRC'
 
@@ -49,6 +51,14 @@ man() {
         LESS_TERMCAP_ue=$'\e[0m' \
         LESS_TERMCAP_us=$'\e[01;32m' \
         command man "$@"
+}
+
+def() {
+    (curl "dict://dict.org/d:"$1"")
+}
+
+shorten() {
+    (curl -s http://tinyurl.com/api-create.php?url="\$1")
 }
 
 # Lines configured by zsh-newuser-install

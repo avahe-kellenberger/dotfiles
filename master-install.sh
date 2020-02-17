@@ -1,6 +1,8 @@
 # Notes: Change the shell to zsh prior to running this script.
 # chsh USER -s /usr/bin/zsh
 
+AUR: libxft-bgra
+
 sudo pacman -S i3 rofi openssh lxappearance-gtk3 vim zsh xclip nodejs python jq wget pulseaudio pavucontrol compton keepass firefox mps-youtube youtube-dl git curl xorg-xinit xorg-server xorg-xprop networkmanager bc dina-font arc-gtk-theme papirus-icon-theme mpv cmus unclutter imagemagick
 
 # private dotfiles
