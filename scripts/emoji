@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
 
-chosen=$(grep -v "#" $HOME/.dotfiles/emoji.list | dmenu -i -l 20 -fn Monospace-18)
+chosen=$(cat $HOME/.dotfiles/emoji.list | dmenu -i -l 20 -fn Monospace-14)
 
-[ "$chosen" != "" ] || exit
+[ -n "$chosen" ] || exit
 
 c=$(echo "$chosen" | sed "s/ .*//")
 echo "$c" | tr -d '\n' | xclip -selection clipboard

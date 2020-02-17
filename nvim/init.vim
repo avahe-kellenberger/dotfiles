@@ -43,6 +43,7 @@ function StartDebugFunc()
     call vimspector#LaunchWithSettings( { pid: jobpid(job) })
 endfunction
 nnoremap <F3> start_debug_func<CR>
+"}}}
 
 call plug#end()
 
@@ -60,19 +61,27 @@ hi VimPackageInfoMajor guifg=#F44336
 
 " Status line{{{
 
+function! LightLineFugitive()       
+    let branch = FugitiveHead()
+    return branch !=# '' ? ' '.branch : ''
+endfunction
+
 " Add diagnostic info for https://github.com/itchyny/lightline.vim
 let g:lightline = {
             \ 'colorscheme': 'one',
             \ 'active': {
             \   'left': [ [ 'mode', 'paste' ],
-            \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+            \             [ 'gitbranch', 'cocstatus', 'readonly', 'filename', 'modified' ] ]
             \ },
             \ 'component_function': {
-            \   'cocstatus': 'coc#status'
+            \   'cocstatus': 'coc#status',
+            \   'gitbranch': 'LightLineFugitive'
+            \ },
+            \ 'component': {
+            \   'giticon': ''
             \ }
         \ }
 
-let g:lightline.separator = { 'left': '', 'right': '' }
 let g:lightline.subseparator = { 'left': '|', 'right': '|' }
 
 " Status line shows status - hide default

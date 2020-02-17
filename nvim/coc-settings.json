@@ -9,16 +9,20 @@
   "jest.pathToJest": "./node_modules/.bin/jest",
   "jest.pathToConfig": "./package.json",
   "suggest.noselect": false,
+
   "languageserver": {
+
     "kotlin": {
       "command": "kotlin-language-server",
       "filetypes": ["kotlin"]
     },
+
     "golang": {
       "command": "gopls",
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
       "filetypes": ["go"]
     },
+
     "ccls": {
       "command": "ccls",
       "filetypes": ["c", "cpp", "objc", "objcpp"],
@@ -34,6 +38,13 @@
           "directory": "/tmp/ccls"
         }
       }
+    },
+
+    "bash": {
+      "command": "bash-language-server",
+      "args": ["start"],
+      "filetypes": ["sh"],
+      "ignoredRootPaths": ["~"]
     }
   }
 }
