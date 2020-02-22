@@ -1,4 +1,4 @@
 #!/bin/bash
 
-sort "$HOME/.contacts" | dmenu -i -h 12 -l 16
+sort "$HOME/.contacts" | dmenu -i -c -l 16
 
