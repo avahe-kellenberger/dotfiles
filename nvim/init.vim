@@ -8,7 +8,14 @@ Plug 'mhinz/vim-startify'
 Plug 'neoclide/coc.nvim', { 'tag': '*', 'branch': 'release' }
 Plug 'itchyny/lightline.vim'
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'kien/ctrlp.vim'
+
+Plug '/usr/bin/fzf'
+Plug 'junegunn/fzf.vim'
+nnoremap <C-p> :Files<CR>
+nnoremap <C-o> :Buffers<CR>
+nnoremap <C-g> :GFiles<CR>
+nnoremap <C-r> :Rg! 
+
 Plug 'fatih/vim-go'
 Plug 'clktmr/vim-gdscript3'
 Plug 'neoclide/jsonc.vim'
@@ -198,12 +205,7 @@ nnoremap <silent> K :tabnext<CR>
 " Display the cursor location with lines
 set cursorline
 
-"CtrlP {{{
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/*
-let g:ctrlp_show_hidden = 1
-
-nnoremap <C-o> :CtrlPBuffer<CR>
-" }}}
 
 " CoC{{{
 
