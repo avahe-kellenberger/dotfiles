@@ -15,13 +15,13 @@ nnoremap <C-p> :Files<CR>
 nnoremap <C-o> :Buffers<CR>
 nnoremap <C-g> :GFiles<CR>
 nnoremap <C-r> :Rg! 
+nnoremap U :redo<CR>
 
 Plug 'fatih/vim-go'
 Plug 'clktmr/vim-gdscript3'
 Plug 'neoclide/jsonc.vim'
 Plug 'tmsvg/pear-tree'
 Plug 'kkoomen/vim-doge', { 'tag': '*', 'branch': 'master' }
-Plug 'honza/vim-snippets'
 Plug 'psliwka/vim-smoothie'
 Plug 'udalov/kotlin-vim'
 Plug 'tpope/vim-fugitive'
@@ -59,7 +59,8 @@ let g:lightline = {
             \   'gitbranch': 'LightLineFugitive'
             \ },
             \ 'component': {
-            \   'giticon': ''
+            \   'giticon': '',
+            \   'filename': '%F',
             \ }
         \ }
 
@@ -164,9 +165,9 @@ set wrapmargin=0
 " Smart tabbing
 set expandtab
 set smarttab
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
 
 " Search with smart casing
 set ignorecase
@@ -280,7 +281,7 @@ nmap <leader>f  <Plug>(coc-format-selected)
 augroup mygroup
     autocmd!
     " Setup formatexpr specified filetype(s).
-    autocmd FileType typescript,javascript,json setl formatexpr=CocAction('formatSelected')
+    autocmd FileType typescript,typescriptreact,javascript,javascriptreact,json setl formatexpr=CocAction('formatSelected')
     " Update signature help on jump placeholder
     autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
@@ -339,12 +340,12 @@ autocmd BufWritePre *.java :CocCommand java.action.organizeImports
 
 " TypeScript{{{
 autocmd BufNewFile,BufRead *.ts, set filetype=typescript
-autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
+autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
 "}}}
 
 " JavaScript{{{
 autocmd BufNewFile,BufRead *.js, set filetype=javascript
-autocmd BufNewFile,BufRead *.jsx set filetype=javascript.tsx
+autocmd BufNewFile,BufRead *.jsx set filetype=javascriptreact
 "}}}
 
 " Kotlin{{{
