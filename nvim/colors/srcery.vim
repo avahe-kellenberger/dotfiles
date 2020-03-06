@@ -421,8 +421,11 @@ endif
 if v:version >= 700
   " Popup menu: normal item
   call s:HL('Pmenu', s:bright_white, s:bright_black)
+  execute 'hi Pmenu ctermbg='..s:xgray2[1]..' guibg='..s:xgray2[1]
+
   " Popup menu: selected item
   call s:HL('PmenuSel', s:bright_white, s:magenta, s:bold)
+  execute 'hi PmenuSel ctermbg='..s:blue[1]..' guibg='..s:blue[1]
 
   if g:srcery_transparent_background == 1 && !has('gui_running')
     " Popup menu: scrollbar
