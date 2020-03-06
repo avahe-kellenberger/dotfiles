@@ -163,6 +163,8 @@ endfunction
 " Srcery Hi Groups: {{{
 
 " memoize common hi groups
+execute 'hi MyFloatingWindow ctermbg='..s:xgray2[1]..' guibg='..s:xgray2[1]
+hi link NormalFloat MyFloatingWindow
 call s:HL('SrceryWhite', s:white)
 call s:HL('SrceryRed', s:red)
 call s:HL('SrceryGreen', s:green)
