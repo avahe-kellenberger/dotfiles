@@ -10,16 +10,18 @@ Plug 'HerringtonDarkholme/yats.vim'
 
 " CoC Plugins
 Plug 'neoclide/coc.nvim', { 'tag': '*', 'branch': 'release' }
-"Plug 'neoclide/coc-tsserver'
-"Plug 'neoclide/coc-eslint'
-"Plug 'neoclide/coc-git'
-"Plug 'neoclide/coc-snippets'
-"Plug 'neoclide/coc-json'
-"Plug 'neoclide/coc-css'
-"Plug 'neoclide/coc-html'
-"Plug 'neoclide/coc-pairs'
-"Plug 'neoclide/coc-yaml'
-"Plug 'neoclide/coc-stylelint'
+let g:coc_global_extensions = [
+	\ 'coc-tsserver',
+	\ 'coc-eslint',
+	\ 'coc-git',
+	\ 'coc-snippters',
+	\ 'coc-json',
+	\ 'coc-css',
+	\ 'coc-html',
+	\ 'coc-pairs',
+	\ 'coc-yaml',
+	\ 'coc-stylelint'
+\ ]
 
 " Fzf
 Plug '/usr/bin/fzf'
