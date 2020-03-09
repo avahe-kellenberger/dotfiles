@@ -14,7 +14,7 @@ let g:coc_global_extensions = [
 	\ 'coc-tsserver',
 	\ 'coc-eslint',
 	\ 'coc-git',
-	\ 'coc-snippters',
+	\ 'coc-snippets',
 	\ 'coc-json',
 	\ 'coc-css',
 	\ 'coc-html',
