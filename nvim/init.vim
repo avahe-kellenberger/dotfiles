@@ -5,10 +5,23 @@ call plug#begin('~/.vim/plugged')
 " Plugins{{{
 
 Plug 'mhinz/vim-startify'
-Plug 'neoclide/coc.nvim', { 'tag': '*', 'branch': 'release' }
 Plug 'itchyny/lightline.vim'
 Plug 'HerringtonDarkholme/yats.vim'
 
+" CoC Plugins
+Plug 'neoclide/coc.nvim', { 'tag': '*', 'branch': 'release' }
+"Plug 'neoclide/coc-tsserver'
+"Plug 'neoclide/coc-eslint'
+"Plug 'neoclide/coc-git'
+"Plug 'neoclide/coc-snippets'
+"Plug 'neoclide/coc-json'
+"Plug 'neoclide/coc-css'
+"Plug 'neoclide/coc-html'
+"Plug 'neoclide/coc-pairs'
+"Plug 'neoclide/coc-yaml'
+"Plug 'neoclide/coc-stylelint'
+
+" Fzf
 Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
 nnoremap <C-p> :Files<CR>
@@ -20,7 +33,7 @@ nnoremap U :redo<CR>
 Plug 'fatih/vim-go'
 Plug 'clktmr/vim-gdscript3'
 Plug 'neoclide/jsonc.vim'
-Plug 'tmsvg/pear-tree'
+" Plug 'tmsvg/pear-tree'
 Plug 'kkoomen/vim-doge', { 'tag': '*', 'branch': 'master' }
 Plug 'psliwka/vim-smoothie'
 Plug 'udalov/kotlin-vim'
