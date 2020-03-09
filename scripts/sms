@@ -2,10 +2,10 @@
 
 IFS=':' read -r name phone_number < <(contacts)
 if [[ -n "${phone_number}" ]]; then
-    msg="$(echo "" | dmenu -i -w 555 -p "$name:")";
-    if [[ -n "${msg}" ]]; then
-        kdeconnect-cli --device "${_KDECONNECT_DEFAULT_DEVICE}" --send-sms "${msg}" --destination "${phone_number}" && \
-        notify-send "Sending text to ${name}"
-    fi
+  msg="$(echo "" | dmenu -i -c -p "$name:")";
+  if [[ -n "${msg}" ]]; then
+    kdeconnect-cli --device "${_KDECONNECT_DEFAULT_DEVICE}" --send-sms "${msg}" --destination "${phone_number}" && \
+      notify-send "Sending text to ${name}"
+  fi
 fi
 

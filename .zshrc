@@ -1,3 +1,5 @@
+KEYTIMEOUT=1
+
 git_branch() {
     if out="$(git -C . rev-parse > /dev/null 2>&1)"; then 
         printf " $%s$(git branch | pcregrep -o1 "\*[\s]*(.*)")"

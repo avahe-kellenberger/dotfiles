@@ -3,7 +3,12 @@
   "tsserver.orgnizeImportOnSave": true,
 
   "eslint.autoFixOnSave": true,
-  "eslint.filetypes": ["javascript", "javascriptreact", "typescript"],
+  "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+
+  "snippets.extends": {
+    "javascriptreact": ["javascript"],
+    "typescriptreact": ["typescript"],
+  },
 
   "jest.enabled": true,
   "jest.pathToJest": "./node_modules/.bin/jest",
