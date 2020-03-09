@@ -5,6 +5,8 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'mhinz/vim-startify'
+nnoremap <C-s> :Startify<CR>
+
 Plug 'itchyny/lightline.vim'
 Plug 'HerringtonDarkholme/yats.vim'
 
@@ -14,7 +16,7 @@ let g:coc_global_extensions = [
 	\ 'coc-tsserver',
 	\ 'coc-eslint',
 	\ 'coc-git',
-	\ 'coc-snippters',
+	\ 'coc-snippets',
 	\ 'coc-json',
 	\ 'coc-css',
 	\ 'coc-html',
@@ -29,13 +31,13 @@ Plug 'junegunn/fzf.vim'
 nnoremap <C-p> :Files<CR>
 nnoremap <C-o> :Buffers<CR>
 nnoremap <C-g> :GFiles<CR>
+
 nnoremap <C-r> :Rg! 
 nnoremap U :redo<CR>
 
 Plug 'fatih/vim-go'
 Plug 'clktmr/vim-gdscript3'
 Plug 'neoclide/jsonc.vim'
-" Plug 'tmsvg/pear-tree'
 Plug 'kkoomen/vim-doge', { 'tag': '*', 'branch': 'master' }
 Plug 'psliwka/vim-smoothie'
 Plug 'udalov/kotlin-vim'
@@ -145,6 +147,8 @@ let g:coc_snippet_next = '<tab>'
 " }}}
 
 " Configuration{{{
+
+let g:netrw_fastbrowse = 0
 
 nnoremap <silent> ' :execute "normal! '" . nr2char(getchar()) . 'zt'<CR>
 

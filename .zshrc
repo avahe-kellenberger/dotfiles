@@ -1,4 +1,4 @@
-KEYTIMEOUT=1
+KEYTIMEOUT=0
 
 git_branch() {
     if out="$(git -C . rev-parse > /dev/null 2>&1)"; then 
@@ -27,6 +27,7 @@ alias less="less -R"
 
 alias b="cd $HOME/programming/accounts/billing-api && clear"
 alias a="cd $HOME/programming/accounts/accusers-api && clear"
+alias d="cd $HOME/programming/accounts/data-privacy-api && clear"
 alias as="cd $HOME/programming/accounts/account-scripts && clear"
 
 alias randomcommit="curl http://whatthecommit.com/index.txt"

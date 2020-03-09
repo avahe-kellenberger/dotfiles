@@ -1,6 +1,7 @@
 {
   "tsserver.npm": "/usr/bin/npm",
   "tsserver.orgnizeImportOnSave": true,
+  "tsserver.enableJavascript": true,
 
   "eslint.autoFixOnSave": true,
   "eslint.filetypes": ["javascript", "javascriptreact", "typescript", "typescriptreact"],

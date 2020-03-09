@@ -15,6 +15,7 @@ settings:
     https://na2.docusign.net: false
   content.notifications:
     https://circleci.com: true
+    https://gitter.im: true
     https://na.op.gg: false
     https://nextcloud.avahe.tk: false
     https://www.reddit.com: false
