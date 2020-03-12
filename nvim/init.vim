@@ -4,6 +4,7 @@
 
 call plug#begin('~/.vim/plugged')
 
+Plug 'kshenoy/vim-signature'
 Plug 'mhinz/vim-startify'
 nnoremap <C-s> :Startify<CR>
 
@@ -20,9 +21,9 @@ let g:coc_global_extensions = [
 	\ 'coc-json',
 	\ 'coc-css',
 	\ 'coc-html',
-	\ 'coc-pairs',
 	\ 'coc-yaml',
-	\ 'coc-stylelint'
+	\ 'coc-stylelint',
+  \ 'coc-cssmodules'
 \ ]
 
 " Fzf
@@ -38,6 +39,7 @@ nnoremap U :redo<CR>
 Plug 'fatih/vim-go'
 Plug 'clktmr/vim-gdscript3'
 Plug 'neoclide/jsonc.vim'
+Plug 'tmsvg/pear-tree'
 Plug 'kkoomen/vim-doge', { 'tag': '*', 'branch': 'master' }
 Plug 'psliwka/vim-smoothie'
 Plug 'udalov/kotlin-vim'

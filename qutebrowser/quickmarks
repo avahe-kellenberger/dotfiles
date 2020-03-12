@@ -12,3 +12,6 @@ account-api https://developers.sparkpost.com/api/account/#account
 webui https://github.com/SparkPost/2web2ui
 as https://github.com/SparkPost/account-scripts
 auth-api https://github.com/SparkPost/auth-api
+public-api https://developers.sparkpost.com/api/account/#account-put-update-account-information
+data-privacy-api https://github.com/SparkPost/data-privacy-api
+access-api https://github.com/SparkPost/access

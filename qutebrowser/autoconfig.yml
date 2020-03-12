@@ -20,6 +20,7 @@ settings:
     https://nextcloud.avahe.tk: false
     https://www.reddit.com: false
   content.register_protocol_handler:
+    https://calendar.google.com?cid=%25s: true
     https://mail.google.com?extsrc=mailto&url=%25s: false
     https://mail.yandex.com?mailto=%25s: false
   content.user_stylesheets:
