@@ -14,16 +14,18 @@ Plug 'HerringtonDarkholme/yats.vim'
 " CoC Plugins
 Plug 'neoclide/coc.nvim', { 'tag': '*', 'branch': 'release' }
 let g:coc_global_extensions = [
-	\ 'coc-tsserver',
+  \ 'coc-clangd',
+	\ 'coc-css',
+  \ 'coc-cssmodules',
 	\ 'coc-eslint',
 	\ 'coc-git',
-	\ 'coc-snippets',
-	\ 'coc-json',
-	\ 'coc-css',
 	\ 'coc-html',
-	\ 'coc-yaml',
+	\ 'coc-json',
+	\ 'coc-snippets',
 	\ 'coc-stylelint',
-  \ 'coc-cssmodules'
+	\ 'coc-tsserver',
+	\ 'coc-yaml',
+  \ 'https://github.com/andys8/vscode-jest-snippets'
 \ ]
 
 " Fzf
@@ -36,14 +38,17 @@ nnoremap <C-g> :GFiles<CR>
 nnoremap <C-r> :Rg! 
 nnoremap U :redo<CR>
 
-Plug 'fatih/vim-go'
 Plug 'clktmr/vim-gdscript3'
 Plug 'neoclide/jsonc.vim'
 Plug 'tmsvg/pear-tree'
 Plug 'kkoomen/vim-doge', { 'tag': '*', 'branch': 'master' }
 Plug 'psliwka/vim-smoothie'
 Plug 'udalov/kotlin-vim'
+Plug 'fatih/vim-go'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vinegar'
 
 Plug 'liuchengxu/vista.vim'
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]

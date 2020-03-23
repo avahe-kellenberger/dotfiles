@@ -6,7 +6,7 @@ export PATH="$HOME/.local/opt/pso:$PATH:$GOBIN:$HOME/.yarn/bin:$HOME/.config/yar
 
 export EDITOR=nvim
 export VISUAL=nvim
-export BROWSER=qutebrowser
+export BROWSER=vivaldi-stable
 export _KDECONNECT_DEFAULT_DEVICE="bb89add356ad357b"
 export BATTERY="$(cat $HOME/.battery)"
 
