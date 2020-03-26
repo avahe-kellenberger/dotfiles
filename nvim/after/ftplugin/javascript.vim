@@ -12,4 +12,5 @@ nnoremap <expr> <C-n> 'Odebugger;<esc>:w<CR>:vsp<CR> :term<CR>Anode inspect ' . 
 
 nnoremap<F1> :!npm run test:unit<CR>
 nnoremap<F2> :!npm run test:func<CR>
+nnoremap<F3> :!npm run debug:func<CR>
 
