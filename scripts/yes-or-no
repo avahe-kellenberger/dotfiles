@@ -8,7 +8,7 @@ if [[ -z "$msg" ]] || [[ -z "$cmd" ]]; then
     exit 1;
 fi
 
-response=$(echo -e "no\nyes" | dmenu -l 2 -p "${msg}");
+response=$(echo -e "no\nyes" | dmenu -c -l 2 -p "${msg}");
 
 if [ "${response}" == "yes" ]; then
     sh -c "${cmd}"
