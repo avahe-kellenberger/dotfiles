@@ -1,8 +1,5 @@
 " vim documentation: http://vimdoc.sourceforge.net/htmldoc/usr_toc.html
 
-" Load all .vim files in the relative config directory
-runtime! config/*.vim
-
 " Configuration{{{
 
 " Swap ` and ' for marks, then run zt
@@ -224,3 +221,7 @@ nnoremap <silent> <Plug>Kwbd :<C-u>Kwbd<CR>
 nnoremap <leader>b :Kwbd<CR>
 
 "}}}
+
+" Load all .vim files in the relative config directory
+runtime! config/*.vim
+
