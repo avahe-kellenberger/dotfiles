@@ -1,5 +1,5 @@
 #!/bin/bash
 
 dir=$HOME/books/
-zathura "$dir$(find "$dir" -name "*\.pdf" | sed "s|$dir||g" | dmenu -l 16)"
+zathura "$dir$(find "$dir" -name "*\.pdf" | sed "s|$dir||g" | dmenu -c -l 16)"
 

@@ -49,6 +49,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
+Plug 'honza/vim-snippets'
 
 Plug 'liuchengxu/vista.vim'
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
@@ -497,3 +498,4 @@ nnoremap <silent> <Plug>Kwbd :<C-u>Kwbd<CR>
 nnoremap <leader>b :Kwbd<CR>
 
 "}}}
+

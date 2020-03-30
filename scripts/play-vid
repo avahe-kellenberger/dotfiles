@@ -1,5 +1,5 @@
 #!/bin/bash
 
 dir=$HOME/Videos/
-mpv "$dir$(find "$dir" -name "*\.*" | sed "s|$dir||g" | dmenu -l 16)"
+mpv "$dir$(find "$dir" -name "*\.*" | sed "s|$dir||g" | dmenu -c -l 16)"
 
