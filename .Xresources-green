@@ -5,3 +5,8 @@ dwm.selbordercolor: #519f50
 dwm.selbgcolor: #1c1b19
 dwm.selfgcolor: #519f50
 
+dmenu.background: #1c1b19
+dmenu.foreground: #519f50
+dmenu.selbackground: #519f50
+dmenu.selforeground: #fce8c3
+

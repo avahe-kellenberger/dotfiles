@@ -1,11 +1,20 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 IFS=':' read -r name phone_number < <(contacts)
-if [[ -n "${phone_number}" ]]; then
-  msg="$(echo "" | dmenu -i -c -p "$name:")";
-  if [[ -n "${msg}" ]]; then
-    kdeconnect-cli --device "${_KDECONNECT_DEFAULT_DEVICE}" --send-sms "${msg}" --destination "${phone_number}" && \
-      notify-send "Sending text to ${name}"
-  fi
+
+# Exit if a phone number was not selected
+[ -n "${phone_number}" ] || exit 1
+
+# vipe is part of the `moreutils` package
+msg="$(: | vipe)";
+
+# Exit if message was empty
+[ -n "${msg}" ] || exit 1
+
+if kdeconnect-cli --device "${_KDECONNECT_DEFAULT_DEVICE}" --send-sms "${msg}" --destination "${phone_number}" > /dev/null 2>&1; then
+  notify-send "Sending text to ${name}"
+else
+  notify-send "Failed to send text"
+  exit 1
 fi
 
