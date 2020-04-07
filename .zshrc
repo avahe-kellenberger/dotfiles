@@ -29,6 +29,7 @@ alias b="cd $HOME/programming/accounts/billing-api && clear"
 alias a="cd $HOME/programming/accounts/accusers-api && clear"
 alias d="cd $HOME/programming/accounts/data-privacy-api && clear"
 alias as="cd $HOME/programming/accounts/account-scripts && clear"
+alias api="cd $HOME/programming/accounts/sparkpost-admin-api-documentation && clear"
 
 alias randomcommit="curl http://whatthecommit.com/index.txt"
 
