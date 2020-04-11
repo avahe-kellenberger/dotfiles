@@ -2,15 +2,14 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export NODE_PATH="$(command -v node)"
 export GOPATH="$HOME/go/"
 export GOBIN="$HOME/go/bin/"
-export PATH="$HOME/.local/opt/pso:$PATH:$GOBIN:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.local/bin/"
+export PATH="$HOME/.nimble/bin:$HOME/.local/opt/pso:$PATH:$GOBIN:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$HOME/.local/bin/"
 
 export EDITOR=nvim
 export VISUAL=nvim
-export BROWSER=vivaldi-stable
+export BROWSER=firefox
 export _KDECONNECT_DEFAULT_DEVICE="bb89add356ad357b"
 export BATTERY="$(cat $HOME/.battery)"
 
-launch-compton &
 dunst &
 xmodmap ~/.Xmodmap
 unclutter &
