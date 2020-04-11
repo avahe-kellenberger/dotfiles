@@ -1,6 +1,6 @@
 " vim documentation: http://vimdoc.sourceforge.net/htmldoc/usr_toc.html
 
-call plug#begin('~/.vim/plugged')
+call plug#begin(stdpath('data'))
 
 " Plugins{{{
 
@@ -10,7 +10,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'HerringtonDarkholme/yats.vim'
 
 " CoC Plugins
-Plug 'neoclide/coc.nvim', { 'tag': '*', 'branch': 'release' }
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 let g:coc_global_extensions = [
   \ 'coc-clangd',
 	\ 'coc-css',
@@ -38,7 +38,7 @@ nnoremap U :redo<CR>
 Plug 'clktmr/vim-gdscript3'
 Plug 'neoclide/jsonc.vim'
 Plug 'tmsvg/pear-tree'
-Plug 'kkoomen/vim-doge', { 'tag': '*', 'branch': 'master' }
+Plug 'kkoomen/vim-doge'
 Plug 'psliwka/vim-smoothie'
 Plug 'udalov/kotlin-vim'
 Plug 'fatih/vim-go'
@@ -47,6 +47,9 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'honza/vim-snippets'
+Plug 'mhartington/oceanic-next'
+
+Plug 'zah/nim.vim'
 
 "}}}
 
@@ -166,7 +169,10 @@ set statusline=%F
 
 " Syntax highlighting
 syntax on
-colorscheme srcery
+" colorscheme srcery
+set termguicolors
+colorscheme OceanicNext"
+
 filetype on
 filetype plugin on
 filetype plugin indent on
@@ -213,7 +219,7 @@ set mouse=a
 " set wildmode=list:longest,full
 
 " Line numbers
-set number
+" set number
 
 " Incremental search
 set incsearch
@@ -271,9 +277,9 @@ endfunction
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
-" Use `[c` and `]c` to navigate diagnostics
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
@@ -371,6 +377,9 @@ autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
 autocmd BufNewFile,BufRead *.js, set filetype=javascript
 autocmd BufNewFile,BufRead *.jsx set filetype=javascriptreact
 "}}}
+
+" Nim
+autocmd BufNewFile,BufRead *.nim, set filetype=nim
 
 " Kotlin{{{
 autocmd BufNewFile,BufRead *.kt, set filetype=kotlin

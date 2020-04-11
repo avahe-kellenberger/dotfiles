@@ -33,6 +33,11 @@
       "args": ["start"],
       "filetypes": ["sh"],
       "ignoredRootPaths": ["~"]
+    },
+    
+    "nim": {
+      "command": "nimlsp",
+      "filetypes": ["nim"]
     }
 
   }
