@@ -10,6 +10,7 @@ export BROWSER=firefox
 export _KDECONNECT_DEFAULT_DEVICE="bb89add356ad357b"
 export BATTERY="$(cat $HOME/.battery)"
 
+launch-compton &
 dunst &
 xmodmap ~/.Xmodmap
 unclutter &

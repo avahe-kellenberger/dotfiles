@@ -1,4 +1,4 @@
 #!/bin/bash
 
-compton --config ~/.config/compton/compton.conf --blur-method kawase
+compton --config ~/.config/compton/compton.conf
 
