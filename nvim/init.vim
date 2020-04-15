@@ -10,6 +10,7 @@ nnoremap <C-s> :Startify<CR>
 
 Plug 'itchyny/lightline.vim'
 Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/oceanic-next'
 
 " CoC Plugins
 Plug 'neoclide/coc.nvim', { 'tag': '*', 'branch': 'release' }
@@ -156,6 +157,9 @@ let g:coc_snippet_next = '<tab>'
 
 " Configuration{{{
 
+" YATS says to disable this
+set re=0
+
 let g:netrw_fastbrowse = 0
 
 nnoremap <silent> ' :execute "normal! '" . nr2char(getchar()) . 'zt'<CR>
@@ -194,12 +198,13 @@ set laststatus=2
 set statusline=%F
 
 " Syntax highlighting
-syntax on
-colorscheme srcery
+syntax enable
+set termguicolors
+colorscheme OceanicNext
+" colorscheme srcery
 filetype on
 filetype plugin on
 filetype plugin indent on
-syntax enable
 set grepprg=grep\ -nH\ $*
 
 " Autocomplete
@@ -301,8 +306,8 @@ endfunction
 inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use `[c` and `]c` to navigate diagnostics
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
