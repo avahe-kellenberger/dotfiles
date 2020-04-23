@@ -1,8 +1,8 @@
 " vim documentation: http://vimdoc.sourceforge.net/htmldoc/usr_toc.html
 
-" Plugins{{{
+call plug#begin(stdpath('data'))
 
-call plug#begin('~/.vim/plugged')
+" Plugins{{{
 
 Plug 'kshenoy/vim-signature'
 Plug 'mhinz/vim-startify'
@@ -13,7 +13,7 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/oceanic-next'
 
 " CoC Plugins
-Plug 'neoclide/coc.nvim', { 'tag': '*', 'branch': 'release' }
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 let g:coc_global_extensions = [
   \ 'coc-clangd',
 	\ 'coc-css',
@@ -42,7 +42,7 @@ nnoremap U :redo<CR>
 Plug 'clktmr/vim-gdscript3'
 Plug 'neoclide/jsonc.vim'
 Plug 'tmsvg/pear-tree'
-Plug 'kkoomen/vim-doge', { 'tag': '*', 'branch': 'master' }
+Plug 'kkoomen/vim-doge'
 Plug 'psliwka/vim-smoothie'
 Plug 'udalov/kotlin-vim'
 Plug 'fatih/vim-go'
@@ -51,6 +51,9 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'honza/vim-snippets'
+Plug 'mhartington/oceanic-next'
+
+Plug 'zah/nim.vim'
 
 Plug 'liuchengxu/vista.vim'
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
@@ -202,6 +205,7 @@ syntax enable
 set termguicolors
 colorscheme OceanicNext
 " colorscheme srcery
+
 filetype on
 filetype plugin on
 filetype plugin indent on
@@ -305,7 +309,7 @@ endfunction
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
-" Use `[c` and `]c` to navigate diagnostics
+" Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
@@ -405,6 +409,9 @@ autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
 autocmd BufNewFile,BufRead *.js, set filetype=javascript
 autocmd BufNewFile,BufRead *.jsx set filetype=javascriptreact
 "}}}
+
+" Nim
+autocmd BufNewFile,BufRead *.nim, set filetype=nim
 
 " Kotlin{{{
 autocmd BufNewFile,BufRead *.kt, set filetype=kotlin
