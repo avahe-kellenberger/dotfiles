@@ -7,7 +7,7 @@
 
   "snippets.extends": {
     "javascriptreact": ["javascript"],
-    "typescriptreact": ["typescript"],
+    "typescriptreact": ["typescript"]
   },
 
   "jest.enabled": true,
@@ -16,7 +16,6 @@
   "suggest.noselect": false,
 
   "languageserver": {
-
     "kotlin": {
       "command": "kotlin-language-server",
       "filetypes": ["kotlin"]
@@ -37,9 +36,9 @@
     
     "nim": {
       "command": "nimlsp",
-      "filetypes": ["nim"]
+      "filetypes": ["nim"],
+      "trace.server": "verbose"
     }
-
   }
 
 }

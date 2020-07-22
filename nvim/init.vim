@@ -23,7 +23,8 @@ let g:coc_global_extensions = [
 	\ 'coc-stylelint',
 	\ 'coc-tsserver',
 	\ 'coc-yaml',
-  \ 'https://github.com/andys8/vscode-jest-snippets'
+  \ 'https://github.com/andys8/vscode-jest-snippets',
+  \ 'coc-java'
 \ ]
 
 " Fzf
@@ -32,8 +33,8 @@ Plug 'junegunn/fzf.vim'
 nnoremap <C-p> :Files<CR>
 nnoremap <C-o> :Buffers<CR>
 nnoremap <C-g> :GFiles<CR>
-nnoremap <C-r> :Rg! 
-nnoremap U :redo<CR>
+nnoremap <A-f> :BLines<CR>
+nnoremap <C-f> :Rg! 
 
 Plug 'clktmr/vim-gdscript3'
 Plug 'neoclide/jsonc.vim'
@@ -47,23 +48,25 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'honza/vim-snippets'
-Plug 'mhartington/oceanic-next'
-
-Plug 'zah/nim.vim'
+Plug 'alaviss/nim.nvim'
+Plug 'dracula/vim', { 'name': 'dracula' }
+Plug 'morhetz/gruvbox'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'liuchengxu/vista.vim'
 
 "}}}
 
 call plug#end()
 
-" vim-package-info{{{
+let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
+" Ensure you have installed some decent font to show these pretty symbols, then you can enable icon for the kind.
+let g:vista#renderer#enable_icon = 1
 
-let g:vim_package_info_virutaltext_highlight = 'NonText'
-
-hi VimPackageInfoPatch guifg=#8BC34A
-hi VimPackageInfoMinor guifg=#00BCD4
-hi VimPackageInfoMajor guifg=#F44336
-
-" }}}
+" The default icons can't be suitable for all the filetypes, you can extend it as you wish.
+let g:vista#renderer#icons = {
+\   "function": "\uf794",
+\   "variable": "\uf71b",
+\  }
 
 " Status line{{{
 
@@ -169,9 +172,11 @@ set statusline=%F
 
 " Syntax highlighting
 syntax on
+
 " colorscheme srcery
 set termguicolors
-colorscheme OceanicNext"
+" colorscheme dracula
+colorscheme gruvbox
 
 filetype on
 filetype plugin on
@@ -207,9 +212,8 @@ set smartcase
 set showcmd
 
 " Folding
-set foldenable
+set nofoldenable
 set foldmethod=marker
-nnoremap <space> za
 
 " Mouse support
 set mouse=a
@@ -219,7 +223,7 @@ set mouse=a
 " set wildmode=list:longest,full
 
 " Line numbers
-" set number
+set number
 
 " Incremental search
 set incsearch
@@ -231,7 +235,9 @@ nnoremap <leader><space> :nohlsearch<CR>
 
 " Parenthesis matching
 highlight MatchParen ctermbg=4
-nnoremap <silent> K :tabnext<CR>
+" nnoremap <silent> K :tabnext<CR>
+
+nnoremap S :%s//gI<Left><Left><Left>
 
 " Display the cursor location with lines
 set cursorline
@@ -249,8 +255,8 @@ set hidden
 set nobackup
 set nowritebackup
 
-" Better display for messages
-set cmdheight=2
+" Better display for messages, use 2
+set cmdheight=1
 
 " Smaller updatetime for CursorHold & CursorHoldI
 set updatetime=300
@@ -478,4 +484,6 @@ nnoremap <silent> <Plug>Kwbd :<C-u>Kwbd<CR>
 nnoremap <leader>b :Kwbd<CR>
 
 "}}}
+
+au BufRead,BufNewFile *.txt,*.tex,*.md set wrap linebreak nolist textwidth=0 wrapmargin=0
 

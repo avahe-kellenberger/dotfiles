@@ -26,19 +26,19 @@ super + r
     $HOME/.dotfiles/scripts/redshift-toggle
 
 # Screen shot
-control + alt + c
+super + shift + c
     $HOME/.dotfiles/scripts/screen_shot
 
 # Open content from clipboard
-control + alt + x
+super + shift + x
     $HOME/.dotfiles/scripts/open-clipboard
 
 # Disable touchpad
-control + alt + m
+super + shift + m
     $HOME/.dotfiles/scripts/toggle-touchpad
 
 # Lock screen
-control + alt + l
+super + shift + l
     i3lock -i $HOME/.dotfiles/lock-wallpaper -t
 
 # Volume control

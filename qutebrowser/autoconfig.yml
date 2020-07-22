@@ -11,6 +11,8 @@ settings:
       normal:
         M: hint links spawn mpv {hint-url}
         m: spawn mpv {url}
+  colors.webpage.prefers_color_scheme_dark:
+    global: true
   content.geolocation:
     https://na2.docusign.net: false
   content.notifications:

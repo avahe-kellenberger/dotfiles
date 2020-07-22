@@ -10,17 +10,17 @@ export BROWSER=firefox
 export _KDECONNECT_DEFAULT_DEVICE="bb89add356ad357b"
 export BATTERY="$(cat $HOME/.battery)"
 
-launch-compton &
+compton --config ~/.config/compton/compton.conf &
 dunst &
 xmodmap ~/.Xmodmap
 unclutter &
 $HOME/.fehbg &
-redshift-toggle
-weather-daemon 60 &
+weather-daemon 300 &
 
 nm-applet &
 
 xset r rate 300 30
 
 xrandr --output HDMI-0 --left-of DVI-D-0 --primary
+sxhkd &
 
