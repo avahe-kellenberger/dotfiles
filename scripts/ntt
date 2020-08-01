@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+wine "/home/avahe/.local/share/Steam/steamapps/common/Nuclear Throne/NuclearThroneTogether.exe"
+

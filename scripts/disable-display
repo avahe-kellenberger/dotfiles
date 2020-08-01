@@ -1,6 +1,6 @@
 #!/bin/bash
 
-selected="$(get-active-displays | dmenu -c -p "Disable Display:" -i -h 12 -l 16)"
+selected="$(get-active-displays | dmenu -c -p "Disable Display:" -i -l 16)"
 
 xrandr --output "$selected" --off
 
