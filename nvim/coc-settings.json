@@ -35,10 +35,11 @@
     },
     
     "nim": {
-      "command": "nimlsp",
+      "command": "/home/avahe/programming/nim/nimlsp/nimlsp",
       "filetypes": ["nim"],
       "trace.server": "verbose"
     }
-  }
+  },
+  "java.format.settings.url": "/home/avahe/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml"
 
 }

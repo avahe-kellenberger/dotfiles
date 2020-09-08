@@ -311,8 +311,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>f  :Format<CR>
+nmap <leader>f  :Format<CR>
 
 augroup mygroup
     autocmd!
@@ -486,4 +486,9 @@ nnoremap <leader>b :Kwbd<CR>
 "}}}
 
 au BufRead,BufNewFile *.txt,*.tex,*.md set wrap linebreak nolist textwidth=0 wrapmargin=0
+
+" Vim fugitive mappings
+nnoremap <leader>gs :G<CR>
+nnoremap <leader>gu :diffget //2<CR>
+nnoremap <leader>gh :diffget //3<CR>
 
