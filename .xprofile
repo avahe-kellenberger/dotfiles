@@ -1,3 +1,9 @@
+# Java's broke ass shit
+export AWT_TOOLKIT=MToolkit
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+export DIFFPROG="nvim -d"
+
 export XDG_CONFIG_HOME="$HOME/.config"
 export NODE_PATH="$(command -v node)"
 export GOPATH="$HOME/go/"
@@ -11,6 +17,7 @@ export BROWSER=firefox
 export _KDECONNECT_DEFAULT_DEVICE="bb89add356ad357b"
 export BATTERY="$(cat $HOME/.battery)"
 
+dwmbar &
 compton --config ~/.config/compton/compton.conf &
 dunst &
 xmodmap ~/.Xmodmap

@@ -1,0 +1,117 @@
+# Start external programs
+
+[[startProcess]]
+command = "pkill nimdow"
+keys = [ "Backspace" ]
+modifiers = [ "control", "alt" ]
+
+[[startProcess]]
+command = "$BROWSER"
+keys = [ "i" ]
+modifiers = [ "super" ]
+
+[[startProcess]]
+command = "dmenu_run"
+keys = [ "p" ]
+modifiers = [ "super" ]
+
+[[startProcess]]
+command = "st"
+keys = [ "Return" ]
+modifiers = [ "super" ]
+
+[autostart]
+exec = [
+  # "firefox",
+  # "st"
+]
+
+[settings]
+  # Window settings
+  gapSize = 24
+  borderWidth = 1
+  borderColorFocused = "#519f50"
+  borderColorUnfocused = "#1c1b19"
+  # Bar settings
+  barHeight = 20
+  barBackgroundColor = "#1c1b19"
+  barForegroundColor = "#fce8c3"
+  barSelectionColor = "#519f50"
+  barFonts = [
+    "monospace:size=10:anialias=false",
+    "NotoColorEmoji:size=10:anialias=false"
+    "Source Han Sans TC,思源黑體:size=10:style=Regular:anialias=false"
+  ]
+  # General settings
+  loggingEnabled = false
+
+# Window manager controls
+[controls]
+  [controls.reloadConfig]
+  keys = [ "r" ]
+  modifiers = [ "super", "shift" ]
+
+  [controls.focusPrevious]
+  keys = [ "k" ]
+  modifiers = [ "super" ]
+
+  [controls.focusNext]
+  keys = [ "j" ]
+  modifiers = [ "super" ]
+
+  [controls.moveWindowPrevious]
+  keys = [ "k" ]
+  modifiers = [ "super", "shift" ]
+
+  [controls.moveWindowNext]
+  keys = [ "j" ]
+  modifiers = [ "super", "shift" ]
+
+  [controls.toggleFullscreen]
+  keys = [ "f" ]
+  modifiers = [ "super" ]
+
+  [controls.destroySelectedWindow]
+  keys = [ "q" ]
+  modifiers = [ "super", "shift" ]
+
+  [controls.moveWindowToTag]
+  keys = [ "1", "2", "3", "4", "5", "6", "7", "8", "9" ]
+  modifiers = [ "super", "shift" ]
+
+  [controls.goToTag]
+  keys = [ "1", "2", "3", "4", "5", "6", "7", "8", "9" ]
+  modifiers = [ "super" ]
+
+  [controls.goToPreviousTag]
+  keys = [ "w" ]
+  modifiers = [ "super" ]
+
+  [controls.focusPreviousMonitor]
+  keys = [ "comma" ]
+  modifiers = [ "super" ]
+
+  [controls.focusNextMonitor]
+  keys = [ "period" ]
+  modifiers = [ "super" ]
+
+  [controls.moveWindowToPreviousMonitor]
+  keys = [ "comma" ]
+  modifiers = [ "super", "shift" ]
+
+  [controls.moveWindowToNextMonitor]
+  keys = [ "period" ]
+  modifiers = [ "super", "shift" ]
+
+  [controls.increaseMasterCount]
+  keys = [ "z" ]
+  modifiers = [ "super" ]
+
+  [controls.decreaseMasterCount]
+  keys = [ "x" ]
+  modifiers = [ "super" ]
+
+  [controls.toggleFloating]
+  keys = [ "space" ]
+  modifiers = [ "super" ]
+
