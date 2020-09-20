@@ -17,7 +17,7 @@ export BROWSER=firefox
 export _KDECONNECT_DEFAULT_DEVICE="bb89add356ad357b"
 export BATTERY="$(cat $HOME/.battery)"
 
-dwmbar &
+nimdowstatus &
 compton --config ~/.config/compton/compton.conf &
 dunst &
 xmodmap ~/.Xmodmap

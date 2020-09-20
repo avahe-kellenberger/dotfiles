@@ -43,11 +43,11 @@ super + shift + l
 
 # Volume control
 {super + equal, XF86AudioRaiseVolume}
-    $HOME/.dotfiles/scripts/for-each-pactlsink "pactl set-sink-mute %s off"; $HOME/.dotfiles/scripts/for-each-pactlsink "pactl set-sink-volume %s +2.5%" && refresh_dwmbar
+    $HOME/.dotfiles/scripts/for-each-pactlsink "pactl set-sink-mute %s off"; $HOME/.dotfiles/scripts/for-each-pactlsink "pactl set-sink-volume %s +2.5%" && refresh_nimdowstatus
 
 {super + minus, XF86AudioLowerVolume}
-    $HOME/.dotfiles/scripts/for-each-pactlsink "pactl set-sink-mute %s off"; $HOME/.dotfiles/scripts/for-each-pactlsink "pactl set-sink-volume %s -2.5%" && refresh_dwmbar
+    $HOME/.dotfiles/scripts/for-each-pactlsink "pactl set-sink-mute %s off"; $HOME/.dotfiles/scripts/for-each-pactlsink "pactl set-sink-volume %s -2.5%" && refresh_nimdowstatus
 
 {super + BackSpace, XF86AudioMute}
-    $HOME/.dotfiles/scripts/for-each-pactlsink "pactl set-sink-mute %s toggle" && refresh_dwmbar
+    $HOME/.dotfiles/scripts/for-each-pactlsink "pactl set-sink-mute %s toggle" && refresh_nimdowstatus
 
