@@ -1,49 +1,34 @@
 # Start external programs
 
 [[startProcess]]
-command = "pkill nimdow"
-keys = [ "Backspace" ]
-modifiers = [ "control", "alt" ]
-
-[[startProcess]]
-command = "$BROWSER"
-keys = [ "i" ]
-modifiers = [ "super" ]
-
-[[startProcess]]
-command = "dmenu_run"
-keys = [ "p" ]
-modifiers = [ "super" ]
-
-[[startProcess]]
-command = "st"
-keys = [ "Return" ]
+command = "win=$(xdotool getactivewindow) && xdotool key --window $win super+space; xdotool windowsize $win 800 970;  xdotool windowmove $win 560 295"
+keys = [ "c" ]
 modifiers = [ "super" ]
 
 [autostart]
 exec = [
-  # "firefox",
-  # "st"
+  "xsetroot -cursor_name left_ptr",
 ]
 
 [settings]
   # Window settings
   gapSize = 24
   borderWidth = 1
-  borderColorFocused = "#519f50"
-  borderColorUnfocused = "#1c1b19"
+  borderColorFocused = "#50fa7b"
+  borderColorUnfocused = "#282a36"
   # Bar settings
   barHeight = 20
-  barBackgroundColor = "#1c1b19"
-  barForegroundColor = "#fce8c3"
-  barSelectionColor = "#519f50"
+  barBackgroundColor = "#282a36"
+  barForegroundColor = "#f8f8f2"
+  barSelectionColor = "#50fa7b"
+  barUrgentColor = "#ff5555"
   barFonts = [
     "monospace:size=10:anialias=false",
     "NotoColorEmoji:size=10:anialias=false"
     "Source Han Sans TC,思源黑體:size=10:style=Regular:anialias=false"
   ]
   # General settings
-  loggingEnabled = false
+  loggingEnabled = true
 
 # Window manager controls
 [controls]
@@ -87,6 +72,14 @@ exec = [
   keys = [ "w" ]
   modifiers = [ "super" ]
 
+  [controls.toggleTagView]
+  keys = [ "1", "2", "3", "4", "5", "6", "7", "8", "9" ]
+  modifiers = [ "super", "control" ]
+
+  [controls.toggleWindowTag]
+  keys = [ "1", "2", "3", "4", "5", "6", "7", "8", "9" ]
+  modifiers = [ "super", "shift", "control" ]
+
   [controls.focusPreviousMonitor]
   keys = [ "comma" ]
   modifiers = [ "super" ]
@@ -113,5 +106,9 @@ exec = [
 
   [controls.toggleFloating]
   keys = [ "space" ]
+  modifiers = [ "super" ]
+
+  [controls.jumpToUrgentWindow]
+  keys = [ "u" ]
   modifiers = [ "super" ]
 

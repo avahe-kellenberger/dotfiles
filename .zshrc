@@ -79,6 +79,8 @@ compinit
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 
+source /usr/share/nvm/init-nvm.sh
+
 if [ "$(tty)" = "/dev/tty1" ] && [ -z "$(pgrep -i xorg)" ]; then
     startx
     exit 0;

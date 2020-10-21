@@ -87,9 +87,11 @@ get_charge() {
 
 # Set the status bar
 
+red=$'\e[38;2;80;250;123m'
+
 while true
 do
-    xsetroot -name "$(get_status)";
+    xsetroot -name "${red}$(get_status)";
     sleep 1m;
 done
 

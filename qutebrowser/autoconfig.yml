@@ -25,3 +25,7 @@ settings:
     https://mail.yandex.com?mailto=%25s: false
   content.user_stylesheets:
     global: null
+  statusbar.show:
+    global: always
+  tabs.show:
+    global: always

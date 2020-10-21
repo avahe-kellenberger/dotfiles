@@ -53,7 +53,8 @@ Plug 'dracula/vim', { 'name': 'dracula' }
 Plug 'morhetz/gruvbox'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'liuchengxu/vista.vim'
-
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+Plug 'Yggdroot/indentLine'
 "}}}
 
 call plug#end()
@@ -173,10 +174,8 @@ set statusline=%F
 " Syntax highlighting
 syntax on
 
-" colorscheme srcery
 set termguicolors
-" colorscheme dracula
-colorscheme gruvbox
+colorscheme dracula
 
 filetype on
 filetype plugin on
