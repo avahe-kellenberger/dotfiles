@@ -4,8 +4,12 @@ call plug#begin(stdpath('data'))
 
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
+" Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/diagnostic-nvim'
+
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/telescope.nvim'
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
@@ -13,15 +17,31 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'honza/vim-snippets'
 Plug 'neoclide/jsonc.vim'
+
 Plug 'tmsvg/pear-tree'
+" This is needed to prevent a clash with the bindings.
+let g:pear_tree_ft_disabled = ["TelescopePrompt"]
+
 Plug 'kkoomen/vim-doge'
 Plug 'psliwka/vim-smoothie'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'airblade/vim-gitgutter'
 
 Plug 'Yggdroot/indentLine'
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
+Plug 'kshenoy/vim-signature'
+Plug 'mhinz/vim-startify'
+let g:startify_custom_header = [
+            \'                       _ __   ___  _____   _(_)_ __ ___',
+            \'                      | ''_ \ / _ \/ _ \ \ / / | ''_ ` _ \',
+            \'                      | | | |  __/ (_) \ V /| | | | | | |',
+            \'                      |_| |_|\___|\___/ \_/ |_|_| |_| |_|',
+            \]
+
 Plug 'dracula/vim', { 'name': 'dracula' }
+
+Plug 'alaviss/nim.nvim'
 
 Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
@@ -32,6 +52,11 @@ nnoremap <A-f> :BLines<CR>
 nnoremap <C-f> :Rg! 
 
 call plug#end()
+
+let g:gitgutter_map_keys = 0
+nnoremap ]g <Plug>(GitGutterNextHunk)
+nnoremap [g <Plug>(GitGutterPrevHunk)
+
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
@@ -44,26 +69,59 @@ require'nvim-treesitter.configs'.setup {
 }
 
 local on_attach_vim = function(client)
-  require'completion'.on_attach(client)
+  -- require'completion'.on_attach(client)
   require'diagnostic'.on_attach(client)
 end
 
-require'nvim_lsp'.nimls.setup{on_attach=on_attach_vim}
-require'nvim_lsp'.tsserver.setup{on_attach=on_attach_vim}
+-- LSP Servers
+require'lspconfig'.nimls.setup{on_attach=on_attach_vim}
+require'lspconfig'.tsserver.setup{on_attach=on_attach_vim}
+
+local actions = require('telescope.actions')
+require('telescope').setup {
+  defaults = {
+    mappings = {
+      i = {
+        ["<ESC>"] = actions.close,
+        ["<c-j>"] = actions.move_selection_next,
+        ["<c-k>"] = actions.move_selection_previous,
+      }
+    },
+    width = 1.0,
+    results_width = 1.0,
+    border = {},
+    color_devicons = true,
+    borderchars = {  '─', '', '', '', '', '', '',  '', },
+    vimgrep_arguments = {
+      'rg', 
+      '--color=always', 
+      '--no-heading', 
+      '--with-filename', 
+      '--line-number', 
+      '--column', 
+      '--smart-case'
+    },
+  }
+}
+
 EOF
 
 " LSP Bindings - See https://neovim.io/doc/user/lsp.html
+command! Format execute 'lua vim.lsp.buf.formatting()'
+
 nnoremap <silent> gD         <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> gd         <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> K          <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gi         <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> gk         <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> gy         <cmd>lua vim.lsp.buf.type_definition()<CR>
-nnoremap <silent> gr         <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> gr         <cmd>lua require'telescope.builtin'.lsp_references{}<CR>
 nnoremap <silent> gs         <cmd>lua vim.lsp.buf.document_symbol()<CR>
 nnoremap <silent> gw         <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 nnoremap <silent> <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
-nnoremap <silent> <leader>c <cmd>lua vim.lsp.buf.code_action()<CR>
+nnoremap <silent> <leader>c  <cmd>lua vim.lsp.buf.code_action()<CR>
+nnoremap <silent> <leader>f :Format<cr>
+nnoremap <silent> <leader>man <cmd>lua require'telescope.builtin'.man_pages{}<CR>
 
 " Diagnostics
 let g:diagnostic_enable_virtual_text = 1
@@ -75,7 +133,7 @@ nnoremap <leader>t :NextDiagnosticCycle<cr>
 nnoremap <silent> ' :execute "normal! `" . nr2char(getchar()) . 'zt'<CR>
 set path=.,,
 
-autocmd BufEnter * lua require'completion'.on_attach()
+" autocmd BufEnter * lua require'completion'.on_attach()
 
 " Set completeopt to have a better completion experience
 set completeopt=menuone,noinsert,longest
@@ -168,7 +226,7 @@ set nofoldenable
 " Parenthesis matching
 highlight MatchParen ctermbg=4
 
-nnoremap S :%s//gI<Left><Left><Left>
+nnoremap S :%s//gc<Left><Left><Left>
 
 " Display the cursor location with lines
 set cursorline

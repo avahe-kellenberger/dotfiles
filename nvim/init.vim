@@ -55,6 +55,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'liuchengxu/vista.vim'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'Yggdroot/indentLine'
+Plug 'tikhomirov/vim-glsl'
 "}}}
 
 call plug#end()
@@ -89,7 +90,7 @@ let g:lightline = {
             \ },
             \ 'component': {
             \   'giticon': '',
-            \   'filename': '%F',
+            \   'filename': '%f',
             \ }
         \ }
 
@@ -282,9 +283,9 @@ endfunction
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" Navigate diagnostics
+nmap <silent> <leader>h <Plug>(coc-diagnostic-prev)
+nmap <silent> <leader>t <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
