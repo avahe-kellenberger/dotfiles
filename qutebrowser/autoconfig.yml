@@ -11,15 +11,22 @@ settings:
       normal:
         M: hint links spawn mpv {hint-url}
         m: spawn mpv {url}
+  colors.webpage.darkmode.enabled:
+    global: true
   colors.webpage.prefers_color_scheme_dark:
     global: true
+  content.desktop_capture:
+    https://jitsi.riot.im: true
   content.geolocation:
     https://na2.docusign.net: false
   content.notifications:
     https://circleci.com: true
+    https://gitter.im: true
+    https://mail.protonmail.com: true
     https://na.op.gg: false
     https://nextcloud.avahe.tk: false
     https://www.reddit.com: false
+    https://www.youtube.com: false
   content.register_protocol_handler:
     https://mail.google.com?extsrc=mailto&url=%25s: false
     https://mail.yandex.com?mailto=%25s: false

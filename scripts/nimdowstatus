@@ -87,11 +87,12 @@ get_charge() {
 
 # Set the status bar
 
-red=$'\e[38;2;80;250;123m'
+green=$'\e[38;2;80;250;123m'
 
 while true
 do
-    xsetroot -name "${red}$(get_status)";
+    # xsetroot -name "NIMDOW_MONITOR_INDEX=0 ${green}$(get_status)NIMDOW_MONITOR_INDEX=1";
+    xsetroot -name "${green}$(get_status)";
     sleep 1m;
 done
 

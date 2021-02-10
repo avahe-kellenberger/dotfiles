@@ -13,16 +13,19 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=0
 
 export EDITOR=nvim
 export VISUAL=nvim
-export BROWSER=qutebrowser
+export BROWSER=librewolf
 export _KDECONNECT_DEFAULT_DEVICE="bb89add356ad357b"
 export BATTERY="$(cat $HOME/.battery)"
+
+~/.screenlayout/dp2.sh
 
 dxhd &
 nimdowstatus &
 compton --config ~/.config/compton/compton.conf &
 dunst &
 unclutter &
-$HOME/.fehbg &
+$HOME/.fehbg
+
 weather-daemon 300 &
 
 nm-applet &

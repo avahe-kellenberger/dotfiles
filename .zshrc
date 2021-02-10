@@ -23,8 +23,10 @@ alias kp="keepassxc-cli"
 alias gr="nvim \$(git status --porcelain | awk '{ if (\$1 == \"M\") print \$2 }')"
 alias gd="git diff"
 alias gs="git status"
+alias gprune="git branch --merged master | grep -Ev '^\s*\*?\s*master$' | xargs git branch -d"
 alias rg="rg -p"
 alias less="less -R"
+alias js="jq '.scripts' package.json"
 
 alias randomcommit="curl http://whatthecommit.com/index.txt"
 
@@ -57,7 +59,7 @@ def() {
 }
 
 shorten() {
-    (curl -s http://tinyurl.com/api-create.php?url="\$1")
+    (curl -s http://tinyurl.com/api-create.php?url="$1")
 }
 
 # Lines configured by zsh-newuser-install

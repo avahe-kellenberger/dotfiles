@@ -39,8 +39,8 @@ nnoremap <C-f> :Rg!
 Plug 'clktmr/vim-gdscript3'
 Plug 'neoclide/jsonc.vim'
 Plug 'tmsvg/pear-tree'
-Plug 'kkoomen/vim-doge'
-Plug 'psliwka/vim-smoothie'
+Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
+" Plug 'psliwka/vim-smoothie'
 Plug 'udalov/kotlin-vim'
 Plug 'fatih/vim-go'
 Plug 'tpope/vim-fugitive'
@@ -55,6 +55,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'liuchengxu/vista.vim'
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'Yggdroot/indentLine'
+let g:indentLine_enabled = 0
 Plug 'tikhomirov/vim-glsl'
 "}}}
 
@@ -134,6 +135,8 @@ let g:coc_snippet_next = '<tab>'
 " }}}
 
 " Configuration{{{
+
+set scrolloff=8
 
 let g:netrw_fastbrowse = 0
 
