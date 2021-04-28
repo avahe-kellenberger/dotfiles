@@ -13,16 +13,18 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 let g:coc_global_extensions = [
   \ 'coc-clangd',
-	\ 'coc-css',
+  \ 'coc-css',
   \ 'coc-cssmodules',
-	\ 'coc-eslint',
-	\ 'coc-git',
-	\ 'coc-html',
-	\ 'coc-json',
-	\ 'coc-snippets',
-	\ 'coc-stylelint',
-	\ 'coc-tsserver',
-	\ 'coc-yaml',
+  \ 'coc-diagnostic',
+  \ 'coc-eslint',
+  \ 'coc-git',
+  \ 'coc-html',
+  \ 'coc-json',
+  \ 'coc-sh',
+  \ 'coc-snippets',
+  \ 'coc-stylelint',
+  \ 'coc-tsserver',
+  \ 'coc-yaml',
   \ 'https://github.com/andys8/vscode-jest-snippets',
   \ 'coc-java'
 \ ]
@@ -34,11 +36,11 @@ nnoremap <C-p> :Files<CR>
 nnoremap <C-o> :Buffers<CR>
 nnoremap <C-g> :GFiles<CR>
 nnoremap <A-f> :BLines<CR>
-nnoremap <C-f> :Rg! 
+nnoremap <C-f> :Rg!
 
-Plug 'clktmr/vim-gdscript3'
+Plug 'clktmr/vim-gdscript3', { 'branch': 'master' }
 Plug 'neoclide/jsonc.vim'
-Plug 'tmsvg/pear-tree'
+" Plug 'tmsvg/pear-tree'
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 " Plug 'psliwka/vim-smoothie'
 Plug 'udalov/kotlin-vim'
@@ -57,9 +59,25 @@ Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 Plug 'Yggdroot/indentLine'
 let g:indentLine_enabled = 0
 Plug 'tikhomirov/vim-glsl'
+Plug 'cespare/vim-toml'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 "}}}
 
 call plug#end()
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true
+  },
+  indent = {
+    enable = true
+  }
+}
+EOF
+
+" Remove trailing whitespace on save.
+autocmd BufWritePre * :%s/\s\+$//e
 
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 " Ensure you have installed some decent font to show these pretty symbols, then you can enable icon for the kind.
@@ -73,7 +91,7 @@ let g:vista#renderer#icons = {
 
 " Status line{{{
 
-function! LightLineFugitive()       
+function! LightLineFugitive()
     let branch = FugitiveHead()
     return branch !=# '' ? ' '.branch : ''
 endfunction
@@ -202,10 +220,10 @@ set wrapmargin=0
 
 " Smart tabbing
 set expandtab
-set smarttab
+set tabstop=2
 set shiftwidth=2
 set softtabstop=2
-set tabstop=2
+set smarttab
 
 " Search with smart casing
 set ignorecase

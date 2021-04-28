@@ -30,16 +30,27 @@
     "bash": {
       "command": "bash-language-server",
       "args": ["start"],
-      "filetypes": ["sh"],
+      "filetypes": ["sh", "bash"],
       "ignoredRootPaths": ["~"]
     },
-    
+
     "nim": {
-      "command": "/home/avahe/programming/nim/nimlsp/nimlsp",
+      "command": "nimlsp",
       "filetypes": ["nim"],
       "trace.server": "verbose"
+    },
+
+    "godot": {
+      "host": "127.0.0.1",
+      "filetypes": ["gd", "gdscript3"],
+      "port": 6008
     }
   },
-  "java.format.settings.url": "/home/avahe/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml"
+
+  "java.format.settings.url": "/home/avahe/.config/coc/extensions/node_modules/redhat.java/eclipse-formatter.xml",
+
+  "diagnostic-languageserver.filetypes": {
+    "sh": "shellcheck"
+  }
 
 }

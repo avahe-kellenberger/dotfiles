@@ -20,7 +20,7 @@ alias grep="grep --color"
 alias copy="xclip -sel clipboard"
 alias kp="keepassxc-cli"
 
-alias gr="nvim \$(git status --porcelain | awk '{ if (\$1 == \"M\") print \$2 }')"
+alias gr="nvim \$(git status -s | awk '{ if (\$1 == \"M\") print \$2 }')"
 alias gd="git diff"
 alias gs="git status"
 alias gprune="git branch --merged master | grep -Ev '^\s*\*?\s*master$' | xargs git branch -d"

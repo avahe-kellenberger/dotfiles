@@ -3,7 +3,7 @@
 # Set the overall status
 get_status() {
     battery_status="";
-    if $(has_battery); then
+    if has_battery; then
         battery_status=" $(get_battery_status) |";
     fi
 
