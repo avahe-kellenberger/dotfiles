@@ -1,0 +1,120 @@
+#!/bin/sh
+
+[ -z "$PSO_CONFIG_FILE" ] && PSO_CONFIG_FILE="$HOME/.config/pso/pso.config"
+. "$PSO_CONFIG_FILE"
+
+show_help(){
+    echo "Pretty Straightforward Opener"
+    echo "Usage ./pso.sh [-h] [-d] file|uri"
+    echo "-h : Show this help"
+    echo "-d : Run in debug mode (dry run)"
+}
+
+exec_cmd(){
+    exec_cmd=$(printf "$1" "\"$2\"")
+    eval "$exec_cmd"
+    exit 0
+}
+
+try_regex(){
+    config=$(grep "^[^#]" "$1")
+    while IFS=: read -r cmd regex; do
+        if [ "$regex" != "" ]; then
+            echo "$resource" | grep -E "$regex" > /dev/null
+            if [ "$?" -eq 0 ]; then
+                if [ "$debug" -eq 0 ]; then
+                    exec_cmd "$cmd" "$resource"
+                fi
+                [ "$debug" -eq 1 ] && echo "[*] regex: $regex cmd: $cmd (from $1)"
+            fi
+        fi
+    done <<EOF
+$config
+EOF
+}
+
+
+try_mime(){
+    config=$(grep "^[^#]" "$1")
+    while IFS=: read -r cmd mime; do
+        if echo "$resource_mime" | grep -E "^$mime\$" > /dev/null ; then
+            if [ "$debug" -eq 0 ]; then
+                exec_cmd "$cmd" "$resource"
+            fi
+            [ "$debug" -eq 1 ] && echo "[*] cmd: $cmd (from $1)"
+        fi
+    done <<EOF
+$config
+EOF
+}
+
+
+ask(){
+    if [ "$PSO_ASK_MENU" != "false" ] && [ "$debug" -eq 0 ]; then
+        app=$(eval "$PSO_ASK_MENU")
+        if [ "$app" != "" ]; then
+            [ "$PSO_ASK_AUTOSAVE" != "false" ] && printf "$app %%s:$resource_mime\n" >> $PSO_MIME_CONFIG
+            exec_cmd "$app %s" "$resource"
+        fi
+    fi
+}
+
+display_error(){
+    if [ "$debug" -eq 0 ]; then
+        if tty -s; then
+            echo "$1"
+        else
+            notify-send "$1"
+        fi
+    fi
+}
+
+
+debug=0
+while getopts ":hd" opt; do
+    case "$opt" in
+    h|\?)
+        show_help
+        exit 0
+        ;;
+    d)  debug=1
+        ;;
+    esac
+done
+
+shift $((OPTIND-1))
+
+resource=$*
+
+if [ -z "$resource" ]; then
+    show_help
+    exit 0
+fi
+
+[ "$debug" -eq 1 ] && printf "[*] Resource: %s\n[!] Be aware that only the first match will be executed\n" "$resource"
+[ "$PSO_LOG" != "false" ] && echo "[ $(date) ] : $resource" >> "$PSO_LOG"
+
+echo "$resource" | grep -E "^file://" > /dev/null
+[ $? -eq 0 ] && resource=$(echo "$resource" | sed 's#^file://##;s/+/ /g;s/%\(..\)/\\x\1/g;' | xargs -0 printf "%b")
+
+if [ -d "$resource" ]; then
+    if [ "$debug" -eq 1 ]; then
+        echo "[*] directory; cmd: $PSO_FOLDER_CMD"
+    else
+        exec_cmd "$PSO_FOLDER_CMD" "$resource"
+    fi
+elif [ -f "$resource" ]; then
+    try_regex "$PSO_REGEX_CONFIG"
+    resource_mime=$(file -b --mime-type "$resource")
+    [ "$debug" -eq 1 ] && echo "[*] mime: $resource_mime"
+    try_mime "$PSO_MIME_CONFIG"
+    ask
+else
+    try_regex "$PSO_URI_CONFIG"
+fi
+
+display_error "Cant open the resource '$resource', you can configure pso here:
+General Configuration: $PSO_CONFIG_FILE
+(files) MIME Types rules: $PSO_MIME_CONFIG
+(files) REGEX rules: $PSO_REGEX_CONFIG
+(uris)  REGEX rules: $PSO_URI_CONFIG"

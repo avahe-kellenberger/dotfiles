@@ -27,7 +27,7 @@ function get_icon() {
 API_KEY="730d0819cbc5feae20f1a2271c73752e"
 
 # Check on http://openweathermap.org/find
-CITY_ID="4352053"
+CITY_ID="4465507"
 
 ICON_SUNNY="🌞"
 ICON_CLOUDY="⛅"

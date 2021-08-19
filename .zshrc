@@ -1,7 +1,7 @@
 KEYTIMEOUT=1
 
 git_branch() {
-    if out="$(git -C . rev-parse > /dev/null 2>&1)"; then 
+    if out="$(git -C . rev-parse > /dev/null 2>&1)"; then
         printf " $%s$(git branch | pcregrep -o1 "\*[\s]*(.*)")"
     fi
 }
@@ -15,7 +15,7 @@ set_prompt() {
 precmd_functions+=(set_prompt)
 set_prompt
 
-alias l="ls -la --color=auto"
+alias l="ls -lah --color=auto"
 alias grep="grep --color"
 alias copy="xclip -sel clipboard"
 alias kp="keepassxc-cli"
@@ -33,8 +33,8 @@ alias randomcommit="curl http://whatthecommit.com/index.txt"
 export MYVIMRC='~/.config/nvim/init.vim'
 export VIMINIT='source $MYVIMRC'
 
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 bg_proc() {
     (nohup "$@" &>/dev/null &)

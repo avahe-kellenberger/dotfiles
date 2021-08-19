@@ -35,7 +35,7 @@
     },
 
     "nim": {
-      "command": "nimlsp",
+      "command": "~/programming/nim/nimlsp/nimlsp",
       "filetypes": ["nim"],
       "trace.server": "verbose"
     },

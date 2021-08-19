@@ -36,7 +36,7 @@ nnoremap <C-p> :Files<CR>
 nnoremap <C-o> :Buffers<CR>
 nnoremap <C-g> :GFiles<CR>
 nnoremap <A-f> :BLines<CR>
-nnoremap <C-f> :Rg!
+nnoremap <C-f> :Rg! 
 
 Plug 'clktmr/vim-gdscript3', { 'branch': 'master' }
 Plug 'neoclide/jsonc.vim'
@@ -60,24 +60,21 @@ Plug 'Yggdroot/indentLine'
 let g:indentLine_enabled = 0
 Plug 'tikhomirov/vim-glsl'
 Plug 'cespare/vim-toml'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 "}}}
 
 call plug#end()
 
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  highlight = {
-    enable = true
-  },
-  indent = {
-    enable = true
-  }
-}
-EOF
+command WA wa
+command Wa wa
+command WQ wq
+command Wq wq
+command Wqa wqa
+command W w
+command Q q
 
 " Remove trailing whitespace on save.
-autocmd BufWritePre * :%s/\s\+$//e
+" autocmd BufWritePre * :%s/\s\+$//e
 
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 " Ensure you have installed some decent font to show these pretty symbols, then you can enable icon for the kind.

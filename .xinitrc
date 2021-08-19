@@ -35,5 +35,5 @@ fi
 
 sxhkd &
 dwmbar &
-exec dwm
+exec nimdow
 

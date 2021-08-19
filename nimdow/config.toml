@@ -1,3 +1,57 @@
+# Monitor 1
+
+[[appRule]]
+title = "nuclearthrone"
+monitor = 1
+tags = [ 9 ]
+state = "fullscreen"
+
+[[appRule]]
+instance = "nuclearthronetogether.exe"
+state = "fullscreen"
+
+[[appRule]]
+instance = "riotclientux.exe"
+monitor = 1
+tags = [ 9 ]
+
+[[appRule]]
+instance = "leagueclient.exe"
+monitor = 1
+tags = [ 9 ]
+
+[[appRule]]
+instance = "league of legends.exe"
+monitor = 1
+tags = [ 9 ]
+
+[[appRule]]
+instance = "leagueclientux.exe"
+monitor = 1
+tags = [ 9 ]
+
+# Monitor 2
+
+[[appRule]]
+class = "weechat"
+monitor = 2
+tags = [ 1 ]
+
+[[appRule]]
+class = "util-term"
+monitor = 2
+tags = [ 1 ]
+
+[[appRule]]
+class = "discord"
+monitor = 2
+tags = [ 1 ]
+
+[[appRule]]
+class = "element-desktop"
+monitor = 2
+tags = [ 1 ]
+
 # Start external programs
 
 [[startProcess]]
@@ -8,10 +62,12 @@ modifiers = [ "super" ]
 [autostart]
 exec = [
   "xsetroot -cursor_name left_ptr",
+  "~/.config/nimdow/autostart.sh"
 ]
 
 [settings]
   # Window settings
+  windowTitlePosition = "left"
   gapSize = 24
   borderWidth = 1
   borderColorFocused = "#50fa7b"
@@ -23,9 +79,9 @@ exec = [
   barSelectionColor = "#50fa7b"
   barUrgentColor = "#ff5555"
   barFonts = [
-    "monospace:size=10:anialias=false",
-    "NotoColorEmoji:size=10:anialias=false"
-    "Source Han Sans TC,思源黑體:size=10:style=Regular:anialias=false"
+    "monospace:size=10:antialias=true",
+    "NotoColorEmoji:size=10:antialias=true"
+    "Source Han Sans TC,思源黑體:size=10:style=Regular:antialias=true"
   ]
   # General settings
   loggingEnabled = true
@@ -111,4 +167,24 @@ exec = [
   [controls.jumpToUrgentWindow]
   keys = [ "u" ]
   modifiers = [ "super" ]
+
+  [controls.increaseMasterWidth]
+  keys = [ "l" ]
+  modifiers = [ "super" ]
+
+  [controls.decreaseMasterWidth]
+  keys = [ "h" ]
+  modifiers = [ "super" ]
+
+  [controls.moveWindowToScratchpad]
+  keys = [ "s" ]
+  modifiers = [ "super", "shift" ]
+
+  [controls.popScratchpad]
+  keys = [ "s" ]
+  modifiers = [ "super" ]
+
+[monitors]
+  [monitors.2.tags]
+  1.numMasterWindows = 2
 
