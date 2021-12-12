@@ -1,3 +1,42 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-maim -sou | 0x0 | awk '{printf $1}' | xclip -sel clipboard
+tmpfile=$(mktemp -t XXXXXX.png)
+
+maim -sou > "$tmpfile" || exit
+
+action=$(printf "copy\nupload\nsave" | dmenu)
+
+upload() {
+  image="$1"
+  url="$(
+    curl \
+      -s -L -X POST 'https://api.imgur.com/3/image' \
+      -H 'Authorization: Client-ID 9e2d6e63b369a4d' -F "image=@$image" | \
+      grep -o 'https.*\.png' | tr -d '\\'
+    )"
+  echo "$url"
+}
+
+case "$action" in
+  copy)
+    xclip -selection clipboard -t image/png "$tmpfile" &&
+      notify-send "Saved image to clipboard"
+    ;;
+  upload)
+    upload "$tmpfile" | xclip -sel clipboard &&
+      notify-send "Image link saved to clipboard"
+    ;;
+  save)
+    destfile="$(zenity --file-selection --title="Save image" --save)"
+    if [[ -n $destfile ]]; then
+      mv "$tmpfile" "$destfile"
+      notify-send "File saved to $destfile"
+    fi
+    ;;
+  *)
+    notify-send "Invalid action: $action"
+    ;;
+esac
+
+rm "$tmpfile"
+
