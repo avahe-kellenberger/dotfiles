@@ -12,7 +12,7 @@ upload() {
     curl \
       -s -L -X POST 'https://api.imgur.com/3/image' \
       -H 'Authorization: Client-ID 9e2d6e63b369a4d' -F "image=@$image" | \
-      grep -o 'https.*\.png' | tr -d '\\'
+      grep -o 'https.*\.png' | tr -d "\\"
     )"
   echo "$url"
 }
