@@ -1,4 +1,20 @@
+[[startProcess]]
+command = "notify-send \"region 1\""
+clickRegion = 1
+
+[[startProcess]]
+command = "notify-send \"region 2\""
+clickRegion = 2
+
+[[startProcess]]
+command = "notify-send \"region 3\""
+clickRegion = 3
+
+
 # Monitor 1
+[[appRule]]
+class = "pentablet"
+state = "floating"
 
 [[appRule]]
 title = "nuclearthrone"
@@ -24,23 +40,34 @@ tags = [ 9 ]
 instance = "league of legends.exe"
 monitor = 1
 tags = [ 9 ]
+state = "fullscreen"
 
 [[appRule]]
 instance = "leagueclientux.exe"
 monitor = 1
 tags = [ 9 ]
 
+[[appRule]]
+title = "League of Legends"
+monitor = 1
+tags = [ 9 ]
+
+[[appRule]]
+class = "Lutris"
+monitor = 1
+tags = [ 8 ]
+
+[[appRule]]
+instance = "Steam"
+monitor = 1
+tags = [ 8 ]
+
+[[appRule]]
+title = "Apex Legends"
+monitor = 1
+tags = [ 9 ]
+
 # Monitor 2
-
-[[appRule]]
-class = "weechat"
-monitor = 2
-tags = [ 1 ]
-
-[[appRule]]
-class = "util-term"
-monitor = 2
-tags = [ 1 ]
 
 [[appRule]]
 class = "discord"
@@ -52,6 +79,16 @@ class = "element-desktop"
 monitor = 2
 tags = [ 1 ]
 
+[[appRule]]
+title = "RuneLite Launcher"
+state = "floating"
+
+## Monitor agnostic
+
+[[appRule]]
+class = "Xephyr"
+state = "fullscreen"
+
 # Start external programs
 
 [[startProcess]]
@@ -59,10 +96,28 @@ command = "win=$(xdotool getactivewindow) && xdotool key --window $win super+spa
 keys = [ "c" ]
 modifiers = [ "super" ]
 
+[[startProcess]]
+command = "notify-send 'boop'"
+keys = [ "q" ]
+modifiers = [ "super" ]
+
+[[startProcess]]
+command = "light -A 1.25"
+keys = [ "XF86MonBrightnessUp" ]
+
+[[startProcess]]
+command = "light -U 1.25"
+keys = [ "XF86MonBrightnessDown" ]
+
+[[startProcess]]
+command = "notify-send 'print'"
+keys = [ "Print" ]
+
 [autostart]
 exec = [
   "xsetroot -cursor_name left_ptr",
-  "~/.config/nimdow/autostart.sh"
+  "~/.config/nimdow/autostart.sh",
+  "nm-applet"
 ]
 
 [settings]
@@ -70,21 +125,29 @@ exec = [
   windowTitlePosition = "left"
   gapSize = 24
   borderWidth = 1
-  borderColorFocused = "#50fa7b"
   borderColorUnfocused = "#282a36"
+  borderColorFocused = "#50fa7b"
+  borderColorUrgent = "#ff5555"
   # Bar settings
   barHeight = 20
+
   barBackgroundColor = "#282a36"
   barForegroundColor = "#f8f8f2"
   barSelectionColor = "#50fa7b"
   barUrgentColor = "#ff5555"
   barFonts = [
     "monospace:size=10:antialias=true",
+    "monospace:size=14:antialias=true",
+    "Font Awesome 5 Free Regular:style=Regular:size=10:antialias=true",
     "NotoColorEmoji:size=10:antialias=true"
     "Source Han Sans TC,思源黑體:size=10:style=Regular:antialias=true"
   ]
+  # Scratchpad settings
+  scratchpadWidth = 800
+  scratchpadHeight = 600
   # General settings
-  loggingEnabled = true
+  loggingEnabled = false
+  reverseTagScrolling = false
 
 # Window manager controls
 [controls]
@@ -184,7 +247,7 @@ exec = [
   keys = [ "s" ]
   modifiers = [ "super" ]
 
-[monitors]
-  [monitors.2.tags]
-  1.numMasterWindows = 2
+  [controls.rotateClients]
+  keys = [ "r" ]
+  modifiers = [ "super" ]
 

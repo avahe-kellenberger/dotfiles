@@ -1,5 +1,18 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
+set -o pipefail
 
 dir=$HOME/books/
-zathura "$dir$(find "$dir" -name "*\.pdf" | sed "s|$dir||g" | dmenu -c -l 16)"
+
+pdfs="$(find "$dir" -name "*\.pdf" | sed "s|$dir||g")"
+if [ -z "$pdfs" ]; then
+  echo "No books found"
+  exit 1
+fi
+
+selection="$(echo "$pdfs" | dmenu -l 16)"
+
+if [ -n "$selection" ]; then
+  zathura "$dir$selection"
+fi
 

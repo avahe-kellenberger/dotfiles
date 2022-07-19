@@ -1,0 +1,4 @@
+#!/bin/bash
+
+compton --config ~/.config/compton/solid.conf
+

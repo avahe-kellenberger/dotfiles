@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+curl -s -L -X POST 'https://api.imgur.com/3/upload' -H 'Authorization: Client-ID 9e2d6e63b369a4d' -F "image=@$1"
+

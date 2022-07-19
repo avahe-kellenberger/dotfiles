@@ -24,7 +24,7 @@ if [ -f "$usermodmap" ]; then
 fi
 
 [ -f /etc/xprofile ] && . /etc/xprofile
-[ -f $HOME/.xprofile ] && . $HOME/.xprofile
+[ -f "$HOME/.xprofile" ] && . "$HOME/.xprofile"
 
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
@@ -35,5 +35,6 @@ fi
 
 sxhkd &
 dwmbar &
-exec nimdow
+# exec nimdow
+exec ~/programming/nim/nimdow/bin/nimdow
 

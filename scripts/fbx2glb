@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+fbx="$1"
+
+if [ -z "$fbx" ]; then
+  echo "Provide an fbx file path"
+  exit 1
+fi
+
+dest="${fbx%.*}"
+
+fbx2gltf --binary --input "$fbx" --output "$dest"
+

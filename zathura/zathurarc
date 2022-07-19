@@ -1,11 +1,11 @@
 set selection-clipboard clipboard
 
 set recolor true
-set recolor-lightcolor "#1c1b19"
-set recolor-darkcolor "#fce8c3"
+set recolor-lightcolor "#282a36"
+set recolor-darkcolor "#f8f8f2"
 
-set default-fg "#fce8c3"
-set default-bg "#1c1b19"
+set default-fg "#f8f8f2"
+set default-bg "#282a36"
 
 set font "JetBrains Mono"
 

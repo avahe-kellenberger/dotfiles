@@ -2,12 +2,18 @@
 super + Escape
 	pkill -USR1 -x sxhkd && notify-send "Restarted sxhkd"
 
-# Fn Keys
-XF86MonBrightnessDown
-    light -U 1.25
+super + m
+  nimdow --print-current-tag-windows
 
-XF86MonBrightnessUp
-    light -A 1.25
+# mpc
+super + Left
+	mpc prev
+
+super + Right
+	mpc next
+
+super + {Up,Down}
+	mpc toggle
 
 # Terminal
 super + Return
@@ -31,7 +37,7 @@ super + r
 
 # Screen shot
 super + shift + c
-  flameshot gui
+  screen_shot
 
 # Open content from clipboard
 super + shift + x
@@ -54,6 +60,19 @@ super + shift + l
 
 {super + BackSpace, XF86AudioMute}
     $HOME/.dotfiles/scripts/for-each-pactlsink "pactl set-sink-mute %s toggle" && refresh_nimdowstatus
+
+# Dunst
+ctrl + space
+  dunstctl close
+
+ctrl + shift + space
+  dunstctl close-all
+
+ctrl + grave
+  dunstctl history-pop
+
+ctrl + shift + period
+  dunstctl context
 
 # super + shift + r
 #   nimdow --reload-config

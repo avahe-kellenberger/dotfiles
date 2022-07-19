@@ -1,0 +1,4 @@
+#!/bin/sh
+
+parallel ffmpeg -i {} -acodec libmp3lame {.}.mp3 ::: "$@"
+

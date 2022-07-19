@@ -1,8 +1,13 @@
+# Used for parsec https://support.parsec.app/hc/en-us/articles/115002699032-Linux-Ubuntu-18-04
+export LIBVA_DRIVER_NAME=vdpau
+
 # Java's broke ass shit
 export AWT_TOOLKIT=MToolkit
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-export MANPAGER="nvim -c 'set ft=man' -"
+# QT sucks ass
+export QT_QPA_PLATFORMTHEME='qt5ct'
+
 export DIFFPROG="nvim -d"
 
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -16,8 +21,9 @@ export BROWSER=brave
 export _KDECONNECT_DEFAULT_DEVICE="bb89add356ad357b"
 export BATTERY="$(cat $HOME/.battery)"
 
-~/.screenlayout/dp2.sh &
-# ~/.screenlayout/right-only.sh &
+export GITHUB_TOKEN="$(cat ~/.github/pat)"
+
+~/.screenlayout/vertical.sh &
 
 launch-compton &
 

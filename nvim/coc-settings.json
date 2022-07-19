@@ -36,8 +36,8 @@
 
     "nim": {
       "command": "~/programming/nim/nimlsp/nimlsp",
-      "filetypes": ["nim"],
-      "trace.server": "verbose"
+      // "command": "nimlangserver",
+      "filetypes": ["nim"]
     },
 
     "godot": {

@@ -15,8 +15,10 @@ set_prompt() {
 precmd_functions+=(set_prompt)
 set_prompt
 
-alias l="ls -lah --color=auto"
+alias e="nvim"
+alias l="exa --long --all --group-directories-first --icons"
 alias grep="grep --color"
+alias tree="tree -C"
 alias copy="xclip -sel clipboard"
 alias kp="keepassxc-cli"
 
@@ -33,8 +35,8 @@ alias randomcommit="curl http://whatthecommit.com/index.txt"
 export MYVIMRC='~/.config/nvim/init.vim'
 export VIMINIT='source $MYVIMRC'
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 bg_proc() {
     (nohup "$@" &>/dev/null &)
@@ -60,6 +62,10 @@ def() {
 
 shorten() {
     (curl -s http://tinyurl.com/api-create.php?url="$1")
+}
+
+paste() {
+  (curl -s -F "content=<-" https://dpaste.com/api/v2/ "$1")
 }
 
 # Lines configured by zsh-newuser-install

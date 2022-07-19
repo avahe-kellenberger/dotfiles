@@ -1,6 +1,6 @@
 #!/bin/bash
 
-selected="$(get-active-displays | dmenu -c -p "Enable Display:" -i -l 16)"
+selected="$(get-active-displays | dmenu -p "Enable Display:" -i -l 16)"
 
 xrandr --output "$selected" --mode 1920x1080
 

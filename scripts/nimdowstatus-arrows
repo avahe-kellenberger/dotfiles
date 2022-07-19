@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Set the overall status
 get_status() {
@@ -88,12 +88,25 @@ get_charge() {
 # Set the status bar
 
 # Last 3 numbers are RGB (0-255) values.
-blue=$'\e[38;2;69;133;136m'
-yellow=$'\e[38;2;250;189;47m'
+# blue=$'\e[38;2;69;133;136m'
+# yellow=$'\e[38;2;250;189;47m'
+
+arrow=""
+font_reset="\e[10m"
+font_arrow="\e[15m"
+
+gray_fg=$'\e[38;2;168;153;132m'
+yellow_fg=$'\e[38;2;250;219;47m'
+red_fg=$'\e[38;2;204;36;29m'
+
+gray_bg=$'\e[48;2;168;153;132m'
+yellow_bg=$'\e[48;2;250;219;47m'
+red_bg=$'\e[48;2;204;36;29m'
+
 
 while true
 do
-    xsetroot -name "$(get_status)";
+    xsetroot -name "${red_bg}${arrow}$(get_status)";
     sleep 1m;
 done
 
