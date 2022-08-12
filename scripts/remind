@@ -39,7 +39,10 @@ if [ $COUNT -eq 1 ]; then
   if [ "$COMMAND" = "list" ]; then
     at -l
   elif [ "$COMMAND" = "clear" ]; then
-    at -r "$(atq | cut -f1)"
+    atq | cut -f1 | while read -r job
+    do
+      at -r "$job"
+    done
   else
     echo "remind: unknown command $COMMAND. Type 'remind' without any parameters to see syntax."
   fi
