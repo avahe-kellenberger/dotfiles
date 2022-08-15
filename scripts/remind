@@ -22,7 +22,7 @@ if [ $COUNT -eq 0 ] || [ "$COMMAND" = "help" ] || [ "$COMMAND" = "--help" ] || [
   echo '    remind "Take a break" at noon'
   echo '    remind "Are you ready?" at 13:00'
   echo '    remind list'
-  echo '    remind view <id>'
+  echo '    remind <id>'
   echo '    remind clear'
   echo '    remind help'
   exit
@@ -36,16 +36,16 @@ if ! command -v at >/dev/null; then
 fi
 
 # Run commands: list, clear
-if [ $COUNT -gt 0 ]; then
+if [ $COUNT -eq 1 ]; then
   if [ "$COMMAND" = "list" ]; then
     at -l | sort -k 6 -k 3 -k 4 -k 5
-  elif [ "$COMMAND" = "view" ]; then
-    at -c "$OP" | awk -F "'" '/notify-send/ {print $2}'
   elif [ "$COMMAND" = "clear" ]; then
     atq | cut -f1 | while read -r job
     do
       at -r "$job"
     done
+  elif [ "$COMMAND" -ge 0 ]; then
+    at -c "$COMMAND" | awk -F "'" '/notify-send/ {print $2}'
   else
     echo "remind: unknown command $COMMAND. Type 'remind' without any parameters to see syntax."
   fi
