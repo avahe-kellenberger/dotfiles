@@ -37,7 +37,7 @@ fi
 # Run commands: list, clear
 if [ $COUNT -eq 1 ]; then
   if [ "$COMMAND" = "list" ]; then
-    at -l
+    at -l | sort -k 6 -k 3 -k 4 -k 5
   elif [ "$COMMAND" = "clear" ]; then
     atq | cut -f1 | while read -r job
     do
