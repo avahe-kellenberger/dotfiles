@@ -13,6 +13,11 @@ clickRegion = 3
 
 # Monitor 1
 [[appRule]]
+title = "Warnings"
+class = "fontforge"
+state = "floating"
+
+[[appRule]]
 class = "pentablet"
 state = "floating"
 
@@ -92,7 +97,7 @@ state = "fullscreen"
 # Start external programs
 
 [[startProcess]]
-command = "win=$(xdotool getactivewindow) && xdotool key --window $win super+space; xdotool windowsize $win 800 970;  xdotool windowmove $win 560 295"
+command = "center-window"
 keys = [ "c" ]
 modifiers = [ "super" ]
 
@@ -124,6 +129,7 @@ exec = [
   # Window settings
   windowTitlePosition = "left"
   gapSize = 24
+  outerGap = 0
   borderWidth = 1
   borderColorUnfocused = "#282a36"
   borderColorFocused = "#50fa7b"
@@ -139,7 +145,7 @@ exec = [
     "monospace:size=10:antialias=true",
     "monospace:size=14:antialias=true",
     "Font Awesome 5 Free Regular:style=Regular:size=10:antialias=true",
-    "NotoColorEmoji:size=10:antialias=true"
+    "NotoColorEmoji:size=10:antialias=true",
     "Source Han Sans TC,思源黑體:size=10:style=Regular:antialias=true"
   ]
   # Scratchpad settings
@@ -250,4 +256,12 @@ exec = [
   [controls.rotateClients]
   keys = [ "r" ]
   modifiers = [ "super" ]
+
+  [controls.toggleStatusBar]
+  keys = [ "b" ]
+  modifiers = [ "super" ]
+
+[monitors]
+  [monitors.default.tags]
+  all.defaultMasterWidthPercentage = 50
 

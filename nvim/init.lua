@@ -1,5 +1,5 @@
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "javascript", "typescript", "tsx", "css", "dockerfile" },
+  ensure_installed = { "javascript", "typescript", "tsx", "css", "dockerfile", "json", "bash", "c" },
   sync_install = false,
   Auto_install = true,
   highlight = {
@@ -9,10 +9,6 @@ require'nvim-treesitter.configs'.setup {
     enable = true
   }
 }
-
-require'lspconfig'.tsserver.setup{}
-require'lspconfig'.cssls.setup{}
-require'lspconfig'.nimls.setup{}
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -51,15 +47,6 @@ end
 local lsp_flags = {
   -- This is the default in Nvim 0.7+
   debounce_text_changes = 150,
-}
-require('lspconfig')['tsserver'].setup{
-    on_attach = on_attach,
-    flags = lsp_flags
-}
-
-require('lspconfig')['cssls'].setup{
-    on_attach = on_attach,
-    flags = lsp_flags
 }
 
 -- Setup nvim-cmp.
@@ -122,12 +109,18 @@ cmp.setup.cmdline(':', {
 })
 
 -- Setup lspconfig.
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
--- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-require('lspconfig')['tsserver'].setup {
-  capabilities = capabilities
-}
+local capabilities = require('cmp_nvim_lsp').update_capabilities(
+  vim.lsp.protocol.make_client_capabilities()
+)
 
-require('lspconfig')['nimls'].setup {
-  capabilities = capabilities
-}
+require('lspconfig').util.default_config.capabilities = capabilities
+require('lspconfig').util.default_config.on_attach = on_attach
+require('lspconfig').util.default_config.flags = flags
+
+-- Add each lsp server you've enabled.
+require('lspconfig')['tsserver'].setup {}
+-- require('lspconfig')['nimls'].setup {}
+require('lspconfig')['cssls'].setup {}
+require('lspconfig')['jsonls'].setup {}
+require('lspconfig')['bashls'].setup {}
+

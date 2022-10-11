@@ -7,6 +7,9 @@ Plug 'ayu-theme/ayu-vim'
 
 Plug 'alaviss/nim.nvim'
 Plug 'airblade/vim-gitgutter'
+nmap ghp <Plug>(GitGutterPreviewHunk)
+nmap ghs <Plug>(GitGutterStageHunk)
+nmap ghu <Plug>(GitGutterUndoHunk)
 
 Plug '/usr/bin/fzf'
 Plug 'junegunn/fzf.vim'
@@ -64,8 +67,6 @@ set laststatus=2
 
 set noshowmode
 
-" Configuration{{{
-
 nnoremap <silent> ' :execute "normal! '" . nr2char(getchar()) . 'zt'<CR>
 
 " See https://github.com/airblade/vim-gitgutter#getting-started
@@ -90,9 +91,9 @@ set splitright
 syntax on
 
 set termguicolors
-" colorscheme dracula
-let ayucolor="mirage"
-colorscheme ayu
+colorscheme dracula
+" let ayucolor="mirage"
+" colorscheme ayu
 
 filetype on
 filetype plugin on
@@ -130,10 +131,6 @@ set showcmd
 " Mouse support
 set mouse=a
 
-" Tab completion
-" set wildmenu
-" set wildmode=list:longest,full
-
 " Line numbers
 set number
 
@@ -147,7 +144,6 @@ nnoremap <leader><space> :nohlsearch<CR>
 
 " Parenthesis matching
 highlight MatchParen ctermbg=4
-" nnoremap <silent> K :tabnext<CR>
 
 nnoremap S :%s//gI<Left><Left><Left>
 
@@ -202,8 +198,6 @@ function! CompileGroff(filename)
 endfunction
 
 autocmd BufWritePost *.ms :call CompileGroff(expand("%:t"))
-"}}}
-
 "}}}
 
 " :bd{{{

@@ -87,10 +87,6 @@ get_charge() {
 
 # Set the status bar
 
-# Last 3 numbers are RGB (0-255) values.
-blue=$'\e[38;2;69;133;136m'
-yellow=$'\e[38;2;250;189;47m'
-
 while true
 do
     xsetroot -name "$(get_status)";

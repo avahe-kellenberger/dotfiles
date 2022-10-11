@@ -1,0 +1,21 @@
+#!/bin/env bash
+
+BOARDS=(/dev/ttyACM*)
+B0XX=${BOARDS[0]}
+
+if [ ${#BOARDS[@]} -gt 1 ]; then
+  B0XX="$(echo "${BOARDS[*]}" | fzf --reverse --prompt 'Select your board')"
+fi
+
+echo "B0XX found at $B0XX"
+
+echo "Resetting into Arduino bootloader..."
+stty -F "$B0XX" ispeed 1200 ospeed 1200
+echo "Done."
+
+# Wait a bit for the bootloader
+sleep 2s
+
+echo "--- Flashing firmware ---"
+avrdude -C ./avrdude.conf -v -p atmega32u4 -c avr109 -P "$B0XX" -b 57600 -D -U flash:w:"./20XX.hex":i
+
