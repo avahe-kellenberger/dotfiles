@@ -1,5 +1,5 @@
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "javascript", "typescript", "tsx", "css", "dockerfile", "json", "bash", "c" },
+  ensure_installed = { "javascript", "typescript", "tsx", "css", "dockerfile", "json", "bash", "c", "markdown_inline" },
   sync_install = false,
   Auto_install = true,
   highlight = {
@@ -109,7 +109,7 @@ cmp.setup.cmdline(':', {
 })
 
 -- Setup lspconfig.
-local capabilities = require('cmp_nvim_lsp').update_capabilities(
+local capabilities = require('cmp_nvim_lsp').default_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
 

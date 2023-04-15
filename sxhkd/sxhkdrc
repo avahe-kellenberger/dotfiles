@@ -21,11 +21,15 @@ super + Return
 
 # Application Launcher
 super + p
-    dmenu_run -l 16
+    dmenu_run -i -l 16
 
 # Emoji selection
 super + e
     emoji
+
+# Bookmark selection
+super + b
+    bookmarks
 
 # Browser
 super + i

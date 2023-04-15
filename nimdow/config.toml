@@ -1,16 +1,3 @@
-[[startProcess]]
-command = "notify-send \"region 1\""
-clickRegion = 1
-
-[[startProcess]]
-command = "notify-send \"region 2\""
-clickRegion = 2
-
-[[startProcess]]
-command = "notify-send \"region 3\""
-clickRegion = 3
-
-
 # Monitor 1
 [[appRule]]
 title = "Warnings"
@@ -19,6 +6,10 @@ state = "floating"
 
 [[appRule]]
 class = "pentablet"
+state = "floating"
+
+[[appRule]]
+class = "mpv"
 state = "floating"
 
 [[appRule]]
@@ -33,6 +24,11 @@ state = "fullscreen"
 
 [[appRule]]
 instance = "riotclientux.exe"
+monitor = 1
+tags = [ 9 ]
+
+[[appRule]]
+class = "riotclientservices.exe"
 monitor = 1
 tags = [ 9 ]
 
@@ -58,12 +54,27 @@ monitor = 1
 tags = [ 9 ]
 
 [[appRule]]
+title = "EAC *"
+monitor = 1
+tags = [ 9 ]
+
+[[appRule]]
+title = "Apex Legends*"
+monitor = 1
+tags = [ 9 ]
+
+[[appRule]]
 class = "Lutris"
 monitor = 1
 tags = [ 8 ]
 
 [[appRule]]
-instance = "Steam"
+title = "Steam*"
+monitor = 1
+tags = [ 8 ]
+
+[[appRule]]
+instance = "Steam*"
 monitor = 1
 tags = [ 8 ]
 
@@ -102,11 +113,6 @@ keys = [ "c" ]
 modifiers = [ "super" ]
 
 [[startProcess]]
-command = "notify-send 'boop'"
-keys = [ "q" ]
-modifiers = [ "super" ]
-
-[[startProcess]]
 command = "light -A 1.25"
 keys = [ "XF86MonBrightnessUp" ]
 
@@ -128,11 +134,12 @@ exec = [
 [settings]
   # Window settings
   windowTitlePosition = "left"
-  gapSize = 24
+  gapSize = 0
   outerGap = 0
   borderWidth = 1
   borderColorUnfocused = "#282a36"
-  borderColorFocused = "#50fa7b"
+  # borderColorFocused = "#50fa7b"
+  borderColorFocused = "#6272a4"
   borderColorUrgent = "#ff5555"
   # Bar settings
   barHeight = 20
@@ -253,13 +260,13 @@ exec = [
   keys = [ "s" ]
   modifiers = [ "super" ]
 
-  [controls.rotateClients]
-  keys = [ "r" ]
-  modifiers = [ "super" ]
+  # [controls.rotateClients]
+  # keys = [ "r" ]
+  # modifiers = [ "super" ]
 
-  [controls.toggleStatusBar]
-  keys = [ "b" ]
-  modifiers = [ "super" ]
+  # [controls.toggleStatusBar]
+  # keys = [ "b" ]
+  # modifiers = [ "super" ]
 
 [monitors]
   [monitors.default.tags]

@@ -3,5 +3,5 @@
 win=$(xdotool getactivewindow) || (echo "Did not find active window" && exit 1)
 nimdow --toggle-floating
 xdotool windowsize "$win" 840 970 
-xdotool windowmove "$win" 560 295
+xdotool windowmove "$win" 540 295
 

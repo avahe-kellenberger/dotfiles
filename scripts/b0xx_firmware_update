@@ -2,9 +2,13 @@
 
 BOARDS=(/dev/ttyACM*)
 B0XX=${BOARDS[0]}
+devices=${#BOARDS[@]}
 
-if [ ${#BOARDS[@]} -gt 1 ]; then
+if [ "$devices" -gt 1 ]; then
   B0XX="$(echo "${BOARDS[*]}" | fzf --reverse --prompt 'Select your board')"
+elif [ "$devices" -lt 1 ]; then
+  echo "No B0XX found - exiting"
+  exit 1
 fi
 
 echo "B0XX found at $B0XX"

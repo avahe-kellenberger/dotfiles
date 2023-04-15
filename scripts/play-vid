@@ -2,5 +2,5 @@
 
 dir="$HOME/Videos/"
 vid="$(find "$dir" -name "*\.*" | sed "s|$dir||g" | dmenu -l 16)"
-[ -n "$vid" ] && mpv "$dir$vid"
+[ -n "$vid" ] && mpv --ao=alsa "$dir$vid"
 

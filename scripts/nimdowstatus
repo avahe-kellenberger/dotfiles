@@ -8,13 +8,13 @@ get_status() {
     fi
 
     weather="$(cat "$HOME/.config/weather/current")"
-    echo "${weather} |${battery_status} "$(get_volume)" | $(get_datetime)";
+    echo "${weather} |${battery_status} $(get_volume) | $(get_datetime)";
 }
 
 get_net_info() {
     info="$(nmcli)"
     device="$(echo "$info" | pcregrep -o1 -i "connected to (.*)")"
-    if [[ ! -z "$device" ]]; then
+    if [[ -n "$device" ]]; then
         type="$(echo "$info" | awk 'NR==3 { print $1 }')"
         printf "%s: %s" "$type" "$device"
     fi
