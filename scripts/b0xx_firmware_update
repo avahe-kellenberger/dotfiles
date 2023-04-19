@@ -1,5 +1,13 @@
 #!/bin/env bash
 
+shopt -s nullglob
+
+hexfile="$1"
+if [ -z "$hexfile" ]; then
+  echo "Please provide a hex file to upload!"
+  exit 1
+fi
+
 BOARDS=(/dev/ttyACM*)
 B0XX=${BOARDS[0]}
 devices=${#BOARDS[@]}
@@ -21,5 +29,5 @@ echo "Done."
 sleep 2s
 
 echo "--- Flashing firmware ---"
-avrdude -C ./avrdude.conf -v -p atmega32u4 -c avr109 -P "$B0XX" -b 57600 -D -U flash:w:"./20XX.hex":i
+avrdude -C ./avrdude.conf -v -p atmega32u4 -c avr109 -P "$B0XX" -b 57600 -D -U flash:w:"$hexfile":i
 
