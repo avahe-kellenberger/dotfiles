@@ -2,7 +2,13 @@ let mapleader=","
 
 call plug#begin(stdpath('data'))
 
+" See https://github.com/ms-jpq/coq_nvim#default-hotkeys
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+" 9000+ Snippets
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+
 Plug 'dracula/vim', { 'name': 'dracula' }
+Plug 'projekt0n/github-nvim-theme'
 Plug 'ayu-theme/ayu-vim'
 
 Plug 'alaviss/nim.nvim'
@@ -30,24 +36,19 @@ Plug 'tpope/vim-unimpaired'
 
 Plug 'kshenoy/vim-signature'
 Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
 
-" Autocompletion
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/nvim-cmp'
-
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
+Plug 'tikhomirov/vim-glsl'
 
 set completeopt=menu,menuone,noselect
 
 call plug#end()
+
+" Autostart COQ
+let g:coq_settings = { 'auto_start': 'shut-up' }
 
 luafile ~/.config/nvim/init.lua
 
@@ -91,7 +92,8 @@ set splitright
 syntax on
 
 set termguicolors
-colorscheme dracula
+colorscheme github_dark
+" colorscheme dracula
 " let ayucolor="mirage"
 " colorscheme ayu
 
