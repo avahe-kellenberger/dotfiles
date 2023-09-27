@@ -41,7 +41,9 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
   vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, bufopts)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<leader>f', vim.lsp.buf.formatting, bufopts)
+  vim.keymap.set('n', '<leader>f', function()
+      vim.lsp.buf.format { async = true }
+    end, opts)
 end
 
 local lsp_flags = {
@@ -50,14 +52,12 @@ local lsp_flags = {
 }
 
 -- Setup lspconfig.
-require('lspconfig').util.default_config.capabilities = capabilities
-require('lspconfig').util.default_config.on_attach = on_attach
-require('lspconfig').util.default_config.flags = flags
+local nvim_lsp = require('lspconfig')
+nvim_lsp.util.default_config.on_attach = on_attach
 
 -- Add each lsp server you've enabled.
-require('lspconfig')['tsserver'].setup {}
+nvim_lsp['tsserver'].setup {}
 -- require('lspconfig')['nimls'].setup {}
-require('lspconfig')['cssls'].setup {}
-require('lspconfig')['jsonls'].setup {}
-require('lspconfig')['bashls'].setup {}
-
+nvim_lsp['cssls'].setup {}
+nvim_lsp['jsonls'].setup {}
+nvim_lsp['bashls'].setup {}

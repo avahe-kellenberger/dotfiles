@@ -41,7 +41,9 @@ Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
 
+" Languages
 Plug 'tikhomirov/vim-glsl'
+Plug 'mfussenegger/nvim-jdtls'
 
 set completeopt=menu,menuone,noselect
 
@@ -158,7 +160,6 @@ set signcolumn=yes
 set cmdheight=1
 
 " Java{{{
-autocmd BufWritePre *.java :CocCommand java.action.organizeImports
 
 "}}}
 
