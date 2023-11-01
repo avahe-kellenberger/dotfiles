@@ -19,9 +19,11 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=0
 
 export EDITOR=nvim
 export VISUAL=nvim
-export BROWSER=brave
-export _KDECONNECT_DEFAULT_DEVICE="bb89add356ad357b"
+export BROWSER=vivaldi-stable
+export _KDECONNECT_DEFAULT_DEVICE="b4c0c0f8_ab20_464e_b355_c0a68e97ca45"
 export BATTERY="$(cat $HOME/.battery)"
 
 export GITHUB_TOKEN="$(cat ~/.github/pat)"
+
+export FZF_DEFAULT_COMMAND="find \! \( -path '*/.git' -prune \) \! \( -path '*/node_modules' -prune \) -printf '%P\n'"
 
