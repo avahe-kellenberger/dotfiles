@@ -16,7 +16,7 @@ precmd_functions+=(set_prompt)
 set_prompt
 
 alias e="nvim"
-alias l="exa --long --all --group-directories-first --icons"
+alias l="eza --icons --long --all --group-directories-first"
 alias grep="grep --color"
 alias tree="tree -C"
 alias copy="xclip -sel clipboard"
@@ -32,7 +32,7 @@ alias js="jq '.scripts' package.json"
 
 alias randomcommit="curl http://whatthecommit.com/index.txt"
 
-export MYVIMRC='~/.config/nvim/init.vim'
+export MYVIMRC='~/.config/nvim/init.lua'
 export VIMINIT='source $MYVIMRC'
 
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+## Averages the ping of the last $num_samples ping records in ~/.ping.log
+
+num_samples="${1:-40}"
+
+total=0.0
+while read -r line; do
+  num="$(echo "$line" | awk 'END {print $2}')"
+  total="$(echo "$total + $num" | bc)"
+done < <(tail -n "$num_samples" ~/.ping.log)
+
+avg="$(echo "$total / $num_samples" | bc -l)"
+printf "%.2f\n" "$avg"
+

@@ -7,8 +7,21 @@ get_status() {
         battery_status=" $(get_battery_status) |";
     fi
 
+    reminder_count="$(remind list | wc -l)"
+    upcoming_reminders=""
+    if [ "$reminder_count" -gt 0 ]; then
+      upcoming_reminders="Upcoming reminders: ${reminder_count} | "
+    fi
+
     weather="$(cat "$HOME/.config/weather/current")"
-    echo "${weather} |${battery_status} $(get_volume) | $(get_datetime)";
+    echo "$(get_music)${upcoming_reminders}${weather} |${battery_status} $(get_volume) | $(get_datetime)";
+}
+
+get_music() {
+    if [ "$(mpc status '%state%')" = "playing" ]; then
+        status="$(mpc status | head -n 1)"
+        printf "%s | " "$status"
+    fi
 }
 
 get_net_info() {
@@ -83,6 +96,13 @@ get_charging_status() {
 
 get_charge() {
     cat "/sys/class/power_supply/$battery/capacity"
+}
+
+get_num_updates() {
+  updates="$(checkupdates | wc -l)"
+  if [ "$updates" -gt 0 ]; then
+    echo "Updates: $updates |"
+  fi
 }
 
 # Set the status bar

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 interval="$1"
 if [ -z "$interval" ]; then

@@ -1,0 +1,12 @@
+#!/bin/env bash
+
+BOOKMARKS_FILE="$HOME/documents/bookmarks"
+
+selected="$(dmenu -i -l 10 < "$BOOKMARKS_FILE")"
+
+if [ -n "$selected" ]; then
+  echo "$selected" | cut -d ' ' -f 1 | xclip -r -sel clip
+  # title="$(echo "$selected" | cut -d ' ' -f 2-)"
+  # notify-send "Copied bookmark to clipboard" "$title"
+fi
+

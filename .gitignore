@@ -1,11 +1,11 @@
-openbox/menu.xml
-lock-wallpaper
-vim/bundle/*
-vim/sessions/*
-vim/plugged/*
-lock-wallpaper
-nvim/bundle/*
-nvim/.netrwhist
-qutebrowser/qsettings/QtProject.conf
-firefox/*
+# openbox/menu.xml
+# lock-wallpaper
+# vim/bundle/*
+# vim/sessions/*
+# vim/plugged/*
+# lock-wallpaper
+# nvim/bundle/*
+# nvim/.netrwhist
+# qutebrowser/qsettings/QtProject.conf
+# firefox/*
 

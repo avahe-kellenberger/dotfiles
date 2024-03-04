@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+$BROWSER https://mail.proton.me
+

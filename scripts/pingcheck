@@ -1,0 +1,10 @@
+#!/bin/bash
+
+ping="$(traceroute -n 1.1.1.1 | awk 'END {print $3}')"
+
+if [ "$1" == "league" ]; then
+  printf "%.0f\n" "$(echo "$ping + 28" | bc -l)"
+else
+  printf "ping: %.2f %s\n" "$ping" "$(date)" 
+fi
+

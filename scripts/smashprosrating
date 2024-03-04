@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+name="$(printf "pappychaddy\nIan\nTah#2625\ntyy_\ndrevistwo\npokefanz\nmaster1801\nendothia\naen3as" | dmenu)"
+
+if [ -n "$name" ]; then
+  rating="$(http -p 'b' "https://smashpros.gg/api/users/$name" | jq '.skillRating.rating')"
+  notify-send "$name smashpros rating:" "$rating"
+fi
+

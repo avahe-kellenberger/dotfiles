@@ -39,6 +39,10 @@ super + i
 super + r
     $HOME/.dotfiles/scripts/redshift-toggle
 
+# Play video
+super + v
+    play-vid
+
 # Screen shot
 super + shift + c
   screen_shot

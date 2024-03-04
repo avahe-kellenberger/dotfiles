@@ -23,12 +23,22 @@ instance = "nuclearthronetogether.exe"
 state = "fullscreen"
 
 [[appRule]]
+title = "Riot Client"
+monitor = 1
+tags = [ 9 ]
+
+[[appRule]]
 instance = "riotclientux.exe"
 monitor = 1
 tags = [ 9 ]
 
 [[appRule]]
 class = "riotclientservices.exe"
+monitor = 1
+tags = [ 9 ]
+
+[[appRule]]
+instance = "riotclientservices.exe"
 monitor = 1
 tags = [ 9 ]
 
@@ -49,7 +59,7 @@ monitor = 1
 tags = [ 9 ]
 
 [[appRule]]
-title = "League of Legends"
+title = "League of Legends*"
 monitor = 1
 tags = [ 9 ]
 
@@ -74,6 +84,11 @@ monitor = 1
 tags = [ 8 ]
 
 [[appRule]]
+class = "steam"
+monitor = 1
+tags = [ 8 ]
+
+[[appRule]]
 instance = "Steam*"
 monitor = 1
 tags = [ 8 ]
@@ -82,6 +97,14 @@ tags = [ 8 ]
 title = "Apex Legends"
 monitor = 1
 tags = [ 9 ]
+
+[[appRule]]
+title = "*tscn*"
+class = "Godot"
+
+[[appRule]]
+class = "Godot"
+state = "floating"
 
 # Monitor 2
 
@@ -92,6 +115,11 @@ tags = [ 1 ]
 
 [[appRule]]
 class = "element-desktop"
+monitor = 2
+tags = [ 1 ]
+
+[[appRule]]
+class = "Microsoft Teams*"
 monitor = 2
 tags = [ 1 ]
 
@@ -128,7 +156,6 @@ keys = [ "Print" ]
 exec = [
   "xsetroot -cursor_name left_ptr",
   "~/.config/nimdow/autostart.sh",
-  "nm-applet"
 ]
 
 [settings]
@@ -155,6 +182,7 @@ exec = [
     "NotoColorEmoji:size=10:antialias=true",
     "Source Han Sans TC,思源黑體:size=10:style=Regular:antialias=true"
   ]
+
   # Scratchpad settings
   scratchpadWidth = 800
   scratchpadHeight = 600
@@ -264,9 +292,9 @@ exec = [
   # keys = [ "r" ]
   # modifiers = [ "super" ]
 
-  # [controls.toggleStatusBar]
-  # keys = [ "b" ]
-  # modifiers = [ "super" ]
+  [controls.toggleStatusBar]
+  keys = [ "b" ]
+  modifiers = [ "super", "shift" ]
 
 [monitors]
   [monitors.default.tags]
