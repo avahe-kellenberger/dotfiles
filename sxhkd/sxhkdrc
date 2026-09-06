@@ -2,9 +2,6 @@
 super + Escape
 	pkill -USR1 -x sxhkd && notify-send "Restarted sxhkd"
 
-super + m
-  nimdow --print-current-tag-windows
-
 # mpc
 super + Left
 	mpc prev
@@ -17,7 +14,7 @@ super + {Up,Down}
 
 # Terminal
 super + Return
-    st
+    alacritty
 
 # Application Launcher
 super + p
@@ -30,6 +27,10 @@ super + e
 # Bookmark selection
 super + b
     bookmarks
+
+# Boomer (zooming)
+super + shift + z
+    boomer
 
 # Browser
 super + i
@@ -47,6 +48,9 @@ super + v
 super + shift + c
   screen_shot
 
+super + control + c
+  screen_shot --full
+
 # Open content from clipboard
 super + shift + x
     $HOME/.dotfiles/scripts/open-clipboard
@@ -57,7 +61,7 @@ super + shift + m
 
 # Lock screen
 super + shift + l
-    i3lock -i $HOME/.dotfiles/lock-wallpaper -t
+    lock-screen
 
 # Volume control
 {super + equal, XF86AudioRaiseVolume}
@@ -70,15 +74,16 @@ super + shift + l
     $HOME/.dotfiles/scripts/for-each-pactlsink "pactl set-sink-mute %s toggle" && refresh_nimdowstatus
 
 # Dunst
-ctrl + space
+shift + Delete
   dunstctl close
 
 ctrl + shift + space
   dunstctl close-all
 
-ctrl + grave
+ctrl + shift + Delete
   dunstctl history-pop
 
 ctrl + shift + period
   dunstctl context
 
+    i3lock -i $HOME/.dotfiles/lock-wallpaper -e -b

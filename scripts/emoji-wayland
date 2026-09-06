@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+chosen="$(cat $HOME/.dotfiles/emoji.list | rofi -dmenu)"
+
+[ -n "$chosen" ] || exit
+
+# c=$(echo "$chosen" | sed "s/ .*//")
+# echo "$c" | tr -d '\n' | wl-copy
+
+s=$(echo "$chosen" | awk '{print $1}')
+echo "$s" | tr -d '\n' | wl-copy
+

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 [ -z "$PSO_CONFIG_FILE" ] && PSO_CONFIG_FILE="$HOME/.config/pso/pso.config"
 . "$PSO_CONFIG_FILE"
@@ -11,8 +11,8 @@ show_help(){
 }
 
 exec_cmd(){
-    exec_cmd=$(printf "%s %s" "$1" "\"$2\"")
-    eval "${exec_cmd} &"
+    command="${1//%s/'$2'}"
+    eval "$command" &
     exit 0
 }
 
@@ -20,11 +20,8 @@ try_regex(){
     config=$(grep "^[^#]" "$1")
     while IFS=: read -r cmd regex; do
         if [ "$regex" != "" ]; then
-            echo "$resource" | grep -E "$regex" > /dev/null
-            if [ "$?" -eq 0 ]; then
-                if [ "$debug" -eq 0 ]; then
-                  exec_cmd "$cmd" "$resource"
-                fi
+            if echo "$resource" | grep -E "$regex" > /dev/null; then
+                [ "$debug" -eq 0 ] && exec_cmd "$cmd" "$resource"
                 [ "$debug" -eq 1 ] && echo "[*] regex: $regex cmd: $cmd (from $1)"
             fi
         fi
@@ -53,7 +50,7 @@ ask(){
     if [ "$PSO_ASK_MENU" != "false" ] && [ "$debug" -eq 0 ]; then
         app=$(eval "$PSO_ASK_MENU")
         if [ "$app" != "" ]; then
-            [ "$PSO_ASK_AUTOSAVE" != "false" ] && printf "$app %%s:$resource_mime\n" >> $PSO_MIME_CONFIG
+            [ "$PSO_ASK_AUTOSAVE" != "false" ] && printf "$app %%s:$resource_mime\n" >> "$PSO_MIME_CONFIG"
             exec_cmd "$app %s" "$resource"
         fi
     fi

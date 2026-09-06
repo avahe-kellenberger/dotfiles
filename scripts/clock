@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+dir="/tmp/statusbar/100-clock"
+
+[ ! -d "$dir" ] && mkdir -p "$dir"
+
+date +"📅 %a %d %b %Y | 🕓 %I:%M %p %Z" > "${dir}/content"
+
+[ ! -f "${dir}/background" ] && touch "${dir}/background"
+echo -n "6272a4" > /tmp/statusbar/100-clock/background
+

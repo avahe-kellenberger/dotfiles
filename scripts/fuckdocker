@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+docker compose down
+
+docker stop $(docker ps -aq)
+docker rm $(docker ps -aq)
+
+docker rmi -f $(docker images -aq)
+docker volume rm $(docker volume ls -qf dangling=true)
+docker network rm $(docker network ls -qf dangling=true)
+docker system prune -a
+

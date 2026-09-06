@@ -1,4 +1,14 @@
 #!/usr/bin/env bash
 
-feh --bg-scale "$(find ~/.dotfiles/wallpapers/ -name "*.png" | sxiv -riot | head -n 1)"
+# feh --bg-scale "$(find ~/.dotfiles/wallpapers/ -name "*.png" -o -name "*.jpg" | sxiv -riot | head -n 1)"
+
+wallpaper=$(find ~/.dotfiles/wallpapers/ -name "*.png" | sxiv -riot | head -n 1)
+if [ -n "$wallpaper" ]; then
+  rm ~/.dotfiles/wallpaper &>/dev/null;
+  ln -s "$wallpaper" ~/.dotfiles/wallpaper
+
+  for display in $(hyprctl monitors | grep "Monitor" | cut -d " " -f 2); do
+    hyprctl hyprpaper wallpaper "$display,$HOME/.dotfiles/wallpaper";
+  done
+fi
 

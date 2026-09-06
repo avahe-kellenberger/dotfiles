@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+# Take a screenshot on wayland with swaymsg, jq, grim, slurp, and swappy
+
+# TODO: https://seeminglyrandom.net/posts/wayland-screenshot/
+
+if [ -n "$1" ]; then
+  grim -g "$(slurp)" - | swappy -f -
+else
+  grim - | swappy -f -
+fi
+
+# TODO: Save full screen immediately in variable or clipboard
+# Give the user a way to use that piped into swappy, or make a selection with slurp?
+

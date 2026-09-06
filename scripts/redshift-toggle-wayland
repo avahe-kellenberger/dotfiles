@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+current="$(cat "$HOME/.config/wlsunset/temp")"
+
+if [ -n "$current" ]; then
+    pkill -i wlsunset
+    : > "$HOME/.config/wlsunset/temp"
+else
+    pkill -i wlsunset
+    wlsunset -t "4000" -T "4001" &
+    mkdir -p "$HOME/.config/wlsunset/"
+    echo "4000" > "$HOME/.config/wlsunset/temp"
+fi
+

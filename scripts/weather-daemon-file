@@ -6,19 +6,15 @@ if [ -z "$interval" ]; then
     exit 1
 fi
 
-dir="/tmp/statusbar/090-weather"
-
-[ ! -d "$dir" ] && mkdir -p "$dir"
-
 while true;
 do
     current="$(weather -i -r)"
     if [ -z "$current" ]; then
-        sleep 5s
+        sleep 1s
         continue
     else
-        echo "$current" > "${dir}/content"
-        echo -n "bd93f9" > "${dir}/background"
+        echo "$current" > "$HOME/.weather"
+        # refresh_nimdowstatus
         sleep "$interval"
     fi
 done

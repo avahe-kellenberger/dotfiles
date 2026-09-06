@@ -13,15 +13,8 @@ get_status() {
       upcoming_reminders="Upcoming reminders: ${reminder_count} | "
     fi
 
-    weather="$(cat "$HOME/.config/weather/current")"
-    echo "$(get_music)${upcoming_reminders}${weather} |${battery_status} $(get_volume) | $(get_datetime)";
-}
-
-get_music() {
-    if [ "$(mpc status '%state%')" = "playing" ]; then
-        status="$(mpc status | head -n 1)"
-        printf "%s | " "$status"
-    fi
+    weather="$(cat "$HOME/.weather")"
+    echo "${upcoming_reminders}$(get_dunst_status) | ${weather} |${battery_status} $(get_volume) | $(get_datetime)";
 }
 
 get_net_info() {
@@ -59,33 +52,33 @@ has_battery() {
 
 get_battery_status() {
     charge="$(get_charge)"
-    if [ "$(get_charging_status)" == "Discharging" ]; then
-        icon=""
-        if [[ "$charge" -le 10 ]]; then
-            icon=""
-        elif [[ "$charge" -le 20 ]]; then
-            icon=""
-        elif [[ "$charge" -le 30 ]]; then
-            icon="" 
-        elif [[ "$charge" -le 40 ]]; then
-            icon="" 
-        elif [[ "$charge" -le 50 ]]; then
-            icon="" 
-        elif [[ "$charge" -le 60 ]]; then
-            icon="" 
-        elif [[ "$charge" -le 70 ]]; then
-            icon="" 
-        elif [[ "$charge" -le 80 ]]; then
-            icon="" 
-        elif [[ "$charge" -le 90 ]]; then
-            icon="" 
-        elif [[ "$charge" -le 100 ]]; then
-            icon="" 
+    icon=""
+    if [[ "$charge" -le 10 ]]; then
+        icon="󰁺"
+    elif [[ "$charge" -le 20 ]]; then
+        icon="󰁻"
+    elif [[ "$charge" -le 30 ]]; then
+        icon="󰁼" 
+    elif [[ "$charge" -le 40 ]]; then
+        icon="󰁽" 
+    elif [[ "$charge" -le 50 ]]; then
+        icon="󰁾" 
+    elif [[ "$charge" -le 60 ]]; then
+        icon="󰁿" 
+    elif [[ "$charge" -le 70 ]]; then
+        icon="󰂀" 
+    elif [[ "$charge" -le 80 ]]; then
+        icon="󰂁" 
+    elif [[ "$charge" -le 90 ]]; then
+        icon="󰂂" 
+    elif [[ "$charge" -le 100 ]]; then
+        if [[ "$(get_charging_status)" == "Discharging" ]]; then
+            icon="󰁹"
         else
-            icon=""
+            icon="󰂄" 
         fi
     else
-        icon=""
+        icon="󰂑"
     fi
     echo ""$icon" "$charge"%"
 }
@@ -105,11 +98,27 @@ get_num_updates() {
   fi
 }
 
+get_dunst_status() {
+    COUNT=$(dunstctl count waiting)
+    ENABLED=🔔
+    DISABLED=🔕
+
+    if [ "$COUNT" != 0 ]; then 
+      DISABLED="🔕 $COUNT";
+    fi
+
+    if dunstctl is-paused | grep -q "false" ; then
+      echo -e "\x1F$ENABLED\x1F";
+    else
+      echo -e "\x1F$DISABLED\x1F";
+    fi
+}
+
 # Set the status bar
 
 while true
 do
     xsetroot -name "$(get_status)";
-    sleep 1m;
+    sleep 1s;
 done
 

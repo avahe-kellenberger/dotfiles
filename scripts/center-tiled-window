@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
 win=$(xdotool getactivewindow) || (echo "Did not find active window" && exit 1)
-# nimdow --toggle-floating
+nimdow --toggle-floating
 # xdotool windowsize "$win" 840 970
-xdotool windowmove "$win" 1080 590
+# xdotool windowmove "$win" 540 295
 
+xdotool windowsize "$win" 1680 1940
+xdotool windowmove "$win" 1080 590

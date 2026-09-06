@@ -1,0 +1,114 @@
+#!/usr/bin/env bash
+
+set -u
+
+tmpfile=$(mktemp --suffix=.png)
+trap 'rm -f "$tmpfile"' EXIT
+
+upload() {
+    curl -sS -L \
+        -X POST 'https://api.imgur.com/3/image' \
+        -H 'Authorization: Client-ID 9e2d6e63b369a4d' \
+        -F "image=@$1" |
+        jq -r '.data.link'
+}
+
+screenshot_region() {
+    local geometry
+
+    geometry=$(slurp) || return 1
+    grim -g "$geometry" "$tmpfile"
+}
+
+screenshot_window() {
+    local geometry
+
+    geometry=$(
+        hyprctl activewindow -j |
+            jq -r '
+                if (.at and .size) then
+                    "\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"
+                else
+                    empty
+                end
+            '
+    )
+
+    if [[ -z "$geometry" ]]; then
+        notify-send "Screenshot" "No active window found"
+        return 1
+    fi
+
+    grim -g "$geometry" "$tmpfile"
+}
+
+screenshot_output() {
+    local output
+
+    output=$(
+        hyprctl monitors -j |
+            jq -r '.[] | select(.focused == true) | .name'
+    ) || return 1
+
+    [[ -n "$output" ]] || return 1
+
+    grim -o "$output" "$tmpfile"
+}
+
+if [[ ${1:-} == "--full" ]]; then
+    screenshot_output || exit 1
+elif [[ ${1:-} == "--window" ]]; then
+    screenshot_window || exit 1
+else
+    screenshot_region || exit 1
+fi
+
+action=$(
+    printf "copy\nupload\nsave\n" |
+        rofi -dmenu -p "Screenshot action"
+)
+
+case "$action" in
+    copy)
+        if wl-copy --type image/png < "$tmpfile"; then
+            notify-send "Screenshot" "Image copied to clipboard"
+        else
+            notify-send "Screenshot" "Copy failed"
+            exit 1
+        fi
+        ;;
+
+    upload)
+        url=$(upload "$tmpfile")
+
+        if [[ -n "$url" && "$url" != "null" ]]; then
+            printf '%s' "$url" | wl-copy
+            notify-send "Screenshot" "Image link copied to clipboard"
+        else
+            notify-send "Screenshot" "Upload failed"
+            exit 1
+        fi
+        ;;
+
+    save)
+        destfile=$(
+            zenity \
+                --file-selection \
+                --title="Save image" \
+                --save \
+                --confirm-overwrite \
+                --filename="screenshot.png"
+        ) || exit 0
+
+        [[ -n "$destfile" ]] || exit 0
+
+        mv -- "$tmpfile" "$destfile"
+        notify-send "Screenshot" "Image saved to $destfile"
+        ;;
+
+    *)
+        notify-send "Screenshot" "No action selected"
+        exit 1
+        ;;
+esac
+

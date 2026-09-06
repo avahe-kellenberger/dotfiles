@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# win=$(hyprctl activewindow | pcregrep -o1 -i "Window ([^\s]*)") || (echo "Did not find active window" && exit 1)
+floating=$(hyprctl activewindow | pcregrep -o1 -i "floating: ([^\s]*)")
+if [ "$floating" -eq 0 ]; then
+  hyprctl --batch dispatch togglefloating
+  hyprctl --batch dispatch resizeactive exact 840 970
+  hyprctl --batch dispatch centerwindow
+else
+  hyprctl dispatch centerwindow
+fi
+

@@ -1,8 +1,18 @@
 #!/usr/bin/env bash
 
+# If first arg is --full, take full-screen immediately; otherwise interactive selection.
+FULL=0
+if [[ $1 == "--full" ]]; then
+  FULL=1
+fi
+
 tmpfile=$(mktemp -t XXXXXX.png)
 
-maim -sou > "$tmpfile" || exit
+if [[ $FULL -eq 1 ]]; then
+  maim -u "$tmpfile" || exit
+else
+  maim -sou > "$tmpfile" || exit
+fi
 
 action=$(printf "copy\nupload\nsave" | dmenu)
 
@@ -19,6 +29,13 @@ upload() {
 
 case "$action" in
   copy)
+    # webpfile="$(mktemp -t XXXXXX.webp)"
+    # convert "$tmpfile" -strip -quality 70 "$webpfile" || exit
+    # xclip -selection clipboard -t image/webp -i "$webpfile" \
+    #     && notify-send "Saved image to clipboard"
+    #
+    # rm -f "$webpfile"
+
     xclip -selection clipboard -t image/png "$tmpfile" &&
       notify-send "Saved image to clipboard"
     ;;

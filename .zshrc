@@ -19,10 +19,12 @@ alias e="nvim"
 alias l="eza --icons --long --all --group-directories-first"
 alias grep="grep --color"
 alias tree="tree -C"
-alias copy="xclip -sel clipboard"
+# alias copy="xclip -sel clipboard"
+alias copy="wl-copy"
 alias kp="keepassxc-cli"
 
-alias gr="nvim \$(git status -s | awk '{ if (\$1 == \"M\") print \$2 }')"
+# alias gr="nvim \$(git status -s | awk '{ if (\$1 == \"M\") print \$2 }')"
+alias gr='nvim $(git ls-files -m -o --exclude-standard)'
 alias gd="git diff"
 alias gs="git status"
 alias gprune="git branch --merged master | grep -Ev '^\s*\*?\s*master$' | xargs git branch -d"
@@ -30,7 +32,9 @@ alias rg="rg -p"
 alias less="less -R"
 alias js="jq '.scripts' package.json"
 
-alias randomcommit="curl http://whatthecommit.com/index.txt"
+# alias codex="codex --profile deepseek"
+
+alias randomcommit="curl https://whatthecommit.com/index.txt"
 
 export MYVIMRC='~/.config/nvim/init.lua'
 export VIMINIT='source $MYVIMRC'
@@ -89,8 +93,13 @@ source /usr/share/fzf/completion.zsh
 
 source /usr/share/nvm/init-nvm.sh
 
+[[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+
 if [ "$(tty)" = "/dev/tty1" ] && [ -z "$(pgrep -i xorg)" ]; then
     startx
     exit 0;
 fi
 
+# if [ "$(tty)" = "/dev/tty1" ] && uwsm check may-start; then
+#   exec uwsm start hyprland.desktop
+# fi

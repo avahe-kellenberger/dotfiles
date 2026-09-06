@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+DIR="$HOME/programming/java/runelite/runelite-client/build/libs"
+JAR="$(fd -e jar --hidden --regex 'client.*-shaded\.jar' "$DIR" -0 | tr -d '\0' | head -n1)"
+[[ -n "$JAR" ]] || { echo "jar not found in $DIR" >&2; exit 1; }
+
+cleanup() {
+  # find first matching PID (exact pipeline replaced to avoid xargs)
+  PID="$(ps aux | rg -i runelite | awk 'NR==1 { print $2 }' || true)"
+  if [[ -n "$PID" ]]; then
+    echo "KILL -9 $PID" >&2
+    kill -9 "$PID" 2>/dev/null || true
+  else
+    echo "No matching runelite pid found" >&2
+  fi
+}
+
+trap 'cleanup; exit' TERM HUP INT EXIT
+
+# Run java in its own session so the wrapper remains the foreground process for the window.
+setsid java -ea -jar "$JAR" --developer-mode >/dev/null 2>&1 &
+JAVA_PID=$!
+
+# Wait for the java process. The wrapper will receive TERM/HUP from the WM and run cleanup.
+wait "$JAVA_PID"
+EXIT_CODE=$?
+
+# Ensure cleanup ran
+cleanup
+
+exit "$EXIT_CODE"
+

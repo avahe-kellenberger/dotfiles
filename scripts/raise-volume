@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+for-each-pactlsink "pactl set-sink-mute %s off";
+for-each-pactlsink "pactl set-sink-volume %s +2.5%"
+

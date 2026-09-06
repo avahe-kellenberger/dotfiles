@@ -23,62 +23,6 @@ instance = "nuclearthronetogether.exe"
 state = "fullscreen"
 
 [[appRule]]
-title = "Riot Client"
-monitor = 1
-tags = [ 9 ]
-
-[[appRule]]
-instance = "riotclientux.exe"
-monitor = 1
-tags = [ 9 ]
-
-[[appRule]]
-class = "riotclientservices.exe"
-monitor = 1
-tags = [ 9 ]
-
-[[appRule]]
-instance = "riotclientservices.exe"
-monitor = 1
-tags = [ 9 ]
-
-[[appRule]]
-instance = "leagueclient.exe"
-monitor = 1
-tags = [ 9 ]
-
-[[appRule]]
-instance = "league of legends.exe"
-monitor = 1
-tags = [ 9 ]
-state = "fullscreen"
-
-[[appRule]]
-instance = "leagueclientux.exe"
-monitor = 1
-tags = [ 9 ]
-
-[[appRule]]
-title = "League of Legends*"
-monitor = 1
-tags = [ 9 ]
-
-[[appRule]]
-title = "EAC *"
-monitor = 1
-tags = [ 9 ]
-
-[[appRule]]
-title = "Apex Legends*"
-monitor = 1
-tags = [ 9 ]
-
-[[appRule]]
-class = "Lutris"
-monitor = 1
-tags = [ 8 ]
-
-[[appRule]]
 title = "Steam*"
 monitor = 1
 tags = [ 8 ]
@@ -94,22 +38,26 @@ monitor = 1
 tags = [ 8 ]
 
 [[appRule]]
-title = "Apex Legends"
-monitor = 1
-tags = [ 9 ]
+title = "*Godot*"
+state = "floating"
 
 [[appRule]]
-title = "*tscn*"
-class = "Godot"
+instance = "*Godot*"
+state = "floating"
 
 [[appRule]]
-class = "Godot"
+class = "*Godot*"
 state = "floating"
 
 # Monitor 2
 
 [[appRule]]
 class = "discord"
+monitor = 2
+tags = [ 1 ]
+
+[[appRule]]
+class = "vesktop"
 monitor = 2
 tags = [ 1 ]
 
@@ -127,6 +75,14 @@ tags = [ 1 ]
 title = "RuneLite Launcher"
 state = "floating"
 
+[[appRule]]
+title = "RuneLite"
+state = "floating"
+width = 1402
+height = 912
+x = 259
+y = 84
+
 ## Monitor agnostic
 
 [[appRule]]
@@ -141,6 +97,11 @@ keys = [ "c" ]
 modifiers = [ "super" ]
 
 [[startProcess]]
+command = "center-tiled-window"
+keys = [ "t" ]
+modifiers = [ "super" ]
+
+[[startProcess]]
 command = "light -A 1.25"
 keys = [ "XF86MonBrightnessUp" ]
 
@@ -151,6 +112,10 @@ keys = [ "XF86MonBrightnessDown" ]
 [[startProcess]]
 command = "notify-send 'print'"
 keys = [ "Print" ]
+
+[[startProcess]]
+command = "dunst-status"
+clickRegion = 2
 
 [autostart]
 exec = [
@@ -163,29 +128,31 @@ exec = [
   windowTitlePosition = "left"
   gapSize = 0
   outerGap = 0
-  borderWidth = 1
+  borderWidth = 2
   borderColorUnfocused = "#282a36"
   # borderColorFocused = "#50fa7b"
   borderColorFocused = "#6272a4"
   borderColorUrgent = "#ff5555"
   # Bar settings
-  barHeight = 20
+  barHeight = 40
 
   barBackgroundColor = "#282a36"
   barForegroundColor = "#f8f8f2"
   barSelectionColor = "#50fa7b"
   barUrgentColor = "#ff5555"
+  barTransparency = 255 # 0 to 255
   barFonts = [
-    "monospace:size=10:antialias=true",
-    "monospace:size=14:antialias=true",
-    "Font Awesome 5 Free Regular:style=Regular:size=10:antialias=true",
-    "NotoColorEmoji:size=10:antialias=true",
-    "Source Han Sans TC,思源黑體:size=10:style=Regular:antialias=true"
+    "Statusbar font:style=Regular:size=40:antialias=true",
+    "monospace:size=20:antialias=true",
+    "monospace:size=28:antialias=true",
+    "Font Awesome 5 Free Regular:style=Regular:size=20:antialias=true",
+    "NotoColorEmoji:size=20:antialias=true",
+    "Source Han Sans TC,思源黑體:size=20:style=Regular:antialias=true"
   ]
 
   # Scratchpad settings
-  scratchpadWidth = 800
-  scratchpadHeight = 600
+  scratchpadWidth = 1600
+  scratchpadHeight = 1200
   # General settings
   loggingEnabled = false
   reverseTagScrolling = false
@@ -229,7 +196,7 @@ exec = [
   modifiers = [ "super" ]
 
   [controls.goToPreviousTag]
-  keys = [ "w" ]
+  keys = [ "period" ]
   modifiers = [ "super" ]
 
   [controls.toggleTagView]
@@ -240,13 +207,13 @@ exec = [
   keys = [ "1", "2", "3", "4", "5", "6", "7", "8", "9" ]
   modifiers = [ "super", "shift", "control" ]
 
-  [controls.focusPreviousMonitor]
-  keys = [ "comma" ]
-  modifiers = [ "super" ]
+  # [controls.focusPreviousMonitor]
+  # keys = [ "comma" ]
+  # modifiers = [ "super" ]
 
-  [controls.focusNextMonitor]
-  keys = [ "period" ]
-  modifiers = [ "super" ]
+  # [controls.focusNextMonitor]
+  # keys = [ "period" ]
+  # modifiers = [ "super" ]
 
   [controls.moveWindowToPreviousMonitor]
   keys = [ "comma" ]
@@ -295,8 +262,4 @@ exec = [
   [controls.toggleStatusBar]
   keys = [ "b" ]
   modifiers = [ "super", "shift" ]
-
-[monitors]
-  [monitors.default.tags]
-  all.defaultMasterWidthPercentage = 50
 

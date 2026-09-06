@@ -8,7 +8,8 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 export GTK_THEME='Ant-Dracula'
 # QT sucks ass
-export QT_QPA_PLATFORMTHEME='qt5ct'
+export QT_QPA_PLATFORMTHEME='qt6ct'
+export QT_SCALE_FACTOR=2.0
 
 export DIFFPROG="nvim -d"
 
@@ -19,11 +20,18 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=0
 
 export EDITOR=nvim
 export VISUAL=nvim
-export BROWSER=chromium
+export BROWSER=zen-browser
 export _KDECONNECT_DEFAULT_DEVICE="b4c0c0f8_ab20_464e_b355_c0a68e97ca45"
-export BATTERY="$(cat $HOME/.battery)"
+export BATTERY="$(cat "$HOME"/.battery)"
 
 export GITHUB_TOKEN="$(cat ~/.github/pat)"
+export SUPABASE_TOKEN="$(cat ~/.config/supabase/pat)"
 
 export FZF_DEFAULT_COMMAND="find \! \( -path '*/.git' -prune \) \! \( -path '*/node_modules' -prune \) -printf '%P\n'"
+
+export XCURSOR_SIZE=48
+export GDK_SCALE=2
+export GDK_DPI_SCALE=1.0
+
+~/.autostart
 

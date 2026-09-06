@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+tmpfile=$(mktemp -tu XXXXXX.mp4)
+
+ffmpeg -video_size 1920x1080 -framerate 30 -f x11grab -i :0.0+0,0 "$tmpfile";
+
+destfile="$(zenity --file-selection --title="Save video" --save)"
+if [[ -n $destfile ]]; then
+  mv "$tmpfile" "$destfile"
+  notify-send "File saved to $destfile"
+fi
+

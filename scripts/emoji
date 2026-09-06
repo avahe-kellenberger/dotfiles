@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-chosen=$(cat $HOME/.dotfiles/emoji.list | dmenu -i -l 20 -fn Monospace-14)
+chosen=$(cat $HOME/.dotfiles/emoji.list | dmenu -i -l 20)
 
 [ -n "$chosen" ] || exit
 

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+exec java -Dsun.java2d.uiScale=2 -jar /usr/share/java/runelite/RuneLite.jar "$@"
+

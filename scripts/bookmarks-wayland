@@ -1,0 +1,10 @@
+#!/bin/env bash
+
+BOOKMARKS_FILE="$HOME/documents/bookmarks"
+
+selected="$(rofi -dmenu -l 10 < "$BOOKMARKS_FILE")"
+
+if [ -n "$selected" ]; then
+  echo "$selected" | cut -d ' ' -f 1 | wl-copy
+fi
+

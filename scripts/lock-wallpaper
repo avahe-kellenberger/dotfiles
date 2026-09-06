@@ -2,3 +2,5 @@
 
 rm ~/.dotfiles/lock-wallpaper &>/dev/null; ln -s "$(find ~/.dotfiles/wallpapers/ -name "*.png" | sxiv -riot | head -n 1)" ~/.dotfiles/lock-wallpaper
 
+# betterlockscreen --update "$HOME/.dotfiles/lock-wallpaper" --fx ""
+

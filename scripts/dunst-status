@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+dunstctl set-paused toggle
+
+refresh_nimdowstatus
+
+# dir="/tmp/statusbar/080-dunst"
+#
+# [ ! -d "$dir" ] && mkdir -p "$dir"
+
+# COUNT=$(dunstctl count waiting)
+# ENABLED=🔔
+# DISABLED=🔕
+#
+# if [ "$COUNT" != 0 ]; then 
+#   DISABLED="🔕 $COUNT";
+# fi
+#
+# if dunstctl is-paused | grep -q "false" ; then
+#   echo -e "$ENABLED\x1F" > "${dir}/content";
+# else
+#   echo -e "$DISABLED\x1F" > "${dir}/content";
+# fi
+#
+# echo -n "44475a" > "${dir}/background"

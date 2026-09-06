@@ -1,5 +1,5 @@
 [global]
-font = Dina 8
+font = Dina 16
 
 # Allow a small subset of html markup:
 #   <b>bold</b>
@@ -72,9 +72,9 @@ hide_duplicates_count = yes
 #geometry = "250x50-40+40"
 # geometry = "300x50+16-48"
 origin = "bottom-left"
-width = 300
-height = 50
-offset = 16x48
+width = 600
+height = 100
+offset = 32x96
 
 # Shrink window if it's smaller than the width.  Will be ignored if
 # width is 0.
@@ -119,18 +119,18 @@ show_indicators = no
 # The height of a single line.  If the height is smaller than the
 # font height, it will get raised to the font height.
 # This adds empty space above and under the text.
-line_height = 3
+line_height = 6
 
 # Draw a line of "separatpr_height" pixel height between two
 # notifications.
 # Set to 0 to disable.
-separator_height = 2
+separator_height = 4
 
 # Padding between text and separator.
-padding = 6
+padding = 12
 
 # Horizontal padding.
-horizontal_padding = 6
+horizontal_padding = 12
 
 # Define a color for the separator.
 # possible values are:
@@ -153,12 +153,12 @@ browser = /usr/bin/firefox -new-tab
 
 # Align icons left/right/off
 icon_position = off
-max_icon_size = 80
+max_icon_size = 160
 
 # Paths to default icons.
 icon_path = /usr/share/icons/Paper/16x16/mimetypes/:/usr/share/icons/Paper/48x48/status/:/usr/share/icons/Paper/16x16/devices/:/usr/share/icons/Paper/48x48/notifications/:/usr/share/icons/Paper/48x48/emblems/
 
-frame_width = 1
+frame_width = 2
 frame_color = "#8EC07C"
 
 [urgency_low]

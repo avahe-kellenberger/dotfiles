@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+host="$(printf "staging.powers-p3.com\npowers-p3.com" | fzf --reverse --prompt 'Select host')"
+user="$(printf "github\nroot" | fzf --reverse --prompt 'Select user')"
+
+[ -z "$host" ] && exit 1;
+[ -z "$user" ] && exit 1;
+
+set -euo pipefail
+
+eval "$(ssh-agent)"
+ssh-add ~/.ssh/id_rsa_powers
+ssh -F /dev/null -o "IdentitiesOnly=yes" -i ~/.ssh/id_rsa_powers.pub "$user@$host"
+

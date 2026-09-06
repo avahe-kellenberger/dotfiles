@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+for-each-pactlsink "pactl set-sink-mute %s toggle";
+
