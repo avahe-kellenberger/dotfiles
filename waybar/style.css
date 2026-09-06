@@ -1,0 +1,77 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: GeistMono NF;
+    font-size: 13px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: #282a36;
+    color: #50fa7b;
+}
+
+window#waybar>box {
+    /* margin: 5px 0 0 0; */
+    margin: 0;
+}
+
+tooltip {
+    background: #282a36;
+    border-radius: 10px;
+}
+
+tooltip label {
+    color: #f8f8f2;
+}
+
+#workspaces {
+    background: #282a36;
+}
+
+#workspaces button.persistent {
+    color: #f8f8f2;
+    border: 3px solid transparent;
+}
+
+#workspaces button {
+    padding: 0 5px;
+}
+
+#workspaces button.empty {
+    color: #44475a;
+}
+
+#workspaces button.active {
+    color: #50fa7b;
+    background: #282a36;
+    border-radius: 8px;
+}
+
+#workspaces button.urgent {
+    color: #f8f8f2;
+    background: #ff5555;
+    border-radius: 8px;
+}
+
+#custom-spotify,
+#idle_inhibitor,
+#pulseaudio,
+#custom-weather,
+#custom-clock,
+#battery,
+#custom-power,
+#custom-dunst {
+    color: #f8f8f2;
+    background: #282a36;
+    border: 1px solid transparent;
+    border-radius: 10px;
+}
+
+#modules-right {
+    padding-right: 10px;
+}
+
+#tray {
+    padding-right: 10px;
+}
