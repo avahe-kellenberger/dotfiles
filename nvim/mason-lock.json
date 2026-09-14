@@ -1,0 +1,13 @@
+{
+  "bash-language-server": "5.6.0",
+  "clangd": "22.1.6",
+  "docker-compose-language-service": "1.0.0",
+  "dockerfile-language-server": "0.15.0",
+  "eslint-lsp": "4.10.0",
+  "json-lsp": "4.10.0",
+  "lua-language-server": "3.19.1",
+  "stylua": "v2.5.2",
+  "typescript-language-server": "5.3.0",
+  "yaml-language-server": "1.24.0",
+  "zls": "0.15.1"
+}
